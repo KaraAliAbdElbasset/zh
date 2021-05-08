@@ -4,6 +4,8 @@
 namespace App\Repositories;
 
 
+use App\Models\GeneralStatistic;
+
 class GeneralStatisticRepository extends BaseRepository implements \App\Contracts\GeneralStatisticContract
 {
 
@@ -12,7 +14,7 @@ class GeneralStatisticRepository extends BaseRepository implements \App\Contract
      */
     public function findOneById($id, array $relations = [])
     {
-        // TODO: Implement findOneById() method.
+        return GeneralStatistic::with($relations)->findOrFail($id);
     }
 
     /**
@@ -20,7 +22,8 @@ class GeneralStatisticRepository extends BaseRepository implements \App\Contract
      */
     public function findByFilter(int $per_page = 10, array $relations = [], array $scopes = [])
     {
-        // TODO: Implement findByFilter() method.
+        $query =  GeneralStatistic::with($relations)->scopes($scopes)->newQuery();
+        return $this->applyFilter($query,$per_page);
     }
 
     /**
@@ -28,7 +31,7 @@ class GeneralStatisticRepository extends BaseRepository implements \App\Contract
      */
     public function add(array $data)
     {
-        // TODO: Implement add() method.
+        return GeneralStatistic::create($data);
     }
 
     /**
@@ -36,7 +39,8 @@ class GeneralStatisticRepository extends BaseRepository implements \App\Contract
      */
     public function update(int $id, array $data)
     {
-        // TODO: Implement update() method.
+        $g = $this->findOneById($id);
+        return $g->update($data);
     }
 
     /**
@@ -44,6 +48,6 @@ class GeneralStatisticRepository extends BaseRepository implements \App\Contract
      */
     public function delete(int $id)
     {
-        // TODO: Implement delete() method.
+        return GeneralStatistic::destroy($id);
     }
 }
