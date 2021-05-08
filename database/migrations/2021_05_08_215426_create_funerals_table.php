@@ -29,6 +29,8 @@ class CreateFuneralsTable extends Migration
             $table->text('contributors')->nullable();
             $table->text('moderators')->nullable();
             $table->string('note')->nullable();
+            $table->string('national_number')->nullable();
+            $table->string('serial_number')->nullable();
             $table->timestamps();
         });
     }

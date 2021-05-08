@@ -10,7 +10,7 @@ class Funeral extends Model
     use HasFactory;
 
     /**
-     * @var string[] 
+     * @var string[]
      */
     protected $fillable = [
         'first_name', 'last_name', 'birth_place', 'birth_date', 'death_place',

@@ -16,7 +16,7 @@ class GeneralStatistic extends Model
         'mother_full_name', 'gender',
         'address', 'phone_number', 'qualification',
         'job', 'job_address', 'social_status',
-        'note'
+        'note','national_number','serial_number'
     ];
 
     /**
