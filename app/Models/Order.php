@@ -16,7 +16,7 @@ class Order extends Model
     /**
      * @var string[]
      */
-    protected $fillable = ['sewing_client_id', 'due_date', 'amount', 'paid', 'note'];
+    protected $fillable = ['sewing_client_id', 'due_date', 'amount', 'paid', 'note','products'];
 
     /**
      * @var string[]
@@ -25,6 +25,7 @@ class Order extends Model
         'due_date' => 'date',
         'amount' => 'integer',
         'paid' => 'paid',
+        'products' => 'array',
     ];
 
     /**

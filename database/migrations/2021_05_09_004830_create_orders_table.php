@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->integer('amount');
             $table->integer('paid')->default(0);
             $table->string('note');
+            $table->text('products');
             $table->timestamps();
         });
     }
