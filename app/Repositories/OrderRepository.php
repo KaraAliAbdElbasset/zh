@@ -31,11 +31,8 @@ class OrderRepository extends BaseRepository implements \App\Contracts\OrderCont
      */
     public function add(array $data)
     {
-        $products = collect($data['products']);
-        $data['amount'] = $products->sum('total');
-        $order = Order::create($data);
-        $order->products()->create($products->all());
-        return $order;
+        $data['amount'] = $this->getAmount($data['products']);
+        return Order::create($data);
     }
 
     /**
@@ -44,6 +41,7 @@ class OrderRepository extends BaseRepository implements \App\Contracts\OrderCont
     public function update(int $id, array $data)
     {
         $order = $this->findOneById($id,['products']);
+        $data['amount'] = $this->getAmount($data['products']);
         $order->update($data);
         return $order;
     }
@@ -54,5 +52,13 @@ class OrderRepository extends BaseRepository implements \App\Contracts\OrderCont
     public function delete(int $id)
     {
         return Order::destroy($id);
+    }
+
+    /**
+     * @param array $products
+     */
+    private function getAmount(array $products)
+    {
+        return collect($products)->sum('total');
     }
 }
