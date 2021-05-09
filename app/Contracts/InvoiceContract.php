@@ -4,7 +4,7 @@
 namespace App\Contracts;
 
 
-interface InvoiceContract
+interface InvoiceContract extends BaseContract
 {
 
 }
