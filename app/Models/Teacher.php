@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static create(array $data)
+ */
 class Teacher extends Model
 {
     use HasFactory;
@@ -18,7 +21,7 @@ class Teacher extends Model
     ];
 
     /**
-     * @var string[] 
+     * @var string[]
      */
     protected $casts = [
         'birth_date' => 'date',
