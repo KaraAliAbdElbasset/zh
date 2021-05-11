@@ -1,0 +1,54 @@
+<?php
+
+
+namespace App\Repositories;
+
+
+use App\Models\Group;
+
+class GroupRepository extends BaseRepository implements \App\Contracts\GroupContract
+{
+
+    /**
+     * @inheritDoc
+     */
+    public function findOneById($id, array $relations = [])
+    {
+        return Group::with($relations)->scopes();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findByFilter(int $per_page = 10, array $relations = [], array $scopes = [])
+    {
+        $query = Group::with($relations)->scopes($scopes)->newQuery();
+        return $this->applyFilter($query,$per_page);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function add(array $data)
+    {
+        return Group::create($data);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function update(int $id, array $data)
+    {
+        $group = $this->findOneById($id);
+        $group->update($data);
+        return $group;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function delete(int $id)
+    {
+       return Group::destroy($id);
+    }
+}
