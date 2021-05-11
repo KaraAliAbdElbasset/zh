@@ -4,9 +4,10 @@
 namespace App\Repositories;
 
 
+use App\Contracts\GroupContract;
 use App\Models\Group;
 
-class GroupRepository extends BaseRepository implements \App\Contracts\GroupContract
+class GroupRepository extends BaseRepository implements GroupContract
 {
 
     /**
@@ -14,7 +15,7 @@ class GroupRepository extends BaseRepository implements \App\Contracts\GroupCont
      */
     public function findOneById($id, array $relations = [])
     {
-        return Group::with($relations)->scopes();
+        return Group::with($relations)->findOrFail($id);
     }
 
     /**
