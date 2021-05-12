@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Contracts\SewingWorkerContract;
 use App\Http\Requests\SewingWorkerRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class SewingWorkerController extends Controller
 {
