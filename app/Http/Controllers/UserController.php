@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     /**
      * UserContract instance
-     * @var
+     * @var UserContract
      */
     protected $u;
 
