@@ -23,4 +23,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('users',App\Http\Controllers\UserController::class);
 Route::resource('sewing-clients',App\Http\Controllers\SewingClientController::class);
+Route::resource('sewing-workers',App\Http\Controllers\SewingWorkerController::class);
 Route::resource('funerals',App\Http\Controllers\FuneralController::class);

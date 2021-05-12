@@ -7,10 +7,10 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">{{__('actions.show')}}</h4>
-                    <button class="btn btn-danger btn-sm" onclick="deleteForm({{$f->id}})"  rel="tooltip"  title="{{__('actions.delete')}}" data-original-title="{{__('actions.delete')}}">
+                    <button class="btn btn-danger btn-sm" onclick="deleteForm({{$sw->id}})"  rel="tooltip"  title="{{__('actions.delete')}}" data-original-title="{{__('actions.delete')}}">
                         <i class="material-icons">close</i>
                     </button>
-                    <a class="btn btn-warning btn-sm" href="{{route('funerals.edit',$f->id)}}"  rel="tooltip"  title="{{__('actions.edit')}}" data-original-title="{{__('actions.edit')}}">
+                    <a class="btn btn-warning btn-sm" href="{{route('sewing-workers.edit',$sw->id)}}"  rel="tooltip"  title="{{__('actions.edit')}}" data-original-title="{{__('actions.edit')}}">
                         <i class="material-icons">edit</i>
                     </a>
 
@@ -18,64 +18,65 @@
                 <div class="card-body ">
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.f_name')}}</div>
-                        <div class="col-md-6 border">{{$f->first_name}}</div>
+                        <div class="col-md-6 border">{{$sw->first_name}}</div>
                     </div>
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.l_name')}}</div>
-                        <div class="col-md-6 border">{{$f->last_name}}</div>
+                        <div class="col-md-6 border">{{$sw->last_name}}</div>
                     </div>
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.gender')}}</div>
-                        <div class="col-md-6 border">{{__('names.'.$f->gender)}}</div>
+                        <div class="col-md-6 border">{{__('names.'.$sw->gender)}}</div>
                     </div>
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.birth_date')}}</div>
-                        <div class="col-md-6 border">{{$f->birth_date->format('d/m/Y')}}</div>
+                        <div class="col-md-6 border">{{$sw->birth_date->format('d/m/Y')}}</div>
                     </div>
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.birth_place')}}</div>
-                        <div class="col-md-6 border">{{$f->birth_place}}</div>
+                        <div class="col-md-6 border">{{$sw->birth_place}}</div>
                     </div>
                     <div class="row " >
-                        <div class="col-md-6 border">{{__('names.death_date')}}</div>
-                        <div class="col-md-6 border">{{$f->death_date->format('d/m/Y')}}</div>
+                        <div class="col-md-6 border">{{__('names.start_date')}}</div>
+                        <div class="col-md-6 border">{{$sw->work_start_date->format('d/m/Y')}}</div>
                     </div>
                     <div class="row " >
-                        <div class="col-md-6 border">{{__('names.death_place')}}</div>
-                        <div class="col-md-6 border">{{$f->death_place}}</div>
-                    </div>
-                    <div class="row " >
-                        <div class="col-md-6 border">{{__('names.father_name')}}</div>
-                        <div class="col-md-6 border">{{$f->father_name}}</div>
+                        <div class="col-md-6 border">{{__('names.end_date')}}</div>
+                        <div class="col-md-6 border">{{$sw->work_end_date ? $sw->work_end_date->format('d/m/Y') : ''}}</div>
                     </div>
 
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.father_name')}}</div>
-                        <div class="col-md-6 border">{{$f->father_name}}</div>
+                        <div class="col-md-6 border">{{$sw->father_name}}</div>
                     </div>
+
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.mother_full_name')}}</div>
-                        <div class="col-md-6 border">{{$f->mother_full_name}}</div>
+                        <div class="col-md-6 border">{{$sw->mother_full_name}}</div>
                     </div>
                     <div class="row " >
-                        <div class="col-md-6 border">{{__('names.expenses')}}</div>
-                        <div class="col-md-6 border">{{$f->expenses}}</div>
+                        <div class="col-md-6 border">{{__('names.address')}}</div>
+                        <div class="col-md-6 border">{{$sw->address}}</div>
                     </div>
                     <div class="row " >
-                        <div class="col-md-6 border">{{__('names.n_meals')}}</div>
-                        <div class="col-md-6 border">{{$f->meals_number}}</div>
+                        <div class="col-md-6 border">{{__('names.phone_number')}}</div>
+                        <div class="col-md-6 border">{{$sw->phone_number}}</div>
                     </div>
                     <div class="row " >
-                        <div class="col-md-6 border">{{__('names.moderators')}}</div>
-                        <div class="col-md-6 border">{{$f->moderators}}</div>
+                        <div class="col-md-6 border">{{__('names.salary')}}</div>
+                        <div class="col-md-6 border">{{$sw->salary}}</div>
                     </div>
                     <div class="row " >
-                        <div class="col-md-6 border">{{__('names.contributors')}}</div>
-                        <div class="col-md-6 border">{{$f->contributors}}</div>
+                        <div class="col-md-6 border">{{__('names.qualification')}}</div>
+                        <div class="col-md-6 border">{{$sw->qualification}}</div>
                     </div>
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.note')}}</div>
-                        <div class="col-md-6 border">{{$f->note}}</div>
+                        <div class="col-md-6 border">{{$sw->note}}</div>
+                    </div>
+                    <div class="row " >
+                        <div class="col-md-6 border">{{__('names.created_at')}}</div>
+                        <div class="col-md-6 border">{{$sw->created_at->format('d/m/Y')}}</div>
                     </div>
                 </div>
 
@@ -111,7 +112,7 @@
         const createForm = id => {
             let f = document.createElement("form");
             f.setAttribute('method',"post");
-            f.setAttribute('action',`/funerals/${id}`);
+            f.setAttribute('action',`/sewing-workers/${id}`);
 
             let i1 = document.createElement("input"); //input element, text
             i1.setAttribute('type',"hidden");

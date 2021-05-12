@@ -16,7 +16,7 @@ class SewingWorker extends Model
         'first_name', 'last_name', 'birth_date', 'birth_place',
         'father_name', 'mother_full_name', 'gender', 'address',
         'phone_number', 'qualification', 'work_start_date',
-        'work_end_date', 'note',
+        'work_end_date', 'note','salary'
     ];
 
     /**
@@ -24,6 +24,7 @@ class SewingWorker extends Model
      */
     protected $casts = [
         'birth_date' => 'date',
+        'salary' => 'integer',
         'work_start_date' => 'date',
         'work_end_date' => 'date',
     ];

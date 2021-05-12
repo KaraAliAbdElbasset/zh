@@ -39,7 +39,7 @@ class SewingWorkerRepository extends BaseRepository implements \App\Contracts\Se
      */
     public function update(int $id, array $data)
     {
-        $sw = $this->findByFilter($id);
+        $sw = $this->findOneById($id);
         $sw->update($data);
         return $sw;
     }

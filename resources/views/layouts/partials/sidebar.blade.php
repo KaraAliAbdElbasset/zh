@@ -22,10 +22,18 @@
 
             <li class="nav-item  {{request()->routeIs('sewing-clients.*') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('sewing-clients.index')}}">
-                    <i class="material-icons">person</i>
+                    <i class="material-icons">shopping_cart</i>
                     <p>{{__('names.sewing-clients')}}</p>
                 </a>
             </li>
+
+            <li class="nav-item  {{request()->routeIs('sewing-workers.*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('sewing-workers.index')}}">
+                    <i class="material-icons">work</i>
+                    <p>{{__('names.sewing-workers')}}</p>
+                </a>
+            </li>
+
 
             <li class="nav-item  {{request()->routeIs('funerals.*') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('funerals.index')}}">
