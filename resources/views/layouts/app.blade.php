@@ -52,7 +52,7 @@
             <div class="container-fluid">
                 @yield('content')
             </div>
-            @include('layouts.partials.footer')
+{{--            @include('layouts.partials.footer')--}}
         </div>
     </div>
 </div>
@@ -72,7 +72,29 @@
 <script src="{{asset('assets/js/material-dashboard.min.js')}}" type="text/javascript"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('assets/demo/demo.js')}}"></script>
+<script src="{{asset('assets/js/plugins/sweetalert2.js')}}"></script>
 <script>
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    @if(session()->has('error'))
+    Toast.fire({
+        icon: 'error',
+        title: '{{session('error')}}'
+    })
+    @endif
+
+    @if(session()->has('success'))
+    Toast.fire({
+        icon: 'success',
+        title: '{{session('success')}}'
+    })
+    @endif
+
     $(document).ready(function() {
         $().ready(function() {
             $sidebar = $('.sidebar');
@@ -226,6 +248,7 @@
         }
     });
 </script>
+@stack('js')
 </body>
 
 </html>

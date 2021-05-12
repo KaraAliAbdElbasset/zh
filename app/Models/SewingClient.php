@@ -17,7 +17,7 @@ class SewingClient extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name', 'address', 'phone',
+        'name', 'address', 'phone_number',
     ];
 
     /**

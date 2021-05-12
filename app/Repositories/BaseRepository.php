@@ -17,8 +17,8 @@ abstract class BaseRepository
 
         $result = app(Pipeline::class)
             ->send($query)
-            ->throught($filters)
-            ->theReturn();
+            ->through($filters)
+            ->thenReturn();
 
         if ($per_page > 0 )
         {

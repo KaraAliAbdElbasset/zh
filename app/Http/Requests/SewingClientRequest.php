@@ -25,7 +25,7 @@ class SewingClientRequest extends FormRequest
     {
         return [
             'name'          => 'required|string|max:100',
-            'phone'         => 'required|numeric',
+            'phone_number'         => 'sometimes|nullable|numeric',
             'address'       => 'sometimes|nullable|string|max:200',
         ];
     }

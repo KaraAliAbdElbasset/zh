@@ -22,10 +22,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('name');
             $table->integer('amount');
             $table->string('note')->nullable();
-            $table->foreignId('club_id')
-                ->constrained()
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

@@ -35,9 +35,9 @@ class FuneralRequest extends FormRequest
             'gender'            => 'required|string|in:male,female',
             'expenses'          => 'required|integer',
             'meals_number'      => 'required|integer',
-            'contributors'      => 'required|array',
-            'moderators'        => 'required|array',
-            'note'              => 'required|string|max:100',
+            'contributors'      => 'required|string',
+            'moderators'        => 'required|string',
+            'note'              => 'sometimes|nullable|string|max:100',
         ];
     }
 }

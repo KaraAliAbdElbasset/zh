@@ -10,15 +10,15 @@
             <span class="navbar-toggler-icon icon-bar"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end">
-            <form class="navbar-form">
-                <div class="input-group no-border">
-                    <input type="text" value="" class="form-control" placeholder="جستجو...">
-                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                        <i class="material-icons">search</i>
-                        <div class="ripple-container"></div>
-                    </button>
-                </div>
-            </form>
+{{--            <form class="navbar-form">--}}
+{{--                <div class="input-group no-border">--}}
+{{--                    <input type="text" value="" class="form-control" placeholder="جستجو...">--}}
+{{--                    <button type="submit" class="btn btn-white btn-round btn-just-icon">--}}
+{{--                        <i class="material-icons">search</i>--}}
+{{--                        <div class="ripple-container"></div>--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--            </form>--}}
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="#pablo">
@@ -45,12 +45,13 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#pablo">
-                        <i class="material-icons">person</i>
+                    <a class="nav-link" href="javascript:void(0)" onclick="document.getElementById('logout-form').submit()">
+                        <i class="material-icons">logout</i>
                         <p class="d-lg-none d-md-block">
                             حساب کاربری
                         </p>
                     </a>
+                    <form action="{{route('logout')}}" id='logout-form' method="post">@csrf</form>
                 </li>
             </ul>
         </div>

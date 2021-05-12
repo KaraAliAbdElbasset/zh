@@ -6,10 +6,31 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item active">
+            <li class="nav-item {{request()->routeIs('welcome') ? 'active' : ''}}">
                 <a class="nav-link " href="{{route('welcome')}}">
                     <i class="material-icons">dashboard</i>
-                    <p>{{__('home')}}</p>
+                    <p>{{__('names.home')}}</p>
+                </a>
+            </li>
+
+            <li class="nav-item  {{request()->routeIs('users.*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('users.index')}}">
+                    <i class="material-icons">person</i>
+                    <p>{{__('names.users')}}</p>
+                </a>
+            </li>
+
+            <li class="nav-item  {{request()->routeIs('sewing-clients.*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('sewing-clients.index')}}">
+                    <i class="material-icons">person</i>
+                    <p>{{__('names.sewing-clients')}}</p>
+                </a>
+            </li>
+
+            <li class="nav-item  {{request()->routeIs('funerals.*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('funerals.index')}}">
+                    <i class="material-icons">contact_page</i>
+                    <p>{{__('names.funerals')}}</p>
                 </a>
             </li>
         </ul>
