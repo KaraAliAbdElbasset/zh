@@ -11,9 +11,9 @@ class SewingWorkerRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,22 @@ class SewingWorkerRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'first_name'        => 'required|string|max:100',
+            'last_name'         => 'required|string|max:100',
+            'birth_date'        => 'required|date',
+            'birth_place'       => 'required|string|max:100',
+            'father_name'       => 'required|string|max:100',
+            'mother_full_name'  => 'required|string|max:100',
+            'gender'            => 'required|string|in:male,female',
+            'address'           => 'required|string|max:200',
+            'phone_number'      => 'required|numeric',
+            'qualification'     => 'required|string|max:200',
+            'work_start_date'   => 'required|date',
+            'work_end_date'     => 'required|date|after:work_start_date',
+            'note'              => 'sometimes|nullable|string|max:200',
         ];
     }
 }

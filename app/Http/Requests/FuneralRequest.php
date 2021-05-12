@@ -11,9 +11,9 @@ class FuneralRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,23 @@ class FuneralRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'first_name'        => 'required|string|max:100',
+            'last_name'         => 'required|string|max:100',
+            'birth_place'       => 'required|string|max:100',
+            'birth_date'        => 'required|date',
+            'death_place'       => 'required|string',
+            'death_date'        => 'required|date',
+            'father_name'       => 'required|string|max:100',
+            'mother_full_name'  => 'required|string|max:100',
+            'gender'            => 'required|string|in:male,female',
+            'expenses'          => 'required|integer',
+            'meals_number'      => 'required|integer',
+            'contributors'      => 'required|array',
+            'moderators'        => 'required|array',
+            'note'              => 'required|string|max:100',
         ];
     }
 }

@@ -11,7 +11,7 @@ class UserRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return false;
     }
@@ -21,10 +21,20 @@ class UserRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
-        return [
-            //
+        $rules =  [
+            'name'      => 'required|string|max:100',
+            'email'     => 'required|email|unique:users,email',
+            'password'  => 'required|string|min:8|max:24|confirmed',
         ];
+
+        if ($this->method() === 'PUT')
+        {
+            $rules['password'] = 'sometimes|nullable|string|min:8|max:24|confirmed';
+            $rules['email'] = 'required|email|unique:users,email,'.$this->route('user');
+        }
+
+        return $rules;
     }
 }
