@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Contracts\GeneralStatisticContract;
 use App\Http\Requests\GeneralStatisticRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class GeneralStatisticController extends Controller
 {
