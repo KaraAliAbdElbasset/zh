@@ -41,9 +41,10 @@ class OrderController extends Controller
      */
     public function store(OrderRequest $request)
     {
-        $this->order->add($request->validated());
+        $order = $this->order->add($request->validated());
         return response()->json([
            'success' => true,
+           'data' => $order,
            'message' => __('messages.create'),
         ]);
     }
@@ -58,12 +59,27 @@ class OrderController extends Controller
     {
         $clients = $client->findByFilter(-1);
         $o = $this->order->findOneById($id);
-        return view('orders.create',compact('clients','o'));
+        return view('orders.edit',compact('clients','o'));
+    }
+
+    /**
+     * @param OrderRequest $request
+     * @return JsonResponse
+     */
+    public function update($id,OrderRequest $request): JsonResponse
+    {
+        $order = $this->order->update($id,$request->validated());
+        return response()->json([
+            'success' => true,
+            'data' => $order,
+            'message' => __('messages.update'),
+        ]);
     }
 
     public function destroy($id)
     {
         $this->order->delete($id);
+        session()->flash('success',__('messages.delete'));
         return redirect()->route('orders.index');
     }
 }

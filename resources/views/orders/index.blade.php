@@ -39,20 +39,23 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $key => $u)
+                            @foreach($orders as $key => $o)
                                 <tr>
                                     <td class="text-center">{{$key + 1}}</td>
-                                    <td>{{$u->name}}</td>
-                                    <td>{{$u->email}}</td>
-                                    <td>{{$u->created_at->format('d-m-Y')}}</td>
+                                    <td>{{$o->client->name}}</td>
+                                    <td>{{$o->client->phone_number}}</td>
+                                    <td>{{$o->amount}}</td>
+                                    <td>{{$o->due_date->format('d-m-Y')}}</td>
+                                    <td>{{$o->paid}}</td>
+                                    <td>{{$o->created_at->format('d-m-Y')}}</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" onclick="window.location='{{route('users.show',$u->id)}}'" rel="tooltip" class="btn btn-info">
+                                        <button type="button" onclick="window.location='{{route('orders.show',$o->id)}}'" rel="tooltip" class="btn btn-info">
                                             <i class="material-icons">info</i>
                                         </button>
-                                        <button onclick="window.location='{{route('users.edit',$u->id)}}'" type="button" rel="tooltip" class="btn btn-success">
+                                        <button onclick="window.location='{{route('orders.edit',$o->id)}}'" type="button" rel="tooltip" class="btn btn-success">
                                             <i class="material-icons">edit</i>
                                         </button>
-                                        <button onclick="deleteForm({{$u->id}})" type="button" rel="tooltip" class="btn btn-danger">
+                                        <button onclick="deleteForm({{$o->id}})" type="button" rel="tooltip" class="btn btn-danger">
                                             <i class="material-icons">close</i>
                                         </button>
                                     </td>
@@ -61,9 +64,8 @@
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-center">
-                            {{$users->links()}}
+                            {{$orders->links()}}
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -97,7 +99,7 @@
         const createForm = id => {
             let f = document.createElement("form");
             f.setAttribute('method',"post");
-            f.setAttribute('action',`/users/${id}`);
+            f.setAttribute('action',`/orders/${id}`);
 
             let i1 = document.createElement("input"); //input element, text
             i1.setAttribute('type',"hidden");

@@ -29,9 +29,9 @@ class Order extends Model
      * @var string[]
      */
     protected $casts = [
-        'due_date' => 'date',
+        'due_date' => 'date:Y-m-d',
         'amount' => 'integer',
-        'paid' => 'paid',
+        'paid' => 'integer',
         'products' => 'array',
     ];
 
@@ -40,7 +40,7 @@ class Order extends Model
      */
     public function client(): BelongsTo
     {
-        return $this->belongsTo(SewingClient::class);
+        return $this->belongsTo(SewingClient::class,'sewing_client_id','id');
     }
 
 }

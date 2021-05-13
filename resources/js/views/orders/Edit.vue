@@ -9,11 +9,11 @@
                         <div class="row mb-5">
                             <div class="col">
                                 <p class="mb-2 font-weight-bold">الزبون <span class="text-danger">*</span></p>
-                                <ValidationProvider v-slot="{ errors }" name="client_id" rules="required">
+                                <ValidationProvider v-slot="{ errors }" name="sewing_client_id" rules="required">
 
                                 <div :class="{'form-group' :true , 'has-danger' : errors.length > 0 }">
-                                        <select class="form-control" @change="changed()" name="sewing_client_id" id="sewing_client_id"  v-model="client">
-                                            <option :value="c" v-for="c in clients" :key="c.id">{{c.name}}</option>
+                                        <select class="form-control"  name="sewing_client_id" id="sewing_client_id"  v-model="order.sewing_client_id">
+                                            <option :value="c.id" v-for="c in clients" :key="c.id">{{c.name}}</option>
                                         </select>
                                         <div v-if="errors.length > 0" class="text-danger">
                                             {{errors[0]}}
@@ -24,8 +24,11 @@
                             </div>
                             <div class="col">
                                 <p class="mb-2 font-weight-bold">تدفع قبل  <span class="text-danger">*</span></p>
-                                <ValidationProvider v-slot="{ errors }" name="due" rules="required">
-                                    <input type="date" class="form-control" id="due" name="due" v-model="order.due_date">
+                                <ValidationProvider v-slot="{ errors }" name="due_date" rules="required">
+                                    <input type="date" class="form-control" id="due_date" name="due_date" v-model="order.due_date">
+                                    <div v-if="errors.length > 0" class="text-danger">
+                                        {{errors[0]}}
+                                    </div>
                                 </ValidationProvider>
                             </div>
                         </div>
@@ -130,7 +133,7 @@
                             </div>
 
                             <div class="col-md-2">
-                                <ValidationProvider v-slot="{ errors }" name="price" :rules="'numeric|max_value:'+order.total">
+                                <ValidationProvider v-slot="{ errors }" name="price" :rules="'numeric|max_value:'+order.amount">
                                     <label for="paid">المدفوع</label>
                                     <input name="paid" type="number" id="paid" class="form-control" v-model="order.paid"  />
                                     <div v-if="errors.length > 0" class="text-danger">
@@ -138,7 +141,7 @@
                                     </div>
                                 </ValidationProvider>
                                 <label for="total_ttc" class="mt-4">مجموع </label>
-                                <input name="total_ttc" id="total_ttc" class="form-control" :value="order.total" disabled />
+                                <input name="total_ttc" id="total_ttc" class="form-control" :value="order.amount" disabled />
                             </div>
                         </div>
                         <hr class="mt-4">
@@ -197,7 +200,7 @@ extend("max_value", {
 });
 
 export default {
-    name: "Create",
+    name: "Edit",
     components:{
         ValidationObserver,
         ValidationProvider,
@@ -206,26 +209,16 @@ export default {
         clients:{
             type:Array,
             required:true
+        },
+        originOrder: {
+            type:Object,
+            required:true
         }
     },
     data(){
         return {
             client:null,
-            order: {
-                total : 0,
-                sewing_client_id:null,
-                due_date:null,
-                paid:0,
-                note:'',
-                products : [
-                    {
-                        name: '',
-                        qty: null,
-                        price:null,
-                        total:0,
-                    }
-                ],
-            },
+            order: this.originOrder,
             loading:false,
         }
     },
@@ -243,11 +236,10 @@ export default {
                     return sum + lineTotal;
                 }
             }, 0);
-            this.order.sub_total = total.toFixed(0);
             if (!isNaN(total)) {
-                this.order.total = total.toFixed(0);
+                this.order.amount = total.toFixed(0);
             } else {
-                this.order.total = '0.00'
+                this.order.amount = '0.00'
             }
         },
         calculateLineTotal(product) {
@@ -272,15 +264,11 @@ export default {
                 total: 0
             });
         },
-        changed(){
-            this.order.sewing_client_id = this.client.id;
-            this.calculateTotal();
-        },
         save(){
             this.loading = true;
-            axios.post('/orders',this.order).then(({data}) => {
+            axios.put(`/orders/${this.order.id}`,this.order).then(({data}) => {
                 this.$toast.success(data.message);
-                window.location = '/orders/'+data.data.id
+                window.location = '/orders/'+this.order.id
             }).catch((error) => {
                 this.$toast.error(error.response.data.message);
                 if (error.response.status === 422)

@@ -40,7 +40,7 @@ class OrderRepository extends BaseRepository implements \App\Contracts\OrderCont
      */
     public function update(int $id, array $data)
     {
-        $order = $this->findOneById($id,['products']);
+        $order = $this->findOneById($id);
         $data['amount'] = $this->getAmount($data['products']);
         $order->update($data);
         return $order;

@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->date('due_date')->nullable();
             $table->integer('amount');
             $table->integer('paid')->default(0);
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->text('products');
             $table->timestamps();
         });
