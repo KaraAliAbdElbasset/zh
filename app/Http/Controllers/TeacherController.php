@@ -26,7 +26,7 @@ class TeacherController extends Controller
     public function index()
     {
         $teachers = $this->teacher->findByFilter();
-        return view('students.index',compact('teachers'));
+        return view('teachers.index',compact('teachers'));
     }
 
     public function create()
@@ -47,15 +47,15 @@ class TeacherController extends Controller
 
     public function show($id)
     {
-        $s = $this->teacher->findOneById($id);
-        return view('teachers.show',compact('s'));
+        $t = $this->teacher->findOneById($id);
+        return view('teachers.show',compact('t'));
     }
 
 
     public function edit($id)
     {
-        $s = $this->teacher->findOneById($id);
-        return view('teachers.edit',compact('s'));
+        $t = $this->teacher->findOneById($id);
+        return view('teachers.edit',compact('t'));
     }
 
     /**

@@ -55,5 +55,6 @@ return [
     'clubs' => 'Clubs',
     'funding_sources' => 'Funding sources',
     'goals' => 'Goals',
+    'teachers' => 'Teachers',
 
 ];
