@@ -2,7 +2,6 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-
                 <!-- /.card-header -->
                 <ValidationObserver ref="observer" v-slot="{ validate, reset , invalid}">
 
@@ -26,7 +25,7 @@
                             <div class="col">
                                 <p class="mb-2 font-weight-bold">تدفع قبل  <span class="text-danger">*</span></p>
                                 <ValidationProvider v-slot="{ errors }" name="due" rules="required">
-                                    <input type="date" class="form-control" id="due" name="due" v-model="estimate.due">
+                                    <input type="date" class="form-control" id="due" name="due" v-model="order.due">
                                 </ValidationProvider>
                             </div>
                         </div>
@@ -38,22 +37,23 @@
                             <div class="col-md-2">إجمالي </div>
                         </div>
                         <div>
-                            <div class="form-row"  v-for="(product, i) in estimate.products" :key="i">
+                            <div class="form-row"  v-for="(product, i) in order.products" :key="i">
                                 <div class="col-md-5 mb-3">
                                     <ValidationProvider v-slot="{ errors }" name="name" rules="required">
 
                                         <input
                                             type="text"
                                             v-model="product.name"
-                                            placeholder="Designation"
+                                            placeholder="المنتج"
                                             class="form-control text-capitalize"
                                             autofocus
                                             required
                                         />
+                                        <div v-if="errors.length > 0" class="text-danger">
+                                            {{errors[0]}}
+                                        </div>
                                     </ValidationProvider>
-                                    <div class="invalid-feedback">
-                                        Vous devez entrer une designation
-                                    </div>
+
                                 </div>
 
                                 <div class="col-md-2 mb-3">
@@ -63,10 +63,13 @@
                                             v-model="product.qte"
                                             type="number"
                                             @change="calculateLineTotal(product)"
-                                            placeholder="Quantité"
+                                            placeholder="الكمية"
                                             class="form-control text-capitalize"
                                             required
                                         />
+                                        <div v-if="errors.length > 0" class="text-danger">
+                                            {{errors[0]}}
+                                        </div>
                                     </ValidationProvider>
                                 </div>
 
@@ -78,10 +81,14 @@
                                             @change="calculateLineTotal(product)"
                                             v-model="product.price"
                                             type="text"
-                                            placeholder="Prix unitaire"
+                                            placeholder="سعر الوحدة"
                                             class="form-control text-capitalize"
                                             required
                                         />
+
+                                        <div v-if="errors.length > 0" class="text-danger">
+                                            {{errors[0]}}
+                                        </div>
                                     </ValidationProvider>
                                 </div>
 
@@ -96,13 +103,21 @@
                                 </div>
 
                                 <div class="col-md-1 mb-3">
-                                    <button :disabled="deleteBtn"  @click="deleteRow(i, product)"  class="btn btn-info rounded-circle float-sm-right"><i class="fas fa-trash"></i></button>
+                                    <button :disabled="deleteBtn"
+                                            @click="deleteRow(i, product)"
+                                            class="btn btn-primary btn-fab btn-fab-mini btn-round float-sm-right">
+                                        <i class="material-icons">delete</i>
+                                    </button>
                                 </div>
 
                             </div>
                             <div class="row">
                                 <div class="col-md-auto">
-                                    <button @click="addNewRow()" :disabled="invalid"  class="btn btn-info rounded-circle"><i class="fas fa-plus"></i></button>
+                                    <button @click="addNewRow()"
+                                            :disabled="invalid"
+                                            class="btn btn-primary btn-fab btn-fab-mini btn-round">
+                                        <i class="material-icons">add</i>
+                                    </button>
                                 </div>
                             </div>
                             <hr class="d-md-none">
@@ -110,27 +125,27 @@
                         <hr>
                         <div class="row d-flex justify-content-end" >
                             <div class="col-md-10">
-                                <label for="comment">Commentaire</label>
-                                <textarea name="comment" id="comment" v-model="estimate.comment" class="form-control" rows="3"></textarea>
+                                <label for="note">تعليق</label>
+                                <textarea name="note" id="note" v-model="order.note" class="form-control" rows="3"></textarea>
                             </div>
 
                             <div class="col-md-2">
 <!--                                <label for="total_ht">Total HT</label>-->
-<!--                                <input name="total_ht" id="total_ht" class="form-control" v-model="estimate.sub_total" disabled />-->
-                                <label for="total_ttc" class="mt-4">Total TTC (Taxe {{ estimate.tax }}%)</label>
-                                <input name="total_ttc" id="total_ttc" class="form-control" :value="estimate.total" disabled />
+<!--                                <input name="total_ht" id="total_ht" class="form-control" v-model="order.sub_total" disabled />-->
+                                <label for="total_ttc" class="mt-4">مجموع </label>
+                                <input name="total_ttc" id="total_ttc" class="form-control" :value="order.total" disabled />
                             </div>
                         </div>
                         <hr class="mt-4">
                         <div class="text-right">
                             <a href="/orders" class="btn btn-outline-info my-3" style="width: 135px">
-                                Annuler
+                                لالغاء
                             </a>
                             <!--                            <button type="button" class="btn btn-tool" data-card-widget="card-refresh"  data-source-selector="#card-refresh-content"></button>-->
                             <button @click="save" :disabled="invalid || loading"  class="btn  btn-info my-3 " type="submit" style="width: 135px">
                                 <i v-if="loading" class="fas fa-sync-alt fa-spin"></i>
                                 <template v-else>
-                                    Ajouter
+                                    حفظ
                                 </template>
                             </button>
                         </div>
@@ -186,14 +201,11 @@ export default {
     data(){
         return {
             client:null,
-            estimate: {
+            order: {
                 total : 0,
-                sub_total:0,
-                tax:0,
                 client_id:null,
                 due:null,
-                comment:'',
-                terms:'',
+                note:'',
                 products : [
                     {
                         name: '',
@@ -208,65 +220,61 @@ export default {
     },
     computed:{
         deleteBtn(){
-            return this.estimate.products.length === 1
+            return this.order.products.length === 1
         },
     },
     methods:{
         calculateTotal() {
-            let subtotal, total;
-            subtotal = this.estimate.products.reduce(function (sum, product) {
+            let total;
+            total = this.order.products.reduce(function (sum, product) {
                 let lineTotal = parseFloat(product.total);
                 if (!isNaN(lineTotal)) {
                     return sum + lineTotal;
                 }
             }, 0);
-            this.estimate.sub_total = subtotal.toFixed(2);
-            total = parseFloat((subtotal * (this.estimate.tax / 100)) + subtotal);
+            this.order.sub_total = total.toFixed(0);
             if (!isNaN(total)) {
-                this.estimate.total = total.toFixed(2);
+                this.order.total = total.toFixed(0);
             } else {
-                this.estimate.total = '0.00'
+                this.order.total = '0.00'
             }
         },
         calculateLineTotal(product) {
             let total = parseFloat(product.price) * parseFloat(product.qte);
             if (!isNaN(total)) {
-                product.total = total.toFixed(2);
+                product.total = total.toFixed(0);
             }
             this.calculateTotal();
         },
         deleteRow(index, product) {
-            let idx = this.estimate.products.indexOf(product);
+            let idx = this.order.products.indexOf(product);
             if (idx > -1) {
-                this.estimate.products.splice(idx, 1);
+                this.order.products.splice(idx, 1);
             }
             this.calculateTotal();
         },
         addNewRow() {
-            this.estimate.products.push({
+            this.order.products.push({
                 name: '',
                 price: '',
                 qte: '',
                 total: 0
             });
-            console.log('adzadzadaz')
         },
         changed(){
-            this.estimate.client_id = this.client.id;
-            this.estimate.tax = this.client.type === 'company' ? 19 : 0 ;
+            this.order.client_id = this.client.id;
             this.calculateTotal();
         },
         save(){
             this.loading = true;
-            axios.post('/estimates',this.estimate).then(({data}) => {
+            axios.post('/orders',this.order).then(({data}) => {
                 this.$toast.success(data.message);
-                window.location = '/estimates/'+data.data.id
+                window.location = '/orders/'+data.data.id
             }).catch((error) => {
                 this.$toast.error(error.response.data.message);
                 if (error.response.status === 422)
                     this.$refs.observer.setErrors(error.response.data.errors)
-            })
-                .finally(() => this.loading = false)
+            }).finally(() => this.loading = false)
         }
     }
 }

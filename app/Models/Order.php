@@ -16,7 +16,14 @@ class Order extends Model
     /**
      * @var string[]
      */
-    protected $fillable = ['sewing_client_id', 'due_date', 'amount', 'paid', 'note','products'];
+    protected $fillable = [
+        'sewing_client_id',
+        'due_date',
+        'amount',
+        'paid',
+        'note',
+        'products'
+    ];
 
     /**
      * @var string[]

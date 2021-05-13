@@ -3,6 +3,10 @@
 return [
     'funerals'          => 'funerals',
     'users'          => 'users',
+    'orders'          => 'Orders',
+    'amount'          => 'Amount',
+    'qty'          => 'qty',
+    'paid'          => 'Paid',
     'general-statistics'          => 'General-Statistics',
     'job' => 'Job',
     'national_number' => 'National Number',

@@ -27,7 +27,5 @@ Route::resource('sewing-clients',App\Http\Controllers\SewingClientController::cl
 Route::resource('sewing-workers',App\Http\Controllers\SewingWorkerController::class);
 Route::resource('general-statistics',App\Http\Controllers\GeneralStatisticController::class);
 Route::resource('funerals',App\Http\Controllers\FuneralController::class);
+Route::resource('orders',App\Http\Controllers\OrderController::class);
 
-Route::get('/orders/create', function () {
-    return view('orders.create');
-})->name('orders.create');

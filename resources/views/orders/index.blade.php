@@ -6,8 +6,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{__('names.list',['name' => __('names.users')])}}</h4>
-                    <a class="btn btn-info btn-sm" href="{{route('users.create')}}"  rel="tooltip"  title="{{__('actions.create')}}" data-original-title="{{__('actions.create')}}">
+                    <h4 class="card-title">{{__('names.list',['name' => __('names.orders')])}}</h4>
+                    <a class="btn btn-info btn-sm" href="{{route('orders.create')}}"  rel="tooltip"  title="{{__('actions.create')}}" data-original-title="{{__('actions.create')}}">
                         <i class="material-icons">add</i>
                     </a>
                     <div class="d-flex justify-content-end">
@@ -30,7 +30,10 @@
                             <tr>
                                 <th class="text-center">#</th>
                                 <th>{{__('names.f_name')}}</th>
-                                <th>{{__('names.email')}}</th>
+                                <th>{{__('names.phone_number')}}</th>
+                                <th>{{__('names.amount')}}</th>
+                                <th>{{__('names.due')}}</th>
+                                <th>{{__('names.paid')}}</th>
                                 <th>{{__('names.created_at')}}</th>
                                 <th class="text-right">Actions</th>
                             </tr>

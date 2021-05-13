@@ -2001,6 +2001,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.setInteractionMode)("aggressive");
@@ -2031,14 +2046,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       client: null,
-      estimate: {
+      order: {
         total: 0,
-        sub_total: 0,
-        tax: 0,
         client_id: null,
         due: null,
-        comment: '',
-        terms: '',
+        note: '',
         products: [{
           name: '',
           qte: null,
@@ -2051,70 +2063,67 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: {
     deleteBtn: function deleteBtn() {
-      return this.estimate.products.length === 1;
+      return this.order.products.length === 1;
     }
   },
   methods: {
     calculateTotal: function calculateTotal() {
-      var subtotal, total;
-      subtotal = this.estimate.products.reduce(function (sum, product) {
+      var total;
+      total = this.order.products.reduce(function (sum, product) {
         var lineTotal = parseFloat(product.total);
 
         if (!isNaN(lineTotal)) {
           return sum + lineTotal;
         }
       }, 0);
-      this.estimate.sub_total = subtotal.toFixed(2);
-      total = parseFloat(subtotal * (this.estimate.tax / 100) + subtotal);
+      this.order.sub_total = total.toFixed(0);
 
       if (!isNaN(total)) {
-        this.estimate.total = total.toFixed(2);
+        this.order.total = total.toFixed(0);
       } else {
-        this.estimate.total = '0.00';
+        this.order.total = '0.00';
       }
     },
     calculateLineTotal: function calculateLineTotal(product) {
       var total = parseFloat(product.price) * parseFloat(product.qte);
 
       if (!isNaN(total)) {
-        product.total = total.toFixed(2);
+        product.total = total.toFixed(0);
       }
 
       this.calculateTotal();
     },
     deleteRow: function deleteRow(index, product) {
-      var idx = this.estimate.products.indexOf(product);
+      var idx = this.order.products.indexOf(product);
 
       if (idx > -1) {
-        this.estimate.products.splice(idx, 1);
+        this.order.products.splice(idx, 1);
       }
 
       this.calculateTotal();
     },
     addNewRow: function addNewRow() {
-      this.estimate.products.push({
+      this.order.products.push({
         name: '',
         price: '',
         qte: '',
         total: 0
       });
-      console.log('adzadzadaz');
     },
     changed: function changed() {
-      this.estimate.client_id = this.client.id;
-      this.estimate.tax = this.client.type === 'company' ? 19 : 0;
+      this.order.client_id = this.client.id;
       this.calculateTotal();
     },
     save: function save() {
       var _this = this;
 
       this.loading = true;
-      axios.post('/estimates', this.estimate).then(function (_ref) {
+      axios.post('/orders', this.order).then(function (_ref) {
         var data = _ref.data;
 
         _this.$toast.success(data.message);
 
-        window.location = '/estimates/' + data.data.id;
+        window.location = '/orders/' + data.data.id;
       })["catch"](function (error) {
         _this.$toast.error(error.response.data.message);
 
@@ -22668,8 +22677,8 @@ var render = function() {
                                             {
                                               name: "model",
                                               rawName: "v-model",
-                                              value: _vm.estimate.due,
-                                              expression: "estimate.due"
+                                              value: _vm.order.due,
+                                              expression: "order.due"
                                             }
                                           ],
                                           staticClass: "form-control",
@@ -22678,14 +22687,14 @@ var render = function() {
                                             id: "due",
                                             name: "due"
                                           },
-                                          domProps: { value: _vm.estimate.due },
+                                          domProps: { value: _vm.order.due },
                                           on: {
                                             input: function($event) {
                                               if ($event.target.composing) {
                                                 return
                                               }
                                               _vm.$set(
-                                                _vm.estimate,
+                                                _vm.order,
                                                 "due",
                                                 $event.target.value
                                               )
@@ -22737,7 +22746,7 @@ var render = function() {
                       _c(
                         "div",
                         [
-                          _vm._l(_vm.estimate.products, function(product, i) {
+                          _vm._l(_vm.order.products, function(product, i) {
                             return _c(
                               "div",
                               { key: i, staticClass: "form-row" },
@@ -22771,7 +22780,7 @@ var render = function() {
                                                     "form-control text-capitalize",
                                                   attrs: {
                                                     type: "text",
-                                                    placeholder: "Designation",
+                                                    placeholder: "المنتج",
                                                     autofocus: "",
                                                     required: ""
                                                   },
@@ -22792,7 +22801,24 @@ var render = function() {
                                                       )
                                                     }
                                                   }
-                                                })
+                                                }),
+                                                _vm._v(" "),
+                                                errors.length > 0
+                                                  ? _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "text-danger"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                            " +
+                                                            _vm._s(errors[0]) +
+                                                            "\n                                        "
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e()
                                               ]
                                             }
                                           }
@@ -22800,17 +22826,7 @@ var render = function() {
                                         null,
                                         true
                                       )
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "invalid-feedback" },
-                                      [
-                                        _vm._v(
-                                          "\n                                        Vous devez entrer une designation\n                                    "
-                                        )
-                                      ]
-                                    )
+                                    })
                                   ],
                                   1
                                 ),
@@ -22844,7 +22860,7 @@ var render = function() {
                                                     "form-control text-capitalize",
                                                   attrs: {
                                                     type: "number",
-                                                    placeholder: "Quantité",
+                                                    placeholder: "الكمية",
                                                     required: ""
                                                   },
                                                   domProps: {
@@ -22869,7 +22885,24 @@ var render = function() {
                                                       )
                                                     }
                                                   }
-                                                })
+                                                }),
+                                                _vm._v(" "),
+                                                errors.length > 0
+                                                  ? _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "text-danger"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                            " +
+                                                            _vm._s(errors[0]) +
+                                                            "\n                                        "
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e()
                                               ]
                                             }
                                           }
@@ -22912,8 +22945,7 @@ var render = function() {
                                                     "form-control text-capitalize",
                                                   attrs: {
                                                     type: "text",
-                                                    placeholder:
-                                                      "Prix unitaire",
+                                                    placeholder: "سعر الوحدة",
                                                     required: ""
                                                   },
                                                   domProps: {
@@ -22938,7 +22970,24 @@ var render = function() {
                                                       )
                                                     }
                                                   }
-                                                })
+                                                }),
+                                                _vm._v(" "),
+                                                errors.length > 0
+                                                  ? _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "text-danger"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                            " +
+                                                            _vm._s(errors[0]) +
+                                                            "\n                                        "
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e()
                                               ]
                                             }
                                           }
@@ -22988,7 +23037,7 @@ var render = function() {
                                     "button",
                                     {
                                       staticClass:
-                                        "btn btn-info rounded-circle float-sm-right",
+                                        "btn btn-primary btn-fab btn-fab-mini btn-round float-sm-right",
                                       attrs: { disabled: _vm.deleteBtn },
                                       on: {
                                         click: function($event) {
@@ -22996,7 +23045,13 @@ var render = function() {
                                         }
                                       }
                                     },
-                                    [_c("i", { staticClass: "fas fa-trash" })]
+                                    [
+                                      _c(
+                                        "i",
+                                        { staticClass: "material-icons" },
+                                        [_vm._v("delete")]
+                                      )
+                                    ]
                                   )
                                 ])
                               ]
@@ -23008,7 +23063,8 @@ var render = function() {
                               _c(
                                 "button",
                                 {
-                                  staticClass: "btn btn-info rounded-circle",
+                                  staticClass:
+                                    "btn btn-primary btn-fab btn-fab-mini btn-round",
                                   attrs: { disabled: invalid },
                                   on: {
                                     click: function($event) {
@@ -23016,7 +23072,11 @@ var render = function() {
                                     }
                                   }
                                 },
-                                [_c("i", { staticClass: "fas fa-plus" })]
+                                [
+                                  _c("i", { staticClass: "material-icons" }, [
+                                    _vm._v("add")
+                                  ])
+                                ]
                               )
                             ])
                           ]),
@@ -23033,8 +23093,8 @@ var render = function() {
                         { staticClass: "row d-flex justify-content-end" },
                         [
                           _c("div", { staticClass: "col-md-10" }, [
-                            _c("label", { attrs: { for: "comment" } }, [
-                              _vm._v("Commentaire")
+                            _c("label", { attrs: { for: "note" } }, [
+                              _vm._v("تعليق")
                             ]),
                             _vm._v(" "),
                             _c("textarea", {
@@ -23042,25 +23102,21 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.estimate.comment,
-                                  expression: "estimate.comment"
+                                  value: _vm.order.note,
+                                  expression: "order.note"
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: {
-                                name: "comment",
-                                id: "comment",
-                                rows: "3"
-                              },
-                              domProps: { value: _vm.estimate.comment },
+                              attrs: { name: "note", id: "note", rows: "3" },
+                              domProps: { value: _vm.order.note },
                               on: {
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
                                   }
                                   _vm.$set(
-                                    _vm.estimate,
-                                    "comment",
+                                    _vm.order,
+                                    "note",
                                     $event.target.value
                                   )
                                 }
@@ -23075,13 +23131,7 @@ var render = function() {
                                 staticClass: "mt-4",
                                 attrs: { for: "total_ttc" }
                               },
-                              [
-                                _vm._v(
-                                  "Total TTC (Taxe " +
-                                    _vm._s(_vm.estimate.tax) +
-                                    "%)"
-                                )
-                              ]
+                              [_vm._v("مجموع ")]
                             ),
                             _vm._v(" "),
                             _c("input", {
@@ -23091,7 +23141,7 @@ var render = function() {
                                 id: "total_ttc",
                                 disabled: ""
                               },
-                              domProps: { value: _vm.estimate.total }
+                              domProps: { value: _vm.order.total }
                             })
                           ])
                         ]
@@ -23109,7 +23159,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                Annuler\n                            "
+                              "\n                                لالغاء\n                            "
                             )
                           ]
                         ),
@@ -23132,7 +23182,7 @@ var render = function() {
                                 })
                               : [
                                   _vm._v(
-                                    "\n                                    Ajouter\n                                "
+                                    "\n                                    حفظ\n                                "
                                   )
                                 ]
                           ],
