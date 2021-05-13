@@ -49,4 +49,10 @@ return [
     'female'  => 'أنثى',
     'male'  => 'ذكر',
     'details'  => 'تفاصيل',
+    'managing_office' => 'مكتب إداري',
+    'establishing_date' => 'تاريخ التأسيس',
+    'year' => 'العام',
+    'clubs' => 'النوادي والجمعيات',
+    'funding_sources' => 'مصادر التمويل',
+    'goals' => 'الأهداف',
 ];

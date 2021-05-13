@@ -28,4 +28,5 @@ Route::resource('sewing-workers',App\Http\Controllers\SewingWorkerController::cl
 Route::resource('general-statistics',App\Http\Controllers\GeneralStatisticController::class);
 Route::resource('funerals',App\Http\Controllers\FuneralController::class);
 Route::resource('orders',App\Http\Controllers\OrderController::class);
+Route::resource('clubs',App\Http\Controllers\ClubController::class);
 

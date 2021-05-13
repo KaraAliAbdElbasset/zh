@@ -34,6 +34,20 @@
                 </a>
             </li>
 
+            <li class="nav-item  {{request()->routeIs('orders.*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('orders.index')}}">
+                    <i class="material-icons">add_shopping_cart</i>
+                    <p>{{__('names.orders')}}</p>
+                </a>
+            </li>
+
+            <li class="nav-item  {{request()->routeIs('clubs.*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('clubs.index')}}">
+                    <i class="material-icons">supervisor_account</i>
+                    <p>{{__('names.clubs')}}</p>
+                </a>
+            </li>
+
             <li class="nav-item  {{request()->routeIs('general-statistics.*') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('general-statistics.index')}}">
                     <i class="material-icons">fact_check</i>

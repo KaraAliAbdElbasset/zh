@@ -49,4 +49,11 @@ return [
     'female'  => 'Female',
     'male'  => 'Male',
     'details'  => 'Details',
+    'managing_office' => 'Managing office',
+    'establishing_date' => 'Establishing date',
+    'year' => 'Year',
+    'clubs' => 'Clubs',
+    'funding_sources' => 'Funding sources',
+    'goals' => 'Goals',
+
 ];
