@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +25,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('users',App\Http\Controllers\UserController::class);
 Route::resource('sewing-clients',App\Http\Controllers\SewingClientController::class);
 Route::resource('sewing-workers',App\Http\Controllers\SewingWorkerController::class);
+Route::resource('general-statistics',App\Http\Controllers\GeneralStatisticController::class);
 Route::resource('funerals',App\Http\Controllers\FuneralController::class);
+
+Route::get('/orders/create', function () {
+    return view('orders.create');
+})->name('orders.create');

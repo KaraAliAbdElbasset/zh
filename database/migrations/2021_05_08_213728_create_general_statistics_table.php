@@ -28,6 +28,8 @@ class CreateGeneralStatisticsTable extends Migration
             $table->string('job')->nullable();
             $table->string('job_address')->nullable();
             $table->string('social_status')->nullable();
+            $table->string('national_number')->nullable();
+            $table->string('serial_number')->nullable();
             $table->string('note')->nullable();
             $table->timestamps();
         });

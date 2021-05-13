@@ -34,6 +34,13 @@
                 </a>
             </li>
 
+            <li class="nav-item  {{request()->routeIs('general-statistics.*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('general-statistics.index')}}">
+                    <i class="material-icons">fact_check</i>
+                    <p>{{__('names.general-statistics')}}</p>
+                </a>
+            </li>
+
 
             <li class="nav-item  {{request()->routeIs('funerals.*') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('funerals.index')}}">

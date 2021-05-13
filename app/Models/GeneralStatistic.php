@@ -13,10 +13,8 @@ class GeneralStatistic extends Model
      * @var string[]
      */
     protected $fillable = ['first_name', 'last_name', 'birth_place', 'birth_date', 'father_name',
-        'mother_full_name', 'gender',
-        'address', 'phone_number', 'qualification',
-        'job', 'job_address', 'social_status',
-        'note','national_number','serial_number'
+        'mother_full_name', 'gender', 'address', 'phone_number', 'qualification',
+        'job', 'job_address', 'social_status', 'note','national_number','serial_number'
     ];
 
     /**

@@ -2,6 +2,12 @@
 
 return [
     'funerals' => 'الجنازات',
+    'general-statistics' => 'الإحصاءات عامة',
+    'job' => 'الوظيفة',
+    'national_number' => 'الرقم الوطني',
+    'serial_number' => 'الرقم التسلسلي ',
+    'job_address' => 'عنوان الوظيفة',
+    'social_status' => 'الحالة الاجتماعية',
     'users' => 'المستخدمين',
     'sewing-workers'          => 'عمال الخياطة',
     'sewing-clients'          => 'عملاء الخياطة',
@@ -11,7 +17,7 @@ return [
     'end_date' => 'تاريخ الانتهاء',
     'qualification' => 'المؤهل',
     'home' => 'الرئيسية',
-    'list' => ':name قائمة',
+    'list' => ' قائمة :name',
     'f_name' => 'الاسم',
     'l_name' => 'الكنية',
     'email'            => 'بريد إلكتروني',

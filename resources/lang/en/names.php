@@ -3,6 +3,12 @@
 return [
     'funerals'          => 'funerals',
     'users'          => 'users',
+    'general-statistics'          => 'General-Statistics',
+    'job' => 'Job',
+    'national_number' => 'National Number',
+    'social_status' => 'Social Status',
+    'serial_number' => 'Serial number ',
+    'job_address' => 'Job Address',
     'sewing-workers'          => 'Sewing workers',
     'sewing-clients'          => 'Sewing clients',
     'created_at'          => 'Created At',

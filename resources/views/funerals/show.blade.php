@@ -6,7 +6,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{__('actions.show')}}</h4>
+                    <h4 class="card-title">{{__('names.details')}}</h4>
                     <button class="btn btn-danger btn-sm" onclick="deleteForm({{$f->id}})"  rel="tooltip"  title="{{__('actions.delete')}}" data-original-title="{{__('actions.delete')}}">
                         <i class="material-icons">close</i>
                     </button>
