@@ -56,4 +56,9 @@ return [
     'funding_sources' => 'مصادر التمويل',
     'goals' => 'الأهداف',
     'teachers' => 'الاساتذة',
+    'students' => 'الطلاب',
+    'type' => 'نوع الطالب',
+    'behaviors' => 'السلوكيات',
+    'memorizing_level' => 'مستوى الحفظ',
+    'education_level' => 'مستوى التعليم',
 ];

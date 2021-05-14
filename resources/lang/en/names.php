@@ -56,5 +56,9 @@ return [
     'funding_sources' => 'Funding sources',
     'goals' => 'Goals',
     'teachers' => 'Teachers',
-
+    'students' => 'Students',
+    'type' => 'type of student',
+    'behaviors' => 'Behaviors',
+    'memorizing_level' => 'Memorizing level',
+    'education_level' => 'Education level',
 ];

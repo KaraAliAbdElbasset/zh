@@ -11,9 +11,9 @@ class StudentRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,26 @@ class StudentRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
+
         return [
-            //
+            'first_name'        => 'required|string|max:100',
+            'last_name'         => 'required|string|max:100',
+            'birth_date'        => 'required|date',
+            'birth_place'       => 'sometimes|nullable|string|max:100',
+            'gender'            => 'required|string|in:male,female',
+            'father_name'       => 'sometimes|nullable|string|max:100',
+            'father_job'        => 'sometimes|nullable|string|max:100',
+            'mother_full_name'  => 'sometimes|nullable|string|max:100',
+            'phone_number'      => 'required|numeric',
+            'address'           => 'required|string|max:200',
+            'enter_date'        => 'required|date',
+            'leave_date'        => 'sometimes|nullable|date|after:enter_date',
+            'education_level'   => 'sometimes|nullable|string|max:200',
+            'behaviors'         => 'sometimes|nullable|string|max:200',
+            'type'              => 'required|integer|in:'.implode(',',config('student.types')),
+            'memorizing_level'  => 'required_if:type,1|string|max:200',
         ];
     }
 }
