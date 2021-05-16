@@ -32,5 +32,5 @@ Route::resource('students',App\Http\Controllers\StudentController::class);
 Route::resource('groups',App\Http\Controllers\GroupController::class);
 
 Route::get('test',function (){
-    return view('test');
+    \Illuminate\Support\Facades\Artisan::call('migrate');
 });
