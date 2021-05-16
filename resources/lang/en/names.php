@@ -61,4 +61,5 @@ return [
     'behaviors' => 'Behaviors',
     'memorizing_level' => 'Memorizing level',
     'education_level' => 'Education level',
+    'study_place' => 'Study place',
 ];

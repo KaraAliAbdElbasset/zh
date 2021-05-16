@@ -29,6 +29,7 @@ Route::resource('orders',App\Http\Controllers\OrderController::class);
 Route::resource('clubs',App\Http\Controllers\ClubController::class);
 Route::resource('teachers',App\Http\Controllers\TeacherController::class);
 Route::resource('students',App\Http\Controllers\StudentController::class);
+Route::resource('groups',App\Http\Controllers\GroupController::class);
 
 Route::get('test',function (){
     return view('test');

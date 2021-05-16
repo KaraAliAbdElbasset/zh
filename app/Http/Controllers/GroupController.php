@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\GroupContract;
+use App\Contracts\TeacherContract;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -28,10 +29,10 @@ class GroupController extends Controller
         return view('groups.index',compact('groups'));
     }
 
-    public function create()
+    public function create(TeacherContract $teacher)
     {
-        return view('groups.create');
-
+        $teachers = $teacher->findOneById(-1,['id','first_name','last_name']);
+        return view('groups.create',compact('teachers'));
     }
 
     public function store(Request $request)
@@ -53,10 +54,11 @@ class GroupController extends Controller
         return view('groups.show',compact('group'));
     }
 
-    public function edit($id)
+    public function edit($id,TeacherContract $teacher)
     {
         $group = $this->group->findOneById($id);
-        return view('groups.edit',compact('group'));
+        $teachers = $teacher->findOneById(-1,['id','first_name','last_name']);
+        return view('groups.edit',compact('group','teachers'));
     }
 
     public function update($id,Request $request)

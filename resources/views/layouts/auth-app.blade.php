@@ -10,7 +10,7 @@
 
     <style>
         body {
-            background: url('{{asset('assets/img/zh.jpeg')}}');
+            background: linear-gradient (rgba(255,255,255,.5),rgba(255,255,255,.5));
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
