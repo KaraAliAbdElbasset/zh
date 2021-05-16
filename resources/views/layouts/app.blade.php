@@ -39,6 +39,11 @@
         h6{
             font-family: "Cairo";
         }
+
+        .sidebar[data-color=purple] li.active>a {
+            background-color: #017338;
+            box-shadow: 0 4px 20px 0 rgb(0 0 0 ), 0 7px 10px -5px rgb(1, 115, 56);
+        }
     </style>
 </head>
 
