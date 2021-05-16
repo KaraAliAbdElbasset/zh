@@ -26,6 +26,8 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
 
+
+
     <!-- Style Just for persian demo purpose, don't include it in your project -->
     <style>
         body,
@@ -216,7 +218,7 @@
                     background_image = false;
                 }
             });
-
+            window.dispatchEvent(new Event('resize'));
             $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
                 var $btn = $(this);
 

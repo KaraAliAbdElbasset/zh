@@ -20,6 +20,20 @@
                 </a>
             </li>
 
+            <li class="nav-item  {{request()->routeIs('teachers.*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('teachers.index')}}">
+                    <i class="material-icons">book</i>
+                    <p>{{__('names.teachers')}}</p>
+                </a>
+            </li>
+
+            <li class="nav-item  {{request()->routeIs('students.*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('students.index')}}">
+                    <i class="material-icons">face</i>
+                    <p>{{__('names.students')}}</p>
+                </a>
+            </li>
+
             <li class="nav-item  {{request()->routeIs('sewing-clients.*') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('sewing-clients.index')}}">
                     <i class="material-icons">shopping_cart</i>
