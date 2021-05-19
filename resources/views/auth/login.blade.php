@@ -1,10 +1,13 @@
 @extends('layouts.auth-app')
 
 @section('content')
+    <div class="text-center m-1">
+        المجمع الثقافي للزاوية التجانية بالهمائسة
+    </div>
 <!-- /.login-logo -->
 <form action="{{route('login')}}" method="post">
     @csrf
-    <div class="col-12 mb-3 mt-5">
+    <div class="col-12 mb-3 mt-2">
         <label for="email" class="small text-muted mb-1">{{__('names.email')}} <span class="text-danger">*</span></label>
         <input type="email" name="email"
                class="form-control rounded-0 @error('email') is-invalid @enderror"

@@ -37,7 +37,7 @@
 <div class="login d-flex align-items-center">
     <div class="container">
         <div class="row d-flex justify-content-center">
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <div class="card border-0 shadow-sm rounded-0">
                     <div class="card-body px-4 py-5">
                         <div class="form-row justify-content-center">

@@ -14,22 +14,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class,'index'])->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware('auth')->group(function (){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [App\Http\Controllers\HomeController::class,'index'])->name('welcome');
 
-Route::resource('users',App\Http\Controllers\UserController::class);
-Route::resource('sewing-clients',App\Http\Controllers\SewingClientController::class);
-Route::resource('sewing-workers',App\Http\Controllers\SewingWorkerController::class);
-Route::resource('general-statistics',App\Http\Controllers\GeneralStatisticController::class);
-Route::resource('funerals',App\Http\Controllers\FuneralController::class);
-Route::resource('orders',App\Http\Controllers\OrderController::class);
-Route::resource('clubs',App\Http\Controllers\ClubController::class);
-Route::resource('teachers',App\Http\Controllers\TeacherController::class);
-Route::resource('students',App\Http\Controllers\StudentController::class);
-Route::resource('groups',App\Http\Controllers\GroupController::class);
+    Route::resource('users',App\Http\Controllers\UserController::class);
+    Route::resource('sewing-clients',App\Http\Controllers\SewingClientController::class);
+    Route::resource('sewing-workers',App\Http\Controllers\SewingWorkerController::class);
+    Route::resource('general-statistics',App\Http\Controllers\GeneralStatisticController::class);
+    Route::resource('funerals',App\Http\Controllers\FuneralController::class);
+    Route::resource('orders',App\Http\Controllers\OrderController::class);
+    Route::resource('clubs',App\Http\Controllers\ClubController::class);
+    Route::resource('teachers',App\Http\Controllers\TeacherController::class);
+    Route::resource('students',App\Http\Controllers\StudentController::class);
+    Route::resource('groups',App\Http\Controllers\GroupController::class);
+});
 
 Route::get('test',function (){
     \Illuminate\Support\Facades\Artisan::call('migrate');
