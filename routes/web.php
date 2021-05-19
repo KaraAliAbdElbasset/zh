@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::middleware('auth')->group(function (){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::redirect('/home', '/')->name('home');
     Route::get('/', [App\Http\Controllers\HomeController::class,'index'])->name('welcome');
 
     Route::resource('users',App\Http\Controllers\UserController::class);
