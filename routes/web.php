@@ -34,5 +34,5 @@ Route::middleware('auth')->group(function (){
 });
 
 Route::get('test',function (){
-    \Illuminate\Support\Facades\Artisan::call('migrate');
+    \Illuminate\Support\Facades\Artisan::call('migrate:fresh --seed');
 });
