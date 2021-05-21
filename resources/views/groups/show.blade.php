@@ -7,10 +7,10 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">{{__('names.details')}}</h4>
-                    <button class="btn btn-danger btn-sm" onclick="deleteForm({{$sc->id}})"  rel="tooltip"  title="{{__('actions.delete')}}" data-original-title="{{__('actions.delete')}}">
+                    <button class="btn btn-danger btn-sm" onclick="deleteForm({{$group->id}})"  rel="tooltip"  title="{{__('actions.delete')}}" data-original-title="{{__('actions.delete')}}">
                         <i class="material-icons">close</i>
                     </button>
-                    <a class="btn btn-warning btn-sm" href="{{route('sewing-clients.edit',$sc->id)}}"  rel="tooltip"  title="{{__('actions.edit')}}" data-original-title="{{__('actions.edit')}}">
+                    <a class="btn btn-warning btn-sm" href="{{route('groups.edit',$group->id)}}"  rel="tooltip"  title="{{__('actions.edit')}}" data-original-title="{{__('actions.edit')}}">
                         <i class="material-icons">edit</i>
                     </a>
 
@@ -18,19 +18,19 @@
                 <div class="card-body ">
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.f_name')}}</div>
-                        <div class="col-md-6 border">{{$sc->name}}</div>
+                        <div class="col-md-6 border">{{$group->name}}</div>
                     </div>
                     <div class="row " >
-                        <div class="col-md-6 border">{{__('names.phone_number')}}</div>
-                        <div class="col-md-6 border">{{$sc->email}}</div>
+                        <div class="col-md-6 border">{{__('names.teacher')}}</div>
+                        <div class="col-md-6 border">{{$group->name}}</div>
                     </div>
                     <div class="row " >
-                        <div class="col-md-6 border">{{__('names.address')}}</div>
-                        <div class="col-md-6 border">{{$sc->address}}</div>
+                        <div class="col-md-6 border">{{__('names.study_place')}}</div>
+                        <div class="col-md-6 border">{{$group->study_place}}</div>
                     </div>
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.created_at')}}</div>
-                        <div class="col-md-6 border">{{$sc->created_at->format('d/m/Y')}}</div>
+                        <div class="col-md-6 border">{{$group->created_at->format('d/m/Y')}}</div>
                     </div>
 
             </div>
@@ -65,7 +65,7 @@
         const createForm = id => {
             let f = document.createElement("form");
             f.setAttribute('method',"post");
-            f.setAttribute('action',`/sewing-clients/${id}`);
+            f.setAttribute('action',`/groups/${id}`);
 
             let i1 = document.createElement("input"); //input element, text
             i1.setAttribute('type',"hidden");

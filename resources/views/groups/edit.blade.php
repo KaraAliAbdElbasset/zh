@@ -23,7 +23,7 @@
                             <label for="teacher_id">{{__('names.teachers')}}</label>
                             <select name="teacher_id" id="teacher_id" class="form-control">
                                 @foreach($teachers as $t)
-                                    <option value="{{$t->id}}" {{$t->id === old('teacher_id',$group->teacher_id)}}>{{$t->name}}</option>
+                                    <option value="{{$t->id}}" {{$t->id === old('teacher_id',$group->teacher_id)  ? 'selected' : ''}}> {{$t->name}}</option>
                                 @endforeach
                             </select>
                             @error('teacher_id')
@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group  @error('study_place') has-danger @enderror">
                             <label for="study_place">{{__('names.study_place')}}</label>
-                            <input type="text" class="form-control" value="{{old('study_place',$study_place)}}" id="study_place" name="study_place" placeholder="{{__('names.study_place')}}">
+                            <input type="text" class="form-control" value="{{old('study_place',$group->study_place)}}" id="study_place" name="study_place" placeholder="{{__('names.study_place')}}">
                             @error('study_place')
                             <div class="text-danger">{{$message}}</div>
                             @enderror

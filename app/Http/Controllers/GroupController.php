@@ -31,7 +31,7 @@ class GroupController extends Controller
 
     public function create(TeacherContract $teacher)
     {
-        $teachers = $teacher->findOneById(-1,['id','first_name','last_name']);
+        $teachers = $teacher->findByFilter(-1);
         return view('groups.create',compact('teachers'));
     }
 
@@ -56,8 +56,8 @@ class GroupController extends Controller
 
     public function edit($id,TeacherContract $teacher)
     {
-        $group = $this->group->findOneById($id);
-        $teachers = $teacher->findOneById(-1,['id','first_name','last_name']);
+        $group = $this->group->findOneById($id,['teacher:id,first_name,last_name']);
+        $teachers = $teacher->findByFilter();
         return view('groups.edit',compact('group','teachers'));
     }
 

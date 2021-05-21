@@ -6,8 +6,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{__('names.list',['name' => __('names.sewing-clients')])}}</h4>
-                    <a class="btn btn-info btn-sm" href="{{route('sewing-clients.create')}}"  rel="tooltip"  title="{{__('actions.create')}}" data-original-title="{{__('actions.create')}}">
+                    <h4 class="card-title">{{__('names.list',['name' => __('names.groups')])}}</h4>
+                    <a class="btn btn-info btn-sm" href="{{route('groups.create')}}"  rel="tooltip"  title="{{__('actions.create')}}" data-original-title="{{__('actions.create')}}">
                         <i class="material-icons">add</i>
                     </a>
                     <div class="d-flex justify-content-end">
@@ -29,29 +29,29 @@
                             <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th>{{__('names.f_name')}}</th>
-                                <th>{{__('names.phone_number')}}</th>
-                                <th>{{__('names.address')}}</th>
+                                <th>{{__('names.l_name')}}</th>
+                                <th>{{__('names.teacher')}}</th>
+                                <th>{{__('names.study_place')}}</th>
                                 <th>{{__('names.created_at')}}</th>
                                 <th class="text-right">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($sewing_clients as $key => $sc)
+                            @foreach($groups as $key => $g)
                                 <tr>
                                     <td class="text-center">{{$key + 1}}</td>
-                                    <td>{{$sc->name}}</td>
-                                    <td>{{$sc->phone_number}}</td>
-                                    <td>{{$sc->address}}</td>
-                                    <td>{{$sc->created_at->format('d-m-Y')}}</td>
+                                    <td>{{$g->name}}</td>
+                                    <td>{{$g->teacher->name}}</td>
+                                    <td>{{$g->study_place}}</td>
+                                    <td>{{$g->created_at->format('d-m-Y')}}</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" onclick="window.location='{{route('sewing-clients.show',$sc->id)}}'" rel="tooltip" class="btn btn-info">
+                                        <button type="button" onclick="window.location='{{route('groups.show',$g->id)}}'" rel="tooltip" class="btn btn-info">
                                             <i class="material-icons">info</i>
                                         </button>
-                                        <button onclick="window.location='{{route('sewing-clients.edit',$sc->id)}}'" type="button" rel="tooltip" class="btn btn-success">
+                                        <button onclick="window.location='{{route('groups.edit',$g->id)}}'" type="button" rel="tooltip" class="btn btn-success">
                                             <i class="material-icons">edit</i>
                                         </button>
-                                        <button onclick="deleteForm({{$sc->id}})" type="button" rel="tooltip" class="btn btn-danger">
+                                        <button onclick="deleteForm({{$g->id}})" type="button" rel="tooltip" class="btn btn-danger">
                                             <i class="material-icons">close</i>
                                         </button>
                                     </td>
@@ -60,7 +60,7 @@
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-center">
-                            {{$sewing_clients->links()}}
+                            {{$groups->links()}}
                         </div>
 
                     </div>
@@ -96,7 +96,7 @@
         const createForm = id => {
             let f = document.createElement("form");
             f.setAttribute('method',"post");
-            f.setAttribute('action',`/sewing-clients/${id}`);
+            f.setAttribute('action',`/groups/${id}`);
 
             let i1 = document.createElement("input"); //input element, text
             i1.setAttribute('type',"hidden");

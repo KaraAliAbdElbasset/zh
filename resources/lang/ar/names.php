@@ -62,4 +62,5 @@ return [
     'memorizing_level' => 'مستوى الحفظ',
     'education_level' => 'مستوى التعليم',
     'study_place' => 'مكان الدراسة',
+    'teacher' => 'الأستاذ',
 ];
