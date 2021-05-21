@@ -31,6 +31,7 @@
                                 <th class="text-center">#</th>
                                 <th>{{__('names.l_name')}}</th>
                                 <th>{{__('names.teacher')}}</th>
+                                <th>{{__('names.type')}}</th>
                                 <th>{{__('names.study_place')}}</th>
                                 <th>{{__('names.created_at')}}</th>
                                 <th class="text-right">Actions</th>
@@ -42,6 +43,7 @@
                                     <td class="text-center">{{$key + 1}}</td>
                                     <td>{{$g->name}}</td>
                                     <td>{{$g->teacher->name}}</td>
+                                    <td>{{__('student.'.$g->type)}}</td>
                                     <td>{{$g->study_place}}</td>
                                     <td>{{$g->created_at->format('d-m-Y')}}</td>
                                     <td class="td-actions text-right">

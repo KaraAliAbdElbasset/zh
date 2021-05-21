@@ -29,6 +29,17 @@
                             <div class="text-danger">{{$message}}</div>
                             @enderror
                         </div>
+                        <div class="form-group @error('type') has-danger @enderror">
+                            <label for="type">{{__('names.type')}}</label>
+                            <select  class="form-control" name="type" data-style="btn btn-link" id="type">
+                                @foreach(config('student.types') as $t)
+                                    <option value="{{$t}}" {{old('type') == $t ? 'selected' : ''}}>{{__('student.'.$t)}}</option>
+                                @endforeach
+
+                            </select>                            @error('type')
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                        </div>
                         <div class="form-group  @error('study_place') has-danger @enderror">
                             <label for="study_place">{{__('names.study_place')}}</label>
                             <input type="text" class="form-control" value="{{old('study_place')}}" id="study_place" name="study_place" placeholder="{{__('names.study_place')}}">

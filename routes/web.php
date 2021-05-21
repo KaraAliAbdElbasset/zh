@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function (){
     Route::resource('clubs',App\Http\Controllers\ClubController::class);
     Route::resource('teachers',App\Http\Controllers\TeacherController::class);
     Route::resource('students',App\Http\Controllers\StudentController::class);
+    Route::get('groups/{id}/add-students',[App\Http\Controllers\GroupController::class,'addStudents'])->name('groups.add.students');
+    Route::post('groups/{id}/add-students',[App\Http\Controllers\GroupController::class,'studentsAttach'])->name('groups.add.students.post');
+    Route::delete('groups/{id}/delete-student/{student_id}',[App\Http\Controllers\GroupController::class,'detachStudent'])->name('groups.delete.students');
     Route::resource('groups',App\Http\Controllers\GroupController::class);
 });
 

@@ -63,4 +63,5 @@ return [
     'education_level' => 'مستوى التعليم',
     'study_place' => 'مكان الدراسة',
     'teacher' => 'الأستاذ',
+    'groups' => 'الأفواج',
 ];

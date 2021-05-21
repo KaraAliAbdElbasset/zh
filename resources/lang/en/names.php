@@ -63,4 +63,5 @@ return [
     'education_level' => 'Education level',
     'study_place' => 'Study place',
     'teacher' => ' Teacher',
+    'groups' => ' Groups',
 ];

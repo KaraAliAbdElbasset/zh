@@ -16,7 +16,7 @@ class Group extends Model
     /**
      * @var string[]
      */
-    protected $fillable = ['teacher_id', 'name', 'study_place'];
+    protected $fillable = ['teacher_id', 'name', 'study_place','type'];
 
     /**
      * @return BelongsTo
@@ -24,5 +24,10 @@ class Group extends Model
     public function teacher(): BelongsTo
     {
         return $this->belongsTo(Teacher::class);
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
     }
 }

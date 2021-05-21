@@ -26,7 +26,7 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
 
-
+    @stack('css')
 
     <!-- Style Just for persian demo purpose, don't include it in your project -->
     <style>

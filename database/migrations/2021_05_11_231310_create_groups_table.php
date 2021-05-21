@@ -20,6 +20,7 @@ class CreateGroupsTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->string('name');
+            $table->integer('type');
             $table->string('study_place')->nullable();
             $table->timestamps();
         });

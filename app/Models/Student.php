@@ -27,4 +27,16 @@ class Student extends Model
         'leave_date' => 'date',
         'type' => 'integer',
     ];
+
+    /**
+     * @var string[]
+     */
+    protected $appends = [
+        'name'
+    ];
+
+    public function getNameAttribute()
+    {
+        return $this->first_name. ' ' . $this->last_name;
+    }
 }

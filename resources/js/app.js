@@ -22,6 +22,7 @@ require('./bootstrap');
 
 Vue.component('order-create', require('./views/orders/Create.vue').default);
 Vue.component('order-edit', require('./views/orders/Edit.vue').default);
+Vue.component('add-student-to-group', require('./components/AddStudentToGroup').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
