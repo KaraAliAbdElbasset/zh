@@ -80,4 +80,49 @@ class ClubController extends Controller
         return redirect()->route('clubs.index');
     }
 
+    public function addInvoice($id,Request $request)
+    {
+        $data = $request->validate([
+            'client_name' => 'required|string|max:200',
+            'amount' => 'required|integer',
+            'note' => 'sometimes|nullable|string|max:200',
+            'date' => 'sometimes|nullable|date'
+        ]);
+
+        $this->club->addInvoice($id,$data);
+
+        session()->flash('success', __('messages.create'));
+        return redirect()->route('clubs.show',$id);
+    }
+
+    public function addProject($id,Request $request): RedirectResponse
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:200',
+            'amount' => 'required|integer',
+            'note' => 'sometimes|nullable|string|max:200',
+            'start_date' => 'sometimes|nullable|date',
+            'end_date' => 'sometimes|nullable|date|after:start_date',
+        ]);
+
+        $this->club->addProject($id,$data);
+
+        session()->flash('success', __('messages.create'));
+        return redirect()->route('clubs.show',$id);
+    }
+
+    public function addSubscription($id,Request $request): RedirectResponse
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:200',
+            'amount' => 'required|integer',
+            'note' => 'sometimes|nullable|string|max:200',
+
+        ]);
+        $this->club->addSub($id,$data);
+        session()->flash('success', __('messages.create'));
+        return redirect()->route('clubs.show',$id);
+    }
+
+
 }

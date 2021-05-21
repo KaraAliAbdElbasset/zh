@@ -17,7 +17,7 @@ class Subscription extends Model
      * @var string[]
      */
     protected $fillable = [
-        'club_id', 'name', 'amount', 'note', 'club_id',
+        'club_id', 'name', 'amount', 'note',
     ];
 
     /**
