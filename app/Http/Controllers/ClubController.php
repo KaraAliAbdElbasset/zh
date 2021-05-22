@@ -80,7 +80,20 @@ class ClubController extends Controller
         return redirect()->route('clubs.index');
     }
 
-    public function addInvoice($id,Request $request)
+    public function createInvoice($id)
+    {
+        $club = $this->club->findOneById($id);
+        return view('clubs.invoices.create',compact('club'));
+    }
+
+    public function editInvoice($id,$invoice_id)
+    {
+        $club = $this->club->findOneById($id);
+        $invoice = \App\Models\Invoice::where('club_id',$id)->where('id',$invoice_id)->firstOrFail();
+        return view('clubs.invoices.edit',compact('club','invoice'));
+    }
+
+    public function storeInvoice($id,Request $request)
     {
         $data = $request->validate([
             'client_name' => 'required|string|max:200',
@@ -95,7 +108,41 @@ class ClubController extends Controller
         return redirect()->route('clubs.show',$id);
     }
 
-    public function addProject($id,Request $request): RedirectResponse
+
+    public function updateInvoice($id,$invoice_id,Request $request): RedirectResponse
+    {
+        $data = $request->validate([
+            'client_name' => 'required|string|max:200',
+            'amount' => 'required|integer',
+            'note' => 'sometimes|nullable|string|max:200',
+            'date' => 'sometimes|nullable|date'
+        ]);
+
+        $this->club->updateInvoice($invoice_id,$data);
+
+        session()->flash('success', __('messages.update'));
+        return redirect()->route('clubs.show',$id);
+    }
+
+    public function destroyInvoice($id,$invoice_id): RedirectResponse
+    {
+        $this->club->deleteInvoice($invoice_id);
+        session()->flash('success', __('messages.delete'));
+        return redirect()->route('clubs.show',$id);
+    }
+
+    public function createProject($id)
+    {
+        $club = $this->club->findOneById($id);
+        return view('clubs.projects.create',compact('club'));
+    }
+    public function editProject($id,$project_id)
+    {
+        $club = $this->club->findOneById($id);
+        $project = \App\Models\Project::where('club_id',$id)->where('id',$project_id)->firstOrFail();
+        return view('clubs.projects.edit',compact('club','project'));
+    }
+    public function storeProject($id,Request $request): RedirectResponse
     {
         $data = $request->validate([
             'name' => 'required|string|max:200',
@@ -111,7 +158,45 @@ class ClubController extends Controller
         return redirect()->route('clubs.show',$id);
     }
 
-    public function addSubscription($id,Request $request): RedirectResponse
+    public function updateProject($id,$project_id,Request $request): RedirectResponse
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:200',
+            'amount' => 'required|integer',
+            'note' => 'sometimes|nullable|string|max:200',
+            'start_date' => 'sometimes|nullable|date',
+            'end_date' => 'sometimes|nullable|date|after:start_date',
+        ]);
+
+        $this->club->updateProject($project_id,$data);
+
+        session()->flash('success', __('messages.update'));
+        return redirect()->route('clubs.show',$id);
+    }
+
+    public function destroyProject($id,$project_id): RedirectResponse
+    {
+        $this->club->deleteProject($project_id);
+        session()->flash('success', __('messages.delete'));
+        return redirect()->route('clubs.show',$id);
+    }
+
+    public function createSubscription($id)
+    {
+        $club = $this->club->findOneById($id);
+        return view('clubs.subs.create',compact('club'));
+    }
+
+    public function editSubscription($id,$sub_id)
+    {
+        $club = $this->club->findOneById($id);
+        $sub = \App\Models\Subscription::where('club_id',$id)->where('id',$sub_id)->firstOrFail();
+
+        return view('clubs.subs.create',compact('club','sub'));
+    }
+
+
+    public function storeSubscription($id,Request $request): RedirectResponse
     {
         $data = $request->validate([
             'name' => 'required|string|max:200',
@@ -123,6 +208,28 @@ class ClubController extends Controller
         session()->flash('success', __('messages.create'));
         return redirect()->route('clubs.show',$id);
     }
+
+
+    public function updateSubscription($id,$sub_id,Request $request): RedirectResponse
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:200',
+            'amount' => 'required|integer',
+            'note' => 'sometimes|nullable|string|max:200',
+
+        ]);
+        $this->club->updateSub($sub_id,$data);
+        session()->flash('success', __('messages.update'));
+        return redirect()->route('clubs.show',$id);
+    }
+
+    public function destroySubscription($id,$sub_id): RedirectResponse
+    {
+        $this->club->deleteSub($sub_id);
+        session()->flash('success', __('messages.delete'));
+        return redirect()->route('clubs.show',$id);
+    }
+
 
 
 }

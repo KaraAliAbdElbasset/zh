@@ -7,13 +7,12 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">{{__('names.details')}}</h4>
-                    <button class="btn btn-danger btn-sm" onclick="deleteForm({{$club->id}})"  rel="tooltip"  title="{{__('actions.delete')}}" data-original-title="{{__('actions.delete')}}">
+                    <button class="btn btn-danger btn-sm" onclick="deleteForm('/clubs/'+{{$club->id}})"  rel="tooltip"  title="{{__('actions.delete')}}" data-original-title="{{__('actions.delete')}}">
                         <i class="material-icons">close</i>
                     </button>
                     <a class="btn btn-warning btn-sm" href="{{route('clubs.edit',$club->id)}}"  rel="tooltip"  title="{{__('actions.edit')}}" data-original-title="{{__('actions.edit')}}">
                         <i class="material-icons">edit</i>
                     </a>
-
                 </div>
                 <div class="card-body ">
                     <div class="row " >
@@ -49,19 +48,25 @@
                         <div class="col-md-6 border">{{$club->created_at->format('d/m/Y')}}</div>
                     </div>
 
+                </div>
             </div>
         </div>
+        @if(!request()->routeIs('clubs.show'))
+            @yield('form-content')
+        @else
+            @include('clubs.invoices.index')
+            @include('clubs.projects.index')
+        @endif
+
     </div>
-
-
 @endsection
 
 @push('js')
 
     <script>
 
-        const deleteForm = id => {
-
+        const deleteForm = route => {
+            console.log('here')
             Swal.fire({
                 title: '{{__('actions.delete_confirm_title')}}',
                 text: "{{__('actions.delete_confirm_text')}}",
@@ -74,14 +79,14 @@
             }).then((result) => {
 
                 if (result.value) {
-                    createForm(id).submit();
+                    createForm(route).submit();
                 }
             });
         }
-        const createForm = id => {
+        const createForm = route => {
             let f = document.createElement("form");
             f.setAttribute('method',"post");
-            f.setAttribute('action',`/clubs/${id}`);
+            f.setAttribute('action',route);
 
             let i1 = document.createElement("input"); //input element, text
             i1.setAttribute('type',"hidden");

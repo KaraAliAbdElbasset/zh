@@ -64,4 +64,8 @@ return [
     'study_place' => 'Study place',
     'teacher' => ' Teacher',
     'groups' => ' Groups',
+    'invoices' => 'Invoices',
+    'date' => 'Date',
+    'projects' => 'Projects',
+    'subs' => 'Subscriptions',
 ];
