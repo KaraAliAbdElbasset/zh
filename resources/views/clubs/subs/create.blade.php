@@ -9,7 +9,7 @@
                 <h4 class="card-title">{{__('actions.create')}}</h4>
             </div>
             <div class="card-body ">
-                <form method="post" action="{{route('clubs.subssubs.store',$club->id)}}">
+                <form method="post" action="{{route('clubs.subs.store',$club->id)}}">
                     @csrf
 
                     <div class="form-group  @error('name') has-danger @enderror">

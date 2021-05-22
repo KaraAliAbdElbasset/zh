@@ -1,5 +1,15 @@
 @extends('layouts.app')
 
+@push('css')
+
+    <style>
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+@endpush
+
 @section('content')
 
     <div class="row">
@@ -54,8 +64,82 @@
         @if(!request()->routeIs('clubs.show'))
             @yield('form-content')
         @else
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">
+                                        dashboard
+                                    </i>
+                                </div>
+                                <p class="card-category">{{__('names.projects')}}</p>
+                                <h3 class="card-title">
+                                    {{$club->projects->count()}}
+                                </h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+
+                                    <i class="material-icons text-danger">dashboard</i>
+                                    <a href="#projects" >{{__('names.list',['name' => __('names.projects')])}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">
+                                        article
+                                    </i>
+                                </div>
+                                <p class="card-category">{{__('names.invoices')}}</p>
+                                <h3 class="card-title">
+                                    {{$club->invoices->count()}}
+                                </h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">
+                                        article
+                                    </i>
+                                    <a href="#invoices" >{{__('names.list',['name' => __('names.invoices')])}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">
+                                        rss_feed
+                                    </i>
+                                </div>
+                                <p class="card-category">{{__('names.subs')}}</p>
+                                <h3 class="card-title">
+                                    {{$club->subscriptions->count()}}
+                                </h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">
+                                        rss_feed
+                                    </i>
+                                    <a href="#subs" >{{__('names.list',['name' => __('names.subs')])}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             @include('clubs.invoices.index')
             @include('clubs.projects.index')
+            @include('clubs.subs.index')
         @endif
 
     </div>
@@ -64,9 +148,20 @@
 @push('js')
 
     <script>
-
+        // const scrollToAnchor = anchor => {
+        //     setTimeout(() => {
+        //         let el =  document.querySelector('#'+anchor);
+        //         let pos = el.style.position;
+        //         let top = el.style.top;
+        //         el.style.position = 'relative';
+        //         el.style.top = '-20px';
+        //         el.scrollIntoView({behavior: 'smooth', block: 'start'});
+        //         el.style.top = top;
+        //         el.style.position = pos;
+        //
+        //     },1000)
+        // }
         const deleteForm = route => {
-            console.log('here')
             Swal.fire({
                 title: '{{__('actions.delete_confirm_title')}}',
                 text: "{{__('actions.delete_confirm_text')}}",

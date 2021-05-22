@@ -1,5 +1,5 @@
 <div class="col-md-12">
-    <div class="card">
+    <div class="card" id="projects">
         <div class="card-header">
             <h4 class="card-title">{{__('names.list',['name' => __('names.projects')])}}</h4>
             <a class="btn btn-info btn-sm" href="{{route('clubs.projects.create',$club->id)}}"  rel="tooltip"  title="{{__('actions.create')}}" data-original-title="{{__('actions.create')}}">

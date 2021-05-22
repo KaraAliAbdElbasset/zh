@@ -7,7 +7,7 @@
             </a>
         </div>
 
-        <div class="card-body">
+        <div class="card-body" id="invoices">
             <div class="table-responsive">
                 <table class="table">
                     <thead>

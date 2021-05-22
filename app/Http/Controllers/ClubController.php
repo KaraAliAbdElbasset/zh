@@ -192,7 +192,7 @@ class ClubController extends Controller
         $club = $this->club->findOneById($id);
         $sub = \App\Models\Subscription::where('club_id',$id)->where('id',$sub_id)->firstOrFail();
 
-        return view('clubs.subs.create',compact('club','sub'));
+        return view('clubs.subs.edit',compact('club','sub'));
     }
 
 

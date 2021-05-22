@@ -1,5 +1,5 @@
 <div class="col-md-12">
-    <div class="card">
+    <div class="card" id="subs">
         <div class="card-header">
             <h4 class="card-title">{{__('names.list',['name' => __('names.subs')])}}</h4>
             <a class="btn btn-info btn-sm" href="{{route('clubs.subs.create',$club->id)}}"  rel="tooltip"  title="{{__('actions.create')}}" data-original-title="{{__('actions.create')}}">
@@ -29,7 +29,7 @@
                             <td>{{$s->note}}</td>
                             <td>{{$s->created_at->format('d/m/Y')}}</td>
                             <td class="td-actions text-right">
-                                <button onclick="window.location='{{route('clubs.projects.edit',[$club->id,$s->id])}}'" type="button" rel="tooltip" class="btn btn-success">
+                                <button onclick="window.location='{{route('clubs.subs.edit',[$club->id,$s->id])}}'" type="button" rel="tooltip" class="btn btn-success">
                                     <i class="material-icons">edit</i>
                                 </button>
                                 <button onclick="deleteForm('/clubs/'+{{$club->id}}+'/subs/'+{{$s->id}})" type="button" rel="tooltip" class="btn btn-danger">
