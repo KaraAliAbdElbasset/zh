@@ -18,11 +18,17 @@ class SewingClientFactory extends Factory
      * Define the model's default state.
      *
      * @return array
+     * @throws \Exception
      */
     public function definition()
     {
+        $data = now()->subMonths(random_int(1,11));
         return [
-            //
+            'name' => $this->faker->firstName.' '.$this->faker->lastName,
+            'address' => $this->faker->address,
+            'phone_number' => $this->faker->randomDigit(),
+            'created_at'    => $data,
+            'updated_at'    => $data,
         ];
     }
 }

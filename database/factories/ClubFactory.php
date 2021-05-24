@@ -18,11 +18,22 @@ class ClubFactory extends Factory
      * Define the model's default state.
      *
      * @return array
+     * @throws \Exception
      */
-    public function definition()
+    public function definition(): array
     {
+        $data = now()->subMonths(random_int(1,11));
+
         return [
-            //
+            'name' => $this->faker->words(2,true),
+            'managing_office' => $this->faker->words(3,true),
+            'establishing_date' => now(),
+            'year' => $this->faker->year(),
+            'address' => $this->faker->address,
+            'goals' => $this->faker->sentence,
+            'funding_sources' => $this->faker->sentence(10,true),
+            'created_at' => $data,
+            'updated_at' => $data,
         ];
     }
 }

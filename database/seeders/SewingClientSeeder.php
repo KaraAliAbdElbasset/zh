@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\SewingClient;
 use Illuminate\Database\Seeder;
 
 class SewingClientSeeder extends Seeder
@@ -13,6 +14,6 @@ class SewingClientSeeder extends Seeder
      */
     public function run()
     {
-        //
+        SewingClient::factory(100)->create();
     }
 }

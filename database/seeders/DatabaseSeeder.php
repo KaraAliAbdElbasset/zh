@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@email.com',
             'password' => bcrypt('password'),
         ]);
+
+        $this->call(ClubSeeder::class);
+        $this->call(SewingClientSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }
