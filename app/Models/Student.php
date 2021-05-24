@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Student extends Model
 {
@@ -38,5 +39,13 @@ class Student extends Model
     public function getNameAttribute()
     {
         return $this->first_name. ' ' . $this->last_name;
+    }
+
+    /**
+     * @return MorphMany
+     */
+    public function absences(): MorphMany
+    {
+        return $this->morphMany(Absence::class,'absenceable');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * @method static create(array $data)
@@ -46,5 +47,13 @@ class Teacher extends Model
     public function groups(): HasMany
     {
         return $this->hasMany(Group::class);
+    }
+
+    /**
+     * @return MorphMany
+     */
+    public function absences(): MorphMany
+    {
+        return $this->morphMany(Absence::class,'absenceable');
     }
 }

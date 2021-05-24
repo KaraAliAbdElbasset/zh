@@ -145,7 +145,6 @@
     <script>
         let ctx = document.getElementById('myChart').getContext('2d');
         let data = {!! json_encode($chart_data, JSON_THROW_ON_ERROR) !!};
-        console.log(data)
         let myChart = new Chart(ctx, {
             type: 'line',
             data: {
