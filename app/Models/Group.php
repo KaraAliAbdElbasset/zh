@@ -26,8 +26,14 @@ class Group extends Model
         return $this->belongsTo(Teacher::class);
     }
 
-    public function students()
+    public function students(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Student::class);
     }
+
+    public function absences(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Absence::class);
+    }
+
 }

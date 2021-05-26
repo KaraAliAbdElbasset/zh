@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Contracts\GroupContract;
 use App\Contracts\TeacherContract;
 use App\Models\Student;
+use App\Models\Teacher;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -51,16 +53,18 @@ class GroupController extends Controller
 
     public function show($id)
     {
-        $group = $this->group->findOneById($id);
+        $group = $this->group->findOneById($id,['students','teacher','absences']);
         //Todo: add some logic here
         return view('groups.show',compact('group'));
     }
+
     public function addStudents($id)
     {
         $group = $this->group->findOneById($id,['teacher:id,first_name,last_name','students']);
         $students = Student::whereNotIn('id',$group->students->pluck('id'))->where('type',$group->type)->get();
         return view('groups.students.add',compact('group','students'));
     }
+
     public function studentsAttach($id,Request $request)
     {
         $request->validate([
@@ -105,4 +109,45 @@ class GroupController extends Controller
         session()->flash('success',__('messages.delete'));
         return redirect()->route('groups.index');
     }
+
+    /**
+     * @param $id
+     * @param $student_id
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function addAbsenceForStudent($id,$student_id,Request $request): RedirectResponse
+    {
+        $this->group->findOneById($id);
+        $s = Student::whereHas('groups',function ($q) use ($id){
+            $q->where('id',$id);
+        })->where('id',$student_id)->firstOrFail();
+
+        $s->absences()->create([
+            'group_id' => $id,
+        ]);
+        return redirect()->back();
+    }
+
+    /**
+     * @param $id
+     * @param $teacher_id
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function addAbsenceForTeacher($id,$teacher_id,Request $request): RedirectResponse
+    {
+        $g = $this->group->findOneById($id);
+
+        $t = Teacher::whereHas('groups',function ($q) use ($id){
+            $q->where('id',$id);
+        })->where('id',$teacher_id)->firstOrFail();
+
+        $t->absences()->create([
+            'group_id' => $id
+        ]);
+
+        return redirect()->back();
+    }
+
 }

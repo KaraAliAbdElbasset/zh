@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contracts\TeacherContract;
 use App\Http\Requests\TeacherRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
@@ -80,4 +81,6 @@ class TeacherController extends Controller
         session()->flash('success',__('messages.delete'));
         return redirect()->route('teachers.index');
     }
+
+
 }
