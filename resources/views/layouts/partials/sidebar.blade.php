@@ -34,6 +34,13 @@
                 </a>
             </li>
 
+            <li class="nav-item  {{request()->routeIs('groups.*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('groups.index')}}">
+                    <i class="material-icons">face</i>
+                    <p>{{__('names.groups')}}</p>
+                </a>
+            </li>
+
             <li class="nav-item  {{request()->routeIs('sewing-clients.*') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('sewing-clients.index')}}">
                     <i class="material-icons">shopping_cart</i>
