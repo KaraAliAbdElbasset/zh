@@ -68,4 +68,10 @@ return [
     'date' => 'Date',
     'projects' => 'Projects',
     'subs' => 'Subscriptions',
+    'absences' => 'Absences',
+    'ab-type' => 'Absence Type',
+    'student' => 'student',
+    'reason' => 'Reason',
+    'add-absence-to-student' => 'Add Absence To This Student',
+    'add-absence-to-teacher' => 'Add Absence To This Teacher',
 ];

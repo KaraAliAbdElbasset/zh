@@ -53,6 +53,19 @@ Route::middleware('auth')->group(function (){
     Route::resource('clubs',App\Http\Controllers\ClubController::class);
     Route::resource('teachers',App\Http\Controllers\TeacherController::class);
     Route::resource('students',App\Http\Controllers\StudentController::class);
+
+
+    Route::get('absences/{id}',[App\Http\Controllers\AbsenceController::class,'show'])->name('absences.show');
+    Route::get('absences/{id}/edit',[App\Http\Controllers\AbsenceController::class,'edit'])->name('absences.edit');
+    Route::put('absences/{id}',[App\Http\Controllers\AbsenceController::class,'update'])->name('absences.update');
+    Route::delete('absences/{id}',[App\Http\Controllers\AbsenceController::class,'destroy'])->name('absences.destroy');
+
+
+    Route::get('groups/{id}/students/{student_id}/absences/create',[App\Http\Controllers\GroupController::class,'studentAbsenceCreate'])->name('groups.students.absences.create');
+    Route::post('groups/{id}/students/{student_id}/absences',[App\Http\Controllers\GroupController::class,'storeAbsenceForStudent'])->name('groups.students.absences.store');
+    Route::get('groups/{id}/teachers/absences/create',[App\Http\Controllers\GroupController::class,'teacherAbsenceCreate'])->name('groups.teachers.absences.create');
+    Route::post('groups/{id}/teachers/absences',[App\Http\Controllers\GroupController::class,'storeAbsenceForTeacher'])->name('groups.teachers.absences.store');
+    Route::get('groups/{id}/add-students',[App\Http\Controllers\GroupController::class,'addStudents'])->name('groups.add.students');
     Route::get('groups/{id}/add-students',[App\Http\Controllers\GroupController::class,'addStudents'])->name('groups.add.students');
     Route::post('groups/{id}/add-students',[App\Http\Controllers\GroupController::class,'studentsAttach'])->name('groups.add.students.post');
     Route::delete('groups/{id}/delete-student/{student_id}',[App\Http\Controllers\GroupController::class,'detachStudent'])->name('groups.delete.students');

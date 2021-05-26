@@ -49,6 +49,8 @@ class TeacherRepository extends BaseRepository implements \App\Contracts\Teacher
      */
     public function delete(int $id)
     {
-        return Teacher::destroy($id);
+        $t = $this->findOneById($id);
+        $t->absences()->delete();
+        return $t->delete();
     }
 }

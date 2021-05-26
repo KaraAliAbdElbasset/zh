@@ -68,4 +68,11 @@ return [
     'date' => 'التاريخ',
     'projects' => 'المشاريع',
     'subs' => 'الاشتراكات',
+
+    'absences' => 'الغياب',
+    'ab-type' => 'نوع الغياب',
+    'student' => 'طالب',
+    'reason' => 'السبب',
+    'add-absence-to-student' => 'أضف الغياب إلى هذا الطالب',
+    'add-absence-to-teacher' => 'أضف الغياب إلى هذا الأستاذ',
 ];

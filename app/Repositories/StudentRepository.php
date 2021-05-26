@@ -54,6 +54,8 @@ class StudentRepository extends BaseRepository implements \App\Contracts\Student
      */
     public function delete(int $id)
     {
-        return Student::destroy($id);
+        $s = $this->findOneById($id);
+        $s->absences()->delete();
+        return $s->delete();
     }
 }

@@ -53,8 +53,9 @@ class GroupController extends Controller
 
     public function show($id)
     {
-        $group = $this->group->findOneById($id,['students','teacher','absences']);
-        //Todo: add some logic here
+        $group = $this->group->findOneById($id,
+            ['students','teacher','absences' => function($a) {$a->with('absenceable')->latest();}]
+        );
         return view('groups.show',compact('group'));
     }
 
@@ -110,44 +111,61 @@ class GroupController extends Controller
         return redirect()->route('groups.index');
     }
 
+    public function studentAbsenceCreate($id,$student_id)
+    {
+        $g = $this->group->findOneById($id,['students']);
+        if (! $g->students->contains($student_id))
+        {
+            abort('404');
+        }
+
+        return view('groups.absences.create',compact('g','student_id'));
+    }
+
+    public function teacherAbsenceCreate($id)
+    {
+        $g = $this->group->findOneById($id);
+
+        return view('groups.absences.create-for-teacher',compact('g'));
+    }
+
     /**
      * @param $id
      * @param $student_id
      * @param Request $request
      * @return RedirectResponse
      */
-    public function addAbsenceForStudent($id,$student_id,Request $request): RedirectResponse
+    public function storeAbsenceForStudent($id,$student_id,Request $request): RedirectResponse
     {
+        $data = $request->validate(['reason' => 'sometimes|nullable|string|max:200']);
+
         $this->group->findOneById($id);
+
         $s = Student::whereHas('groups',function ($q) use ($id){
-            $q->where('id',$id);
+            $q->where('groups.id',$id);
         })->where('id',$student_id)->firstOrFail();
 
-        $s->absences()->create([
-            'group_id' => $id,
-        ]);
-        return redirect()->back();
+        $data['group_id'] = $id;
+        $s->absences()->create($data);
+        return redirect()->route('groups.show',$id);
     }
 
     /**
      * @param $id
-     * @param $teacher_id
      * @param Request $request
      * @return RedirectResponse
      */
-    public function addAbsenceForTeacher($id,$teacher_id,Request $request): RedirectResponse
+    public function storeAbsenceForTeacher($id,Request $request): RedirectResponse
     {
-        $g = $this->group->findOneById($id);
-
-        $t = Teacher::whereHas('groups',function ($q) use ($id){
-            $q->where('id',$id);
-        })->where('id',$teacher_id)->firstOrFail();
-
-        $t->absences()->create([
-            'group_id' => $id
+        $data = $request->validate([
+            'reason' => 'sometimes|nullable|string|max:200'
         ]);
 
-        return redirect()->back();
+        $g = $this->group->findOneById($id,['teacher']);
+
+        $data['group_id'] = $id;
+        $g->teacher->absences()->create($data);
+        return redirect()->route('groups.show',$id);
     }
 
 }

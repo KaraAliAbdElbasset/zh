@@ -48,4 +48,9 @@ class Student extends Model
     {
         return $this->morphMany(Absence::class,'absenceable');
     }
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class);
+    }
 }
