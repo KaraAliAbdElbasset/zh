@@ -18,7 +18,7 @@
                         <th>{{__('names.start_date')}}</th>
                         <th>{{__('names.end_date')}}</th>
                         <th>{{__('names.created_at')}}</th>
-                        <th class="text-right">Actions</th>
+                        <th class="text-right">#</th>
                     </tr>
                     </thead>
                     <tbody>

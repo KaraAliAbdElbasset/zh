@@ -32,7 +32,7 @@
                                 <th>{{__('names.f_name')}}</th>
                                 <th>{{__('names.email')}}</th>
                                 <th>{{__('names.created_at')}}</th>
-                                <th class="text-right">Actions</th>
+                                <th class="text-right">#</th>
                             </tr>
                             </thead>
                             <tbody>

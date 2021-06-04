@@ -9,7 +9,9 @@ use Illuminate\Routing\Pipeline;
 abstract class BaseRepository
 {
 
-    protected $baseFilters = [];
+    protected $baseFilters = [
+        \App\QueryFilters\Sort::class,
+    ];
 
     public function applyFilter($query,int $per_page = 10, $filters = [])
     {

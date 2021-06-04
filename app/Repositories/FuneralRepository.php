@@ -23,7 +23,9 @@ class FuneralRepository extends BaseRepository implements \App\Contracts\Funeral
     public function findByFilter(int $per_page = 10, array $relations = [], array $scopes = [])
     {
         $query = Funeral::with($relations)->scopes($scopes)->newQuery();
-        return $this->applyFilter($query,$per_page);
+        return $this->applyFilter($query,$per_page,[
+            \App\QueryFilters\Search::class
+        ]);
     }
 
     /**

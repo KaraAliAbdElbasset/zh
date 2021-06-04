@@ -33,7 +33,7 @@
                                 <th>{{__('names.managing_office')}}</th>
                                 <th>{{__('names.establishing_date')}}</th>
                                 <th>{{__('names.year')}}</th>
-                                <th class="text-right">Actions</th>
+                                <th class="text-right">#</th>
                             </tr>
                             </thead>
                             <tbody>

@@ -33,7 +33,7 @@
                                 <th>{{__('names.l_name')}}</th>
                                 <th>{{__('names.gender')}}</th>
                                 <th>{{__('names.death_date')}}</th>
-                                <th class="text-right">Actions</th>
+                                <th class="text-right">#</th>
                             </tr>
                             </thead>
                             <tbody>

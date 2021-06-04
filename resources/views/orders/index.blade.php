@@ -32,10 +32,10 @@
                                 <th>{{__('names.f_name')}}</th>
                                 <th>{{__('names.phone_number')}}</th>
                                 <th>{{__('names.amount')}}</th>
-                                <th>{{__('names.due')}}</th>
+                                <th>{{__('names.due_date')}}</th>
                                 <th>{{__('names.paid')}}</th>
                                 <th>{{__('names.created_at')}}</th>
-                                <th class="text-right">Actions</th>
+                                <th class="text-right">#</th>
                             </tr>
                             </thead>
                             <tbody>

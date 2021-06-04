@@ -24,7 +24,9 @@ class GroupRepository extends BaseRepository implements GroupContract
     public function findByFilter(int $per_page = 10, array $relations = [], array $scopes = [])
     {
         $query = Group::with($relations)->scopes($scopes)->newQuery();
-        return $this->applyFilter($query,$per_page);
+        return $this->applyFilter($query,$per_page,[
+            \App\QueryFilters\Search::class
+        ]);
     }
 
     /**

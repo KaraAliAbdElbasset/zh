@@ -34,7 +34,7 @@
                                 <th>{{__('names.gender')}}</th>
                                 <th>{{__('names.phone_number')}}</th>
                                 <th>{{__('names.created_at')}}</th>
-                                <th class="text-right">Actions</th>
+                                <th class="text-right">#</th>
                             </tr>
                             </thead>
                             <tbody>

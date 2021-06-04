@@ -19,7 +19,9 @@ class UserRepository extends BaseRepository implements UserContract
     {
         $query = User::with($relations)->scopes($scopes)->newQuery();
 
-        return $this->applyFilter($query,$per_page);
+        return $this->applyFilter($query,$per_page,[
+            \App\QueryFilters\Search::class
+        ]);
     }
 
     public function add(array $data)

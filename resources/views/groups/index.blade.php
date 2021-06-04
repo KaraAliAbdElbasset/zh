@@ -29,7 +29,7 @@
                             <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th>{{__('names.l_name')}}</th>
+                                <th>{{__('names.f_name')}}</th>
                                 <th>{{__('names.teacher')}}</th>
                                 <th>{{__('names.type')}}</th>
                                 <th>{{__('names.study_place')}}</th>
