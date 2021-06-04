@@ -27,7 +27,8 @@ class ClubRepository extends BaseRepository implements \App\Contracts\ClubContra
     {
         $query = Club::with($relations)->scopes($scopes)->newQuery();
         return $this->applyFilter($query,$per_page,[
-            \App\QueryFilters\Search::class
+            \App\QueryFilters\Search::class,
+            \App\QueryFilters\Year::class,
         ]);
     }
 

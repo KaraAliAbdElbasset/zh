@@ -24,7 +24,8 @@ class SewingWorkerRepository extends BaseRepository implements \App\Contracts\Se
     {
         $query = SewingWorker::with($relations)->scopes($scopes)->newQuery();
         return $this->applyFilter($query,$per_page,[
-            \App\QueryFilters\Search::class
+            \App\QueryFilters\Search::class,
+            \App\QueryFilters\Gender::class
         ]);
     }
 

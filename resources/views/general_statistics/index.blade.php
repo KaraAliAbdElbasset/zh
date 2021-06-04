@@ -10,8 +10,35 @@
                     <a class="btn btn-info btn-sm" href="{{route('general-statistics.create')}}"  rel="tooltip"  title="{{__('actions.create')}}" data-original-title="{{__('actions.create')}}">
                         <i class="material-icons">add</i>
                     </a>
+                    <form action="" id="filter-form">
+                        @if(request()->has('search') && !empty(request()->get('search')))
+                            <input type="hidden" name="search" value="{{request('search')}}">
+                        @endif
+                        <div class="d-flex justify-content-start row">
+
+                            <div class="form-group col-md-2 select-filter"><select name="gender" id="select-filter" class="form-control">
+                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    <option value="male" {{request('gender') === 'male' ? 'selected' : ''}}>{{__('names.male')}}</option>
+                                    <option value="female" {{request('gender') === 'female' ? 'selected' : ''}}>{{__('names.female')}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2 select-filter">
+                                <select name="serial_number" id="select-filter" class="form-control">
+                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    <option value="yes" {{request('serial_number') === 'yes' ? 'selected' : ''}}>{{__('names.have_serial_number')}}</option>
+                                    <option value="no" {{request('serial_number') === 'no' ? 'selected' : ''}}>{{__('names.does_not_have_serial_number')}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
                     <div class="d-flex justify-content-end">
                         <form class="navbar-form">
+                            @if(request()->has('gender') && !empty(request()->get('gender')))
+                                <input type="hidden" name="gender" value="{{request('gender')}}">
+                            @endif
+                                @if(request()->has('serial_number') && !empty(request()->get('serial_number')))
+                                <input type="hidden" name="serial_number" value="{{request('serial_number')}}">
+                            @endif
                             <div class="input-group no-border">
                                 <input type="text" value="{{request('search')}}" name="search" class="form-control" placeholder="{{__('actions.search')}}...">
                                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -78,7 +105,12 @@
 @push('js')
 
     <script>
-
+        let elements = document.getElementsByClassName('select-filter');
+        Array.from(elements).forEach(e => {
+            e.addEventListener('change',() => {
+                document.getElementById('filter-form').submit()
+            });
+        })
         const deleteForm = id => {
 
             Swal.fire({

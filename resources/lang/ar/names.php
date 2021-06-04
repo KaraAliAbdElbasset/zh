@@ -68,6 +68,7 @@ return [
     'date' => 'التاريخ',
     'projects' => 'المشاريع',
     'subs' => 'الاشتراكات',
+    'all' => 'الكل',
 
     'absences' => 'الغياب',
     'ab-type' => 'نوع الغياب',
@@ -75,4 +76,6 @@ return [
     'reason' => 'السبب',
     'add-absence-to-student' => 'أضف الغياب إلى هذا الطالب',
     'add-absence-to-teacher' => 'أضف الغياب إلى هذا الأستاذ',
+    'does_not_have_serial_number' => 'ليس لديه رقم مسلسل',
+    'have_serial_number' => 'لديه رقم مسلسل',
 ];

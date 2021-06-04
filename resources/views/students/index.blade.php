@@ -10,8 +10,35 @@
                     <a class="btn btn-info btn-sm" href="{{route('students.create')}}"  rel="tooltip"  title="{{__('actions.create')}}" data-original-title="{{__('actions.create')}}">
                         <i class="material-icons">add</i>
                     </a>
+                    <form action="" id="filter-form">
+                        @if(request()->has('search') && !empty(request()->get('search')))
+                            <input type="hidden" name="search" value="{{request('search')}}">
+                        @endif
+                        <div class="d-flex justify-content-start row">
+                            <div class="form-group col-md-2 select-filter"><select name="gender"  id="select-filter" class="form-control">
+                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    <option value="male" {{request('gender') === 'male' ? 'selected' : ''}}>{{__('names.male')}}</option>
+                                    <option value="female" {{request('gender') === 'female' ? 'selected' : ''}}>{{__('names.female')}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2 select-filter"><select name="type" id="select-type" class="form-control">
+                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    @foreach(config('student.types') as $t)
+                                        <option value="{{$t}}"{{request('type') == $t ? 'selected': ''}}>{{__('student.'.$t)}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                    </form>
                     <div class="d-flex justify-content-end">
                         <form class="navbar-form">
+                            @if(request()->has('type') && !empty(request()->get('type')))
+                                <input type="hidden" name="type" value="{{request('type')}}">
+                            @endif
+                                @if(request()->has('gender') && !empty(request()->get('gender')))
+                                    <input type="hidden" name="gender" value="{{request('gender')}}">
+                                @endif
                             <div class="input-group no-border">
                                 <input type="text" value="{{request('search')}}" name="search" class="form-control" placeholder="{{__('actions.search')}}...">
                                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -78,6 +105,13 @@
 @push('js')
 
     <script>
+        let elements = document.getElementsByClassName('select-filter');
+        Array.from(elements).forEach(e => {
+            e.addEventListener('change',() => {
+                document.getElementById('filter-form').submit()
+            });
+        })
+
 
         const deleteForm = id => {
 

@@ -11,8 +11,15 @@
                         <i class="material-icons">add</i>
                     </a>
                     <div class="d-flex justify-content-end">
-                        <form class="navbar-form">
-                            <div class="input-group no-border">
+                        <form class="navbar-form row" >
+                            <div class="input-group no-border col-auto">
+                                <input type="number" value="{{request('year')}}" name="year" class="form-control" placeholder="{{__('names.year')}}...">
+                                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                    <i class="material-icons">search</i>
+                                    <div class="ripple-container"></div>
+                                </button>
+                            </div>
+                            <div class="input-group no-border col-auto">
                                 <input type="text" value="{{request('search')}}" name="search" class="form-control" placeholder="{{__('actions.search')}}...">
                                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                     <i class="material-icons">search</i>

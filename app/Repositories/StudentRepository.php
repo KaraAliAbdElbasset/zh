@@ -26,6 +26,8 @@ class StudentRepository extends BaseRepository implements \App\Contracts\Student
         return $this->applyFilter($query,$per_page,
             [
                 \App\QueryFilters\Search::class,
+                \App\QueryFilters\Gender::class,
+                \App\QueryFilters\Type::class,
             ]
         );
     }

@@ -24,7 +24,8 @@ class TeacherRepository extends BaseRepository implements \App\Contracts\Teacher
     {
         $query = Teacher::with($relations)->scopes($scopes)->newQuery();
         return $this->applyFilter($query,$per_page,[
-            \App\QueryFilters\Search::class
+            \App\QueryFilters\Search::class,
+            \App\QueryFilters\Gender::class,
         ]);
     }
 

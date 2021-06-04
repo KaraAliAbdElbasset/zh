@@ -74,4 +74,7 @@ return [
     'reason' => 'Reason',
     'add-absence-to-student' => 'Add Absence To This Student',
     'add-absence-to-teacher' => 'Add Absence To This Teacher',
+    'all' => 'All',
+    'does_not_have_serial_number' => 'does not have serial number',
+    'have_serial_number' => 'have serial number',
 ];
