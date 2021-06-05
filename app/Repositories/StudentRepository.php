@@ -28,6 +28,7 @@ class StudentRepository extends BaseRepository implements \App\Contracts\Student
                 \App\QueryFilters\Search::class,
                 \App\QueryFilters\Gender::class,
                 \App\QueryFilters\Type::class,
+                \App\QueryFilters\MemorizingLevel::class,
             ]
         );
     }

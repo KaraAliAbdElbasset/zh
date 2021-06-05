@@ -135,13 +135,12 @@
                         </div>
 
                         <div class="form-group @error('memorizing_level') has-danger @enderror" id="memorizing_level_block">
-                            <label for="memorizing_level">{{__('names.memorizing_level')}}</label>
+                            <label for="memorizing_level">{{__('names.memorizing_level')}} ({{__('names.number_of_parties')}})</label>
                             <select  class="form-control" name="memorizing_level" data-style="btn btn-link" id="memorizing_level">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                @for($i = 0 ; $i <= 60 ; $i++)
+                                    <option value="{{$i}}"{{old('type',$s->memorizing_level) == $i ? 'selected': ''}} >
+                                        {{$i}}</option>
+                                @endfor
                             </select>
                             @error('memorizing_level')
                             <div class="text-danger">{{$message}}</div>

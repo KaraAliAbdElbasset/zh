@@ -78,4 +78,5 @@ return [
     'add-absence-to-teacher' => 'أضف الغياب إلى هذا الأستاذ',
     'does_not_have_serial_number' => 'ليس لديه رقم مسلسل',
     'have_serial_number' => 'لديه رقم مسلسل',
+    'number_of_parties' => 'عدد أحزاب القرآن'
 ];

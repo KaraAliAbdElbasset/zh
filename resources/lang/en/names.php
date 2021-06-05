@@ -77,4 +77,5 @@ return [
     'all' => 'All',
     'does_not_have_serial_number' => 'does not have serial number',
     'have_serial_number' => 'have serial number',
+    'number_of_parties' => 'The number of Quran parties'
 ];
