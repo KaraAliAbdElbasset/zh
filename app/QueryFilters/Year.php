@@ -15,7 +15,12 @@ class Year extends Filter
             return $builder;
         }
 
-        return $builder->where('year',$q);
+        if (request()->is('clubs*'))
+        {
+            return $builder->where('year',$q);
+        }
+
+        return $builder->whereYear('created_at',$q);
 
     }
 }

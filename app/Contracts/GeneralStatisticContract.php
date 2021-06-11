@@ -4,7 +4,9 @@
 namespace App\Contracts;
 
 
-interface GeneralStatisticContract extends BaseContract
+use App\Contracts\ServiceContract\ExportExcelContract;
+
+interface GeneralStatisticContract extends BaseContract , ExportExcelContract
 {
 
 }

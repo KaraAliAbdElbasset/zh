@@ -4,11 +4,13 @@
 namespace App\Repositories;
 
 
+use App\Contracts\GeneralStatisticContract;
 use App\Models\GeneralStatistic;
+use App\Traits\ExcelAble;
 
-class GeneralStatisticRepository extends BaseRepository implements \App\Contracts\GeneralStatisticContract
+class GeneralStatisticRepository extends BaseRepository implements GeneralStatisticContract
 {
-
+    use ExcelAble;
     /**
      * @inheritDoc
      */
@@ -54,4 +56,5 @@ class GeneralStatisticRepository extends BaseRepository implements \App\Contract
     {
         return GeneralStatistic::destroy($id);
     }
+
 }

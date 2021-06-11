@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function (){
     Route::resource('users',App\Http\Controllers\UserController::class);
     Route::resource('sewing-clients',App\Http\Controllers\SewingClientController::class);
     Route::resource('sewing-workers',App\Http\Controllers\SewingWorkerController::class);
+    Route::get('general-statistics/export',[App\Http\Controllers\GeneralStatisticController::class,'exportToExcel'])->name('general-statistics.export');
     Route::resource('general-statistics',App\Http\Controllers\GeneralStatisticController::class);
     Route::resource('funerals',App\Http\Controllers\FuneralController::class);
     Route::resource('orders',App\Http\Controllers\OrderController::class);

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Contracts\GeneralStatisticContract;
 use App\Http\Requests\GeneralStatisticRequest;
+use App\Models\GeneralStatistic;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 
 class GeneralStatisticController extends Controller
@@ -74,5 +76,20 @@ class GeneralStatisticController extends Controller
         $this->gs->delete($id);
         session()->flash('success',__('messages.delete'));
         return redirect()->route('general-statistics.index');
+    }
+
+    public function exportToExcel()
+    {
+        try {
+            return $this->gs->export(new GeneralStatistic(),['first_name']);
+        }catch (Exception $exception)
+        {
+            session()->flash('error',__('messages.fail'));
+            return request()->wantsJson()
+                ? response()->json([
+                    'success' => false,
+                    'message' => __('messages.fail'),
+                ]): redirect()->back();
+        }
     }
 }

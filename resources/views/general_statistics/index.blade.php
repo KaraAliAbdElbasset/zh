@@ -10,6 +10,9 @@
                     <a class="btn btn-info btn-sm" href="{{route('general-statistics.create')}}"  rel="tooltip"  title="{{__('actions.create')}}" data-original-title="{{__('actions.create')}}">
                         <i class="material-icons">add</i>
                     </a>
+                    <a class="btn btn-info btn-sm" href="{{route('general-statistics.export')}}"  rel="tooltip"  title="{{__('actions.export')}}" data-original-title="{{__('actions.export')}}">
+                        <i class="material-icons">download</i>
+                    </a>
                     <form action="" id="filter-form">
                         @if(request()->has('search') && !empty(request()->get('search')))
                             <input type="hidden" name="search" value="{{request('search')}}">
