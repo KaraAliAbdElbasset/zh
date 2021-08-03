@@ -36,6 +36,17 @@ class Student extends Model
         'name'
     ];
 
+
+    public function getGroupNameAttribute()
+    {
+        return $this->groups()->first() ? $this->groups()->first()->name : '';
+    }
+
+    public function getGroupIdAttribute()
+    {
+        return $this->groups()->first() ? $this->groups()->first()->id : '';
+    }
+
     public function getNameAttribute()
     {
         return $this->first_name. ' ' . $this->last_name;

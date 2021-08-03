@@ -95,6 +95,11 @@
                         <div class="col-md-6 border">{{__('names.created_at')}}</div>
                         <div class="col-md-6 border">{{$s->created_at->format('d/m/Y')}}</div>
                     </div>
+
+                    <div class="row " >
+                        <div class="col-md-6 border">{{__('names.group')}}</div>
+                        <div class="col-md-6 border"><a href="{{route('groups.show', $s->group_id)}}">{{$s->group_name}}</a></div>
+                    </div>
                 </div>
 
             </div>

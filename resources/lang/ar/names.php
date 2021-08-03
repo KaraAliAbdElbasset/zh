@@ -66,6 +66,7 @@ return [
     'study_place' => 'مكان الدراسة',
     'teacher' => 'الأستاذ',
     'groups' => 'الأفواج',
+    'group' => 'الفوج',
     'invoices' => 'الفواتير',
     'date' => 'التاريخ',
     'projects' => 'المشاريع',
