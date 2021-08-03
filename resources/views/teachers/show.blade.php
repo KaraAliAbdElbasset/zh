@@ -25,6 +25,14 @@
                         <div class="col-md-6 border">{{$t->last_name}}</div>
                     </div>
                     <div class="row " >
+                        <div class="col-md-6 border">{{__('names.f_name_fr')}}</div>
+                        <div class="col-md-6 border">{{$t->first_name_fr}}</div>
+                    </div>
+                    <div class="row " >
+                        <div class="col-md-6 border">{{__('names.l_name_fr')}}</div>
+                        <div class="col-md-6 border">{{$t->last_name_fr}}</div>
+                    </div>
+                    <div class="row " >
                         <div class="col-md-6 border">{{__('names.gender')}}</div>
                         <div class="col-md-6 border">{{__('names.'.$t->gender)}}</div>
                     </div>

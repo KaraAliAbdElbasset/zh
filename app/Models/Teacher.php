@@ -18,7 +18,7 @@ class Teacher extends Model
      * @var string[]
      */
     protected $fillable = [
-        'first_name', 'last_name', 'phone_number', 'address', 'birth_date', 'birth_place', 'father_name',
+        'first_name', 'last_name', 'first_name_fr', 'last_name_fr', 'phone_number', 'address', 'birth_date', 'birth_place', 'father_name',
         'mother_full_name', 'work_start_date', 'work_end_date', 'salary', 'gender', 'qualification',
     ];
 

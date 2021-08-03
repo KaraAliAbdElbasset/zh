@@ -28,6 +28,24 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 @error('first_name_fr') has-danger @enderror">
+                                <label for="first_name_fr">{{__('names.f_name_fr')}}</label>
+                                <input type="text" class="form-control" value="{{old('first_name_fr',$s->first_name_fr)}}" id="first_name_fr" name="first_name_fr" placeholder="{{__('names.f_name_fr')}}">
+                                @error('first_name_fr')
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6 @error('last_name_fr') has-danger @enderror">
+                                <label for="last_name_fr">{{__('names.l_name_fr')}}</label>
+                                <input type="text" class="form-control" id="last_name_fr" value="{{old('last_name_fr',$s->last_name_fr)}}" name="last_name_fr"  placeholder="{{__('names.l_name_fr')}}">
+                                @error('last_name_fr')
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group @error('gender') has-danger @enderror">
                             <label for="gender">{{__('names.gender')}}</label>
                             <select name="gender" id="gender" class="form-control">

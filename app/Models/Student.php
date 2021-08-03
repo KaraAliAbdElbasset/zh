@@ -14,7 +14,7 @@ class Student extends Model
      * @var string[]
      */
     protected $fillable = [
-        'first_name', 'last_name', 'birth_date', 'birth_place', 'gender', 'father_name', 'father_job',
+        'first_name', 'last_name', 'first_name_fr', 'last_name_fr', 'birth_date', 'birth_place', 'gender', 'father_name', 'father_job',
         'mother_full_name', 'phone_number', 'address', 'enter_date', 'leave_date', 'education_level',
         'memorizing_level', 'behaviors', 'type',
     ];

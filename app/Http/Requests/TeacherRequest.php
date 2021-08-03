@@ -26,6 +26,8 @@ class TeacherRequest extends FormRequest
         return [
             'first_name'        => 'required|string|max:100',
             'last_name'         => 'required|string|max:100',
+            'first_name_fr'     => 'required|string|max:100',
+            'last_name_fr'      => 'required|string|max:100',
             'birth_date'        => 'required|date',
             'salary'            => 'required|integer',
             'birth_place'       => 'sometimes|nullable|string|max:100',
