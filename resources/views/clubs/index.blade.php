@@ -39,7 +39,7 @@
                                 <th>{{__('names.f_name')}}</th>
                                 <th>{{__('names.managing_office')}}</th>
                                 <th>{{__('names.establishing_date')}}</th>
-                                <th>{{__('names.year')}}</th>
+{{--                                <th>{{__('names.year')}}</th>--}}
                                 <th class="text-right">#</th>
                             </tr>
                             </thead>
@@ -50,7 +50,7 @@
                                     <td>{{$c->name}}</td>
                                     <td>{{$c->managing_office}}</td>
                                     <td>{{$c->establishing_date->format('d-m-Y')}}</td>
-                                    <td>{{$c->year}}</td>
+{{--                                    <td>{{$c->year}}</td>--}}
                                     <td class="td-actions text-right">
                                         <button type="button" onclick="window.location='{{route('clubs.show',$c->id)}}'" rel="tooltip" class="btn btn-info">
                                             <i class="material-icons">info</i>

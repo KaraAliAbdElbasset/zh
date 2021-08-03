@@ -32,7 +32,7 @@
                                 <th>{{__('names.f_name')}}</th>
                                 <th>{{__('names.phone_number')}}</th>
                                 <th>{{__('names.amount')}}</th>
-                                <th>{{__('names.due_date')}}</th>
+{{--                                <th>{{__('names.due_date')}}</th>--}}
                                 <th>{{__('names.paid')}}</th>
                                 <th>{{__('names.created_at')}}</th>
                                 <th class="text-right">#</th>
@@ -45,7 +45,7 @@
                                     <td>{{$o->client->name}}</td>
                                     <td>{{$o->client->phone_number}}</td>
                                     <td>{{$o->amount}}</td>
-                                    <td>{{$o->due_date->format('d-m-Y')}}</td>
+{{--                                    <td>{{$o->due_date->format('d-m-Y')}}</td>--}}
                                     <td>{{$o->paid}}</td>
                                     <td>{{$o->created_at->format('d-m-Y')}}</td>
                                     <td class="td-actions text-right">

@@ -28,7 +28,7 @@ class ClubFactory extends Factory
             'name' => $this->faker->words(2,true),
             'managing_office' => $this->faker->words(3,true),
             'establishing_date' => now(),
-            'year' => $this->faker->year(),
+//            'year' => $this->faker->year(),
             'address' => $this->faker->address,
             'goals' => $this->faker->sentence,
             'funding_sources' => $this->faker->sentence(10,true),

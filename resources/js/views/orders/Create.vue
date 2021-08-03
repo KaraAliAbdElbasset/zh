@@ -22,12 +22,12 @@
                                 </ValidationProvider>
 
                             </div>
-                            <div class="col">
-                                <p class="mb-2 font-weight-bold">تدفع قبل  <span class="text-danger">*</span></p>
-                                <ValidationProvider v-slot="{ errors }" name="due" rules="required">
-                                    <input type="date" class="form-control" id="due" name="due" v-model="order.due_date">
-                                </ValidationProvider>
-                            </div>
+<!--                            <div class="col">-->
+<!--                                <p class="mb-2 font-weight-bold">تدفع قبل  <span class="text-danger">*</span></p>-->
+<!--                                <ValidationProvider v-slot="{ errors }" name="due" rules="required">-->
+<!--                                    <input type="date" class="form-control" id="due" name="due" v-model="order.due_date">-->
+<!--                                </ValidationProvider>-->
+<!--                            </div>-->
                         </div>
                         <hr class="mb-3">
                         <div class="row font-weight-bold mb-2">
@@ -214,7 +214,6 @@ export default {
             order: {
                 total : 0,
                 sewing_client_id:null,
-                due_date:null,
                 paid:0,
                 note:'',
                 products : [

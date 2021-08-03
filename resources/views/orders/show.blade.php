@@ -39,7 +39,7 @@
                                         <!-- /.col -->
                                         <div class="col-sm-4 ">
                                             <b>{{__('names.created_at')}} :</b> {{$o->created_at->format('d/m/Y')}}<br>
-                                            <b>{{__('names.due_date')}} :</b> {{$o->due_date->format('d/m/Y')}}<br>
+{{--                                            <b>{{__('names.due_date')}} :</b> {{$o->due_date->format('d/m/Y')}}<br>--}}
                                             {{--                                        <b>Numéro de compte:</b> 968-34567--}}
                                         </div>
                                         <!-- /.col -->

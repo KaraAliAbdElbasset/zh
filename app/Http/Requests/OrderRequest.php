@@ -26,7 +26,7 @@ class OrderRequest extends FormRequest
         return [
             'sewing_client_id' => 'required|integer|exists:sewing_clients,id',
             'paid'             => 'sometimes|nullable|integer|gte:0',
-            'due_date'         => 'required|date',
+//            'due_date'         => 'required|date',
             'note'             => 'sometimes|nullable|string',
             'products'         => 'required|array',
             'products.*.name'  => 'required|string|max:200',

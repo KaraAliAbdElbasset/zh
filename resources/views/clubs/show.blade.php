@@ -37,10 +37,10 @@
                         <div class="col-md-6 border">{{__('names.establishing_date')}}</div>
                         <div class="col-md-6 border">{{$club->establishing_date->format('d-m-Y')}}</div>
                     </div>
-                    <div class="row " >
-                        <div class="col-md-6 border">{{__('names.year')}}</div>
-                        <div class="col-md-6 border">{{$club->year}}</div>
-                    </div>
+{{--                    <div class="row " >--}}
+{{--                        <div class="col-md-6 border">{{__('names.year')}}</div>--}}
+{{--                        <div class="col-md-6 border">{{$club->year}}</div>--}}
+{{--                    </div>--}}
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.address')}}</div>
                         <div class="col-md-6 border">{{$club->address}}</div>

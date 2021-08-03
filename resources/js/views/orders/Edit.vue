@@ -22,15 +22,15 @@
                                 </ValidationProvider>
 
                             </div>
-                            <div class="col">
-                                <p class="mb-2 font-weight-bold">تدفع قبل  <span class="text-danger">*</span></p>
-                                <ValidationProvider v-slot="{ errors }" name="due_date" rules="required">
-                                    <input type="date" class="form-control" id="due_date" name="due_date" v-model="order.due_date">
-                                    <div v-if="errors.length > 0" class="text-danger">
-                                        {{errors[0]}}
-                                    </div>
-                                </ValidationProvider>
-                            </div>
+<!--                            <div class="col">-->
+<!--                                <p class="mb-2 font-weight-bold">تدفع قبل  <span class="text-danger">*</span></p>-->
+<!--                                <ValidationProvider v-slot="{ errors }" name="due_date" rules="required">-->
+<!--                                    <input type="date" class="form-control" id="due_date" name="due_date" v-model="order.due_date">-->
+<!--                                    <div v-if="errors.length > 0" class="text-danger">-->
+<!--                                        {{errors[0]}}-->
+<!--                                    </div>-->
+<!--                                </ValidationProvider>-->
+<!--                            </div>-->
                         </div>
                         <hr class="mb-3">
                         <div class="row font-weight-bold mb-2">

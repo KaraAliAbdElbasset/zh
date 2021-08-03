@@ -18,7 +18,7 @@ class Order extends Model
      */
     protected $fillable = [
         'sewing_client_id',
-        'due_date',
+//        'due_date',
         'amount',
         'paid',
         'note',

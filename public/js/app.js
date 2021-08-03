@@ -2142,7 +2142,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       order: {
         total: 0,
         sewing_client_id: null,
-        due_date: null,
         paid: 0,
         note: '',
         products: [{
@@ -23475,78 +23474,15 @@ var render = function() {
                                                   },
                                                   [
                                                     _vm._v(
-                                                      "\n                                        " +
+                                                      "\n                                            " +
                                                         _vm._s(errors[0]) +
-                                                        "\n                                    "
+                                                        "\n                                        "
                                                     )
                                                   ]
                                                 )
                                               : _vm._e()
                                           ]
                                         )
-                                      ]
-                                    }
-                                  }
-                                ],
-                                null,
-                                true
-                              )
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col" },
-                          [
-                            _c("p", { staticClass: "mb-2 font-weight-bold" }, [
-                              _vm._v("تدفع قبل  "),
-                              _c("span", { staticClass: "text-danger" }, [
-                                _vm._v("*")
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("ValidationProvider", {
-                              attrs: { name: "due", rules: "required" },
-                              scopedSlots: _vm._u(
-                                [
-                                  {
-                                    key: "default",
-                                    fn: function(ref) {
-                                      var errors = ref.errors
-                                      return [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value: _vm.order.due_date,
-                                              expression: "order.due_date"
-                                            }
-                                          ],
-                                          staticClass: "form-control",
-                                          attrs: {
-                                            type: "date",
-                                            id: "due",
-                                            name: "due"
-                                          },
-                                          domProps: {
-                                            value: _vm.order.due_date
-                                          },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.order,
-                                                "due_date",
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        })
                                       ]
                                     }
                                   }
@@ -23658,9 +23594,9 @@ var render = function() {
                                                       },
                                                       [
                                                         _vm._v(
-                                                          "\n                                        " +
+                                                          "\n                                            " +
                                                             _vm._s(errors[0]) +
-                                                            "\n                                    "
+                                                            "\n                                        "
                                                         )
                                                       ]
                                                     )
@@ -23742,9 +23678,9 @@ var render = function() {
                                                       },
                                                       [
                                                         _vm._v(
-                                                          "\n                                        " +
+                                                          "\n                                            " +
                                                             _vm._s(errors[0]) +
-                                                            "\n                                    "
+                                                            "\n                                        "
                                                         )
                                                       ]
                                                     )
@@ -23827,9 +23763,9 @@ var render = function() {
                                                       },
                                                       [
                                                         _vm._v(
-                                                          "\n                                        " +
+                                                          "\n                                            " +
                                                             _vm._s(errors[0]) +
-                                                            "\n                                    "
+                                                            "\n                                        "
                                                         )
                                                       ]
                                                     )
@@ -24028,9 +23964,9 @@ var render = function() {
                                                 { staticClass: "text-danger" },
                                                 [
                                                   _vm._v(
-                                                    "\n                                    " +
+                                                    "\n                                        " +
                                                       _vm._s(errors[0]) +
-                                                      "\n                                "
+                                                      "\n                                    "
                                                   )
                                                 ]
                                               )
@@ -24080,7 +24016,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                            لالغاء\n                        "
+                              "\n                                لالغاء\n                            "
                             )
                           ]
                         ),
@@ -24103,7 +24039,7 @@ var render = function() {
                                 })
                               : [
                                   _vm._v(
-                                    "\n                                حفظ\n                            "
+                                    "\n                                    حفظ\n                                "
                                   )
                                 ]
                           ],
@@ -24261,92 +24197,15 @@ var render = function() {
                                                   },
                                                   [
                                                     _vm._v(
-                                                      "\n                                        " +
+                                                      "\n                                            " +
                                                         _vm._s(errors[0]) +
-                                                        "\n                                    "
+                                                        "\n                                        "
                                                     )
                                                   ]
                                                 )
                                               : _vm._e()
                                           ]
                                         )
-                                      ]
-                                    }
-                                  }
-                                ],
-                                null,
-                                true
-                              )
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col" },
-                          [
-                            _c("p", { staticClass: "mb-2 font-weight-bold" }, [
-                              _vm._v("تدفع قبل  "),
-                              _c("span", { staticClass: "text-danger" }, [
-                                _vm._v("*")
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("ValidationProvider", {
-                              attrs: { name: "due_date", rules: "required" },
-                              scopedSlots: _vm._u(
-                                [
-                                  {
-                                    key: "default",
-                                    fn: function(ref) {
-                                      var errors = ref.errors
-                                      return [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value: _vm.order.due_date,
-                                              expression: "order.due_date"
-                                            }
-                                          ],
-                                          staticClass: "form-control",
-                                          attrs: {
-                                            type: "date",
-                                            id: "due_date",
-                                            name: "due_date"
-                                          },
-                                          domProps: {
-                                            value: _vm.order.due_date
-                                          },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.order,
-                                                "due_date",
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        errors.length > 0
-                                          ? _c(
-                                              "div",
-                                              { staticClass: "text-danger" },
-                                              [
-                                                _vm._v(
-                                                  "\n                                    " +
-                                                    _vm._s(errors[0]) +
-                                                    "\n                                "
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
                                       ]
                                     }
                                   }
@@ -24458,9 +24317,9 @@ var render = function() {
                                                       },
                                                       [
                                                         _vm._v(
-                                                          "\n                                        " +
+                                                          "\n                                            " +
                                                             _vm._s(errors[0]) +
-                                                            "\n                                    "
+                                                            "\n                                        "
                                                         )
                                                       ]
                                                     )
@@ -24542,9 +24401,9 @@ var render = function() {
                                                       },
                                                       [
                                                         _vm._v(
-                                                          "\n                                        " +
+                                                          "\n                                            " +
                                                             _vm._s(errors[0]) +
-                                                            "\n                                    "
+                                                            "\n                                        "
                                                         )
                                                       ]
                                                     )
@@ -24627,9 +24486,9 @@ var render = function() {
                                                       },
                                                       [
                                                         _vm._v(
-                                                          "\n                                        " +
+                                                          "\n                                            " +
                                                             _vm._s(errors[0]) +
-                                                            "\n                                    "
+                                                            "\n                                        "
                                                         )
                                                       ]
                                                     )
@@ -24828,9 +24687,9 @@ var render = function() {
                                                 { staticClass: "text-danger" },
                                                 [
                                                   _vm._v(
-                                                    "\n                                    " +
+                                                    "\n                                        " +
                                                       _vm._s(errors[0]) +
-                                                      "\n                                "
+                                                      "\n                                    "
                                                   )
                                                 ]
                                               )
@@ -24880,7 +24739,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                            لالغاء\n                        "
+                              "\n                                لالغاء\n                            "
                             )
                           ]
                         ),
@@ -24903,7 +24762,7 @@ var render = function() {
                                 })
                               : [
                                   _vm._v(
-                                    "\n                                حفظ\n                            "
+                                    "\n                                    حفظ\n                                "
                                   )
                                 ]
                           ],

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('css')
+    <link rel="stylesheet" type="text/css" href="https://printjs-4de6.kxcdn.com/print.min.css">
+@endpush
+
 @section('content')
 
     <div class="row">
@@ -41,6 +45,9 @@
                 </div>
 
                 <div class="card-body">
+                    <button type="button"  onclick="printTable()">
+                        Print
+                    </button>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -91,6 +98,29 @@
 @endsection
 
 @push('js')
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+
+    <script>
+        let teachers = {!! $teachers->toJson() !!}
+
+        function printTable()
+        {
+            var someJSONdata = teachers.data
+            printJS({
+                printable: someJSONdata,
+                properties: [
+                    { field: 'birth_date', displayName: '{{__('names.birth_date')}}'}
+                    { field: 'first_name', displayName: '{{__('names.f_name')}}'},
+                    { field: 'last_name', displayName: '{{__('names.l_name')}}'},
+                ],
+                table: '.table',
+                type: 'json'
+            })
+        }
+
+
+    </script>
+
 
     <script>
         let elements = document.getElementsByClassName('select-filter');

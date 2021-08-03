@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('sewing_client_id')->constrained('sewing_clients')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->date('due_date')->nullable();
+//            $table->date('due_date')->nullable();
             $table->integer('amount');
             $table->integer('paid')->default(0);
             $table->string('note')->nullable();

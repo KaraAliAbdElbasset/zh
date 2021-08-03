@@ -18,7 +18,7 @@ class CreateClubsTable extends Migration
             $table->string('name');
             $table->string('managing_office');
             $table->date('establishing_date');
-            $table->string('year');
+//            $table->string('year');
             $table->string('address');
             $table->text('goals')->nullable();
             $table->text('funding_sources')->nullable();

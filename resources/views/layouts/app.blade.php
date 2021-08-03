@@ -64,7 +64,6 @@
         </div>
     </div>
 </div>
-
 <!--   Core JS Files   -->
 <script src="{{asset('assets/js/core/jquery.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/core/popper.min.js')}}" type="text/javascript"></script>
@@ -81,6 +80,7 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('assets/demo/demo.js')}}"></script>
 <script src="{{asset('assets/js/plugins/sweetalert2.js')}}"></script>
+
 <script>
 
     const Toast = Swal.mixin({

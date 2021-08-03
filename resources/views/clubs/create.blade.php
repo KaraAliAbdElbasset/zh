@@ -35,13 +35,13 @@
                             @enderror
                         </div>
 
-                        <div class="form-group  @error('year') has-danger @enderror">
-                            <label for="year">{{__('names.year')}}</label>
-                            <input type="text" class="form-control" name="year" value="{{old('year')}}" id="year"  placeholder="{{__('names.year')}}">
-                            @error('year')
-                            <div class="text-danger">{{$message}}</div>
-                            @enderror
-                        </div>
+{{--                        <div class="form-group  @error('year') has-danger @enderror">--}}
+{{--                            <label for="year">{{__('names.year')}}</label>--}}
+{{--                            <input type="text" class="form-control" name="year" value="{{old('year')}}" id="year"  placeholder="{{__('names.year')}}">--}}
+{{--                            @error('year')--}}
+{{--                            <div class="text-danger">{{$message}}</div>--}}
+{{--                            @enderror--}}
+{{--                        </div>--}}
 
                         <div class="form-group  @error('address') has-danger @enderror">
                             <label for="address">{{__('names.address')}}</label>

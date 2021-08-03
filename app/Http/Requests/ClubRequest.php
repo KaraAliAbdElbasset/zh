@@ -27,7 +27,7 @@ class ClubRequest extends FormRequest
             'name'              => 'required|string|max:200',
             'managing_office'   => 'required|string|max:200',
             'establishing_date' => 'required|date',
-            'year'              => 'required|string|max:4',
+//            'year'              => 'required|string|max:4',
             'address'           => 'required|string|max:200',
             'goals'             => 'sometimes|nullable|string|max:200',
             'funding_sources'   => 'sometimes|nullable|string|max:200'
