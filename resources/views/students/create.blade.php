@@ -163,6 +163,18 @@
                             @enderror
                         </div>
 
+                        <div class="form-group @error('group') has-danger @enderror" id="group">
+                            <label for="memorizing_level">{{__('names.group')}}</label>
+                            <select  class="form-control" name="group" data-style="btn btn-link" id="group">
+                                @foreach($groups as $group)
+                                    <option value="{{$group->id}}"{{old('group') == $group->id ? 'selected': ''}} >{{$group->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('group')
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                        </div>
+
                         <button type="submit" class="btn btn-primary">{{__('names.save')}}</button>
                     </form>
                 </div>

@@ -43,6 +43,7 @@ class StudentRequest extends FormRequest
             'behaviors'         => 'sometimes|nullable|string|max:200',
             'type'              => 'required|integer|in:'.implode(',',config('student.types')),
             'memorizing_level'  => 'required_if:type,1|string|max:200',
+            'group'             => 'sometimes|nullable|exists:groups,id',
         ];
     }
 }

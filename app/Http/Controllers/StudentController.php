@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\GroupContract;
 use App\Contracts\StudentContract;
 use App\Http\Requests\StudentRequest;
 use Illuminate\Http\RedirectResponse;
@@ -12,14 +13,18 @@ class StudentController extends Controller
      * @var StudentContract
      */
     protected $student;
+    protected $group;
+
 
     /**
      * StudentController constructor.
      * @param StudentContract $student
+     * @param GroupContract $group
      */
-    public function __construct(StudentContract $student)
+    public function __construct(StudentContract $student, GroupContract $group)
     {
         $this->student = $student;
+        $this->group = $group;
     }
 
 
@@ -31,7 +36,8 @@ class StudentController extends Controller
 
     public function create()
     {
-        return view('students.create');
+        $groups = $this->group->findByFilter(0);
+        return view('students.create', compact('groups'));
     }
 
     /**
@@ -54,8 +60,9 @@ class StudentController extends Controller
 
     public function edit($id)
     {
+        $groups = $this->group->findByFilter(0);
         $s = $this->student->findOneById($id);
-        return view('students.edit',compact('s'));
+        return view('students.edit',compact('s', 'groups'));
     }
 
     /**

@@ -38,7 +38,9 @@ class StudentRepository extends BaseRepository implements \App\Contracts\Student
      */
     public function add(array $data)
     {
-        return Student::create($data);
+        $student = Student::create($data);
+        $student->groups()->attach($data['group']);
+        return $student;
     }
 
     /**
@@ -48,6 +50,7 @@ class StudentRepository extends BaseRepository implements \App\Contracts\Student
     {
         $student = $this->findOneById($id);
         $student->update($data);
+        $student->groups()->sync($data['group']);
         return $student;
     }
 
