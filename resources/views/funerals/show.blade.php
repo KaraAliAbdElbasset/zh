@@ -48,11 +48,6 @@
                         <div class="col-md-6 border">{{__('names.father_name')}}</div>
                         <div class="col-md-6 border">{{$f->father_name}}</div>
                     </div>
-
-                    <div class="row " >
-                        <div class="col-md-6 border">{{__('names.father_name')}}</div>
-                        <div class="col-md-6 border">{{$f->father_name}}</div>
-                    </div>
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.mother_full_name')}}</div>
                         <div class="col-md-6 border">{{$f->mother_full_name}}</div>

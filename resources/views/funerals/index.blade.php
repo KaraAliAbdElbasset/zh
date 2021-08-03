@@ -23,14 +23,21 @@
                                     <option value="female" {{request('gender') === 'female' ? 'selected' : ''}}>{{__('names.female')}}</option>
                                 </select>
                             </div>
+
                         </div>
+
+
                     </form>
 
                     <div class="d-flex justify-content-end">
                         @if(request()->has('gender') && !empty(request()->get('gender')))
                             <input type="hidden" name="gender" value="{{request('gender')}}">
                         @endif
-                        <form class="navbar-form">
+                        <form class="navbar-form d-flex justify-content-end">
+                            <div class="input-group no-border col-auto">
+                                <input type="number" value="{{request('year')}}" name="year" class="form-control" placeholder="{{__('names.year')}}...">
+                            </div>
+
                             <div class="input-group no-border">
                                 <input type="text" value="{{request('search')}}" name="search" class="form-control" placeholder="{{__('actions.search')}}...">
                                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -38,6 +45,7 @@
                                     <div class="ripple-container"></div>
                                 </button>
                             </div>
+
                         </form>
                     </div>
                 </div>

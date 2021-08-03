@@ -26,6 +26,7 @@ class FuneralRepository extends BaseRepository implements \App\Contracts\Funeral
         return $this->applyFilter($query,$per_page,[
             \App\QueryFilters\Search::class,
             \App\QueryFilters\Gender::class,
+            \App\QueryFilters\Year::class,
         ]);
     }
 
