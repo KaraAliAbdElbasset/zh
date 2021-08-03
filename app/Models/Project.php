@@ -17,7 +17,7 @@ class Project extends Model
      * @var string[]
      */
     protected $fillable = [
-        'club_id', 'name', 'start_date', 'end_date', 'amount', 'note',
+        'club_id', 'name', 'start_date', 'end_date', 'amount', 'note', 'owner'
     ];
 
     /**

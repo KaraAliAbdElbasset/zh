@@ -109,7 +109,7 @@
             printJS({
                 printable: someJSONdata,
                 properties: [
-                    { field: 'birth_date', displayName: '{{__('names.birth_date')}}'}
+                    { field: 'birth_date', displayName: '{{__('names.birth_date')}}'},
                     { field: 'first_name', displayName: '{{__('names.f_name')}}'},
                     { field: 'last_name', displayName: '{{__('names.l_name')}}'},
                 ],

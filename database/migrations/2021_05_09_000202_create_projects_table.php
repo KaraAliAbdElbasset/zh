@@ -24,6 +24,7 @@ class CreateProjectsTable extends Migration
             $table->date('end_date')->nullable();
             $table->integer('amount')->nullable();
             $table->string('note')->nullable();
+            $table->string('owner')->nullable();
             $table->timestamps();
         });
     }

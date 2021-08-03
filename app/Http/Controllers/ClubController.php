@@ -145,6 +145,7 @@ class ClubController extends Controller
     public function storeProject($id,Request $request): RedirectResponse
     {
         $data = $request->validate([
+            'owner' => 'required|string|max:200',
             'name' => 'required|string|max:200',
             'amount' => 'required|integer',
             'note' => 'sometimes|nullable|string|max:200',
@@ -162,6 +163,7 @@ class ClubController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:200',
+            'owner' => 'required|string|max:200',
             'amount' => 'required|integer',
             'note' => 'sometimes|nullable|string|max:200',
             'start_date' => 'sometimes|nullable|date',

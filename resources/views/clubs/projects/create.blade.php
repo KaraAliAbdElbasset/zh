@@ -20,6 +20,14 @@
                         @enderror
                     </div>
 
+                    <div class="form-group  @error('owner') has-danger @enderror">
+                        <label for="owner">{{__('names.project_owner')}}</label>
+                        <input type="text" class="form-control" name="owner" value="{{old('owner')}}" id="owner"  placeholder="{{__('names.project_owner')}}">
+                        @error('owner')
+                        <div class="text-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+
                     <div class="form-group  @error('amount') has-danger @enderror">
                         <label for="client_name">{{__('names.amount')}}</label>
                         <input type="number" class="form-control" name="amount" value="{{old('amount')}}" id="amount"  placeholder="{{__('names.amount')}}">
