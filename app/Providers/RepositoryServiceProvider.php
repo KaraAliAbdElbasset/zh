@@ -21,6 +21,8 @@ class RepositoryServiceProvider extends ServiceProvider
         \App\Contracts\TeacherContract::class               => \App\Repositories\TeacherRepository::class,
         \App\Contracts\StudentContract::class               => \App\Repositories\StudentRepository::class,
         \App\Contracts\GroupContract::class                 => \App\Repositories\GroupRepository::class,
+        \App\Contracts\PaymentContract::class               => \App\Repositories\PaymentRepository::class,
+
     ];
 
     /**

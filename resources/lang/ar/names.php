@@ -58,6 +58,9 @@ return [
     'funding_sources' => 'مصادر التمويل',
     'goals' => 'الأهداف',
     'teachers' => 'الاساتذة',
+    'payments' => 'المدفوعات',
+    'month' => 'شهر',
+
     'students' => 'الطلاب',
     'type' => 'نوع الطالب',
     'behaviors' => 'السلوكيات',

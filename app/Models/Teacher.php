@@ -56,4 +56,11 @@ class Teacher extends Model
     {
         return $this->morphMany(Absence::class,'absenceable');
     }
+
+
+
+    public function payments()
+    {
+        return $this->morphMany(Payment::class, 'paymentable');
+    }
 }

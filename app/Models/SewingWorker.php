@@ -28,4 +28,10 @@ class SewingWorker extends Model
         'work_start_date' => 'date',
         'work_end_date' => 'date',
     ];
+
+
+    public function payments()
+    {
+        return $this->morphMany(Payment::class, 'paymentable');
+    }
 }

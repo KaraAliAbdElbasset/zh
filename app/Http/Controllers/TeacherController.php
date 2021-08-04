@@ -83,4 +83,38 @@ class TeacherController extends Controller
     }
 
 
+    /**
+     * @param $id
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function storePayment($id, Request $request): RedirectResponse
+    {
+        $data = $request->validate([
+            'month' => 'required|date',
+            'amount' => 'required|integer',
+        ]);
+
+        if ($this->teacher->addPayment($id, $data))
+        {
+            session()->flash('success',__('messages.create'));
+            return back();
+        }else{
+            session()->flash('success',__('messages.payment-exists'));
+            return back();
+        }
+    }
+
+    /**
+     * @param $id
+     * @param $payment_id
+     * @return RedirectResponse
+     */
+    public function destroyPayment($id, $payment_id): RedirectResponse
+    {
+        $this->teacher->deletePayment($id, $payment_id);
+        session()->flash('success',__('messages.create'));
+        return back();
+    }
+
 }
