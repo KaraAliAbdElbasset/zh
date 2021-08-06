@@ -114,7 +114,7 @@
                     { field: 'last_name', displayName: '{{__('names.l_name')}}'},
                 ],
                 table: '.table',
-                type: 'json'
+                type: 'json',
             })
         }
 
