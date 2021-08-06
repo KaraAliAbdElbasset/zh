@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 
 use App\Models\SewingWorker;
+use Carbon\Carbon;
 
 class SewingWorkerRepository extends BaseRepository implements \App\Contracts\SewingWorkerContract
 {
@@ -53,5 +54,27 @@ class SewingWorkerRepository extends BaseRepository implements \App\Contracts\Se
     public function delete(int $id)
     {
         return SewingWorker::destroy($id);
+    }
+
+    public function addPayment($id, array $data)
+    {
+        $sw = $this->findOneById($id);
+        $data['month'] = Carbon::parse($data['month'])->setDay(1);
+        $payment = $sw->payments()->where('month', $data['month'])->first();
+
+        if ($payment)
+        {
+            return false;
+        }
+
+        $sw->payments()->create($data);
+        return true;
+    }
+
+    public function deletePayment($id, $payment_id)
+    {
+        $sw = $this->findOneById($id);
+        $payment = $sw->payments()->findOrFail($payment_id);
+        return $payment->delete();
     }
 }

@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 
 use App\Models\Teacher;
+use Carbon\Carbon;
 
 class TeacherRepository extends BaseRepository implements \App\Contracts\TeacherContract
 {
@@ -55,5 +56,27 @@ class TeacherRepository extends BaseRepository implements \App\Contracts\Teacher
         $t = $this->findOneById($id);
         $t->absences()->delete();
         return $t->delete();
+    }
+
+    public function addPayment($id, array $data)
+    {
+        $teacher = $this->findOneById($id);
+        $data['month'] = Carbon::parse($data['month'])->setDay(1);
+        $payment = $teacher->payments()->where('month', $data['month'])->first();
+
+        if ($payment)
+        {
+            return false;
+        }
+
+        $teacher->payments()->create($data);
+        return true;
+    }
+
+    public function deletePayment($id, $payment_id)
+    {
+        $teacher = $this->findOneById($id);
+        $payment = $teacher->payments()->findOrFail($payment_id);
+        return $payment->delete();
     }
 }

@@ -23,6 +23,10 @@ Route::middleware('auth')->group(function (){
 
     Route::resource('users',App\Http\Controllers\UserController::class);
     Route::resource('sewing-clients',App\Http\Controllers\SewingClientController::class);
+
+    Route::post('sewing-workers/{id}/add-payment',[App\Http\Controllers\SewingWorkerController::class,'storePayment'])->name('sewing-workers.add.payments');
+    Route::delete('sewing-workers/{id}/remove-payment/{payment_id}',[App\Http\Controllers\SewingWorkerController::class,'destroyPayment'])->name('sewing-workers.remove.payments');
+
     Route::resource('sewing-workers',App\Http\Controllers\SewingWorkerController::class);
     Route::get('general-statistics/export',[App\Http\Controllers\GeneralStatisticController::class,'exportToExcel'])->name('general-statistics.export');
     Route::resource('general-statistics',App\Http\Controllers\GeneralStatisticController::class);
@@ -52,6 +56,9 @@ Route::middleware('auth')->group(function (){
 
 
     Route::resource('clubs',App\Http\Controllers\ClubController::class);
+
+    Route::post('teachers/{id}/add-payment',[App\Http\Controllers\TeacherController::class,'storePayment'])->name('teachers.add.payments');
+    Route::delete('teachers/{id}/remove-payment/{payment_id}',[App\Http\Controllers\TeacherController::class,'destroyPayment'])->name('teachers.remove.payments');
     Route::resource('teachers',App\Http\Controllers\TeacherController::class);
     Route::resource('students',App\Http\Controllers\StudentController::class);
 
@@ -71,6 +78,9 @@ Route::middleware('auth')->group(function (){
     Route::post('groups/{id}/add-students',[App\Http\Controllers\GroupController::class,'studentsAttach'])->name('groups.add.students.post');
     Route::delete('groups/{id}/delete-student/{student_id}',[App\Http\Controllers\GroupController::class,'detachStudent'])->name('groups.delete.students');
     Route::resource('groups',App\Http\Controllers\GroupController::class);
+
+    Route::resource('payments',App\Http\Controllers\PaymentController::class)->only(['edit', 'update']);
+
 });
 
 Route::get('test',function (){
