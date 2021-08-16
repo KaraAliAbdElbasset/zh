@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- Markazi Text font include just for persian demo purpose, don't include it in your project -->
     <link href="https://fonts.googleapis.com/css?family=Cairo&amp;subset=arabic" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- CSS Files -->
     <link href="{{asset('assets/css/material-dashboard.min.css')}}" rel="stylesheet" />
     <link href="{{asset('assets/css/material-dashboard-rtl.css')}}" rel="stylesheet" />

@@ -25,7 +25,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="myTable">
                             <thead>
                             <tr>
                                 <th class="text-center">#</th>
@@ -112,5 +112,6 @@
             return f;
         }
     </script>
+
 
 @endpush

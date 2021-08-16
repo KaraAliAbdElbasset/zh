@@ -73,7 +73,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="myTable">
                             <thead>
                             <tr>
                                 <th class="text-center">#</th>
@@ -81,6 +81,7 @@
                                 <th>{{__('names.l_name')}}</th>
                                 <th>{{__('names.gender')}}</th>
                                 <th>{{__('names.phone_number')}}</th>
+                                <th>{{__('names.birth_date')}}</th>
                                 <th>{{__('names.type')}}</th>
                                 <th>{{__('names.created_at')}}</th>
                                 <th class="text-right">#</th>
@@ -94,6 +95,7 @@
                                     <td>{{$s->last_name}}</td>
                                     <td>{{__('names.'.$s->gender)}}</td>
                                     <td>{{$s->phone_number}}</td>
+                                    <td>{{$s->birth_date->format('d/m/Y')}}</td>
                                     <td>{{__('student.'.$s->type) }}</td>
                                     <td>{{$s->created_at->format('d/m/Y')}}</td>
                                     <td class="td-actions text-right">
@@ -174,4 +176,37 @@
         }
     </script>
 
+
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable({
+                paging: false,
+                searching: false,
+                info: false,
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [ 0, 1, 2, 5 ]
+                        }
+                    },
+                ]
+            } );
+            $('.buttons-print').each(function() {
+                $(this).removeClass('btn-default').addClass('btn btn-primary')
+                this.innerHTML = '{{__('actions.print')}}'
+
+
+            })
+        } );
+    </script>
 @endpush
