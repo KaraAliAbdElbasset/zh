@@ -232,6 +232,33 @@ class ClubController extends Controller
         return redirect()->route('clubs.show',$id);
     }
 
+    public function officerUpdate(Request $request,$id)
+    {
+        $data = $request->validate([
+            'managing_office' => 'required|array',
+            'managing_office.*.name' => 'required|string|max:100',
+            'managing_office.*.level' => 'required|string|max:100',
+        ]);
 
+        $this->club->update($id,$data);
+        return response()->json([
+            'success' => true,
+            'message' => __('messages.update'),
+        ]);
+    }
+
+    public function goalsUpdate(Request $request,$id)
+    {
+        $data = $request->validate([
+            'goals' => 'required|array',
+            'goals.*' => 'required|string|max:200',
+        ]);
+
+        $this->club->update($id,$data);
+        return response()->json([
+            'success' => true,
+            'message' => __('messages.update'),
+        ]);
+    }
 
 }

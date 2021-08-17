@@ -54,6 +54,8 @@ Route::middleware('auth')->group(function (){
     Route::put('clubs/{id}/subs/{sub_id}',[App\Http\Controllers\ClubController::class,'updateSubscription'])->name('clubs.subs.update');
     Route::delete('clubs/{id}/subs/{sub_id}',[App\Http\Controllers\ClubController::class,'destroySubscription'])->name('clubs.subs.destroy');
 
+    Route::put('clubs/{id}/officer',[App\Http\Controllers\ClubController::class,'officerUpdate'])->name('clubs.officer.update');
+    Route::put('clubs/{id}/goal',[App\Http\Controllers\ClubController::class,'GoalsUpdate'])->name('clubs.goals.update');
 
     Route::resource('clubs',App\Http\Controllers\ClubController::class);
 

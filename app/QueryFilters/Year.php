@@ -19,7 +19,7 @@ class Year extends Filter
 
         if (request()->is('clubs*'))
         {
-            return $builder->where('year',$q);
+            return $builder->whereYear('establishing_date',$q);
         }
 
         if (request()->is('funerals*'))

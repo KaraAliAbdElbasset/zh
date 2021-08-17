@@ -17,7 +17,7 @@ class Club extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name', 'managing_office', 'establishing_date', 'year', 'address', 'goals', 'funding_sources',
+        'name', 'managing_office', 'establishing_date', 'address', 'goals', 'funding_sources',
     ];
 
     /**
@@ -27,6 +27,7 @@ class Club extends Model
         'establishing_date' => 'date',
         'funding_sources' => 'array',
         'goals' => 'array',
+        'managing_office' => 'array',
     ];
 
     /**

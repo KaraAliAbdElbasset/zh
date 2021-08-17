@@ -12,7 +12,7 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row" id="app">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
@@ -29,10 +29,7 @@
                         <div class="col-md-6 border">{{__('names.f_name')}}</div>
                         <div class="col-md-6 border">{{$club->name}}</div>
                     </div>
-                    <div class="row " >
-                        <div class="col-md-6 border">{{__('names.managing_office')}}</div>
-                        <div class="col-md-6 border">{{$club->managing_office}}</div>
-                    </div>
+
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.establishing_date')}}</div>
                         <div class="col-md-6 border">{{$club->establishing_date->format('d-m-Y')}}</div>
@@ -51,7 +48,7 @@
                     </div>
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.funding_sources')}}</div>
-                        <div class="col-md-6 border">{{$club->address}}</div>
+                        <div class="col-md-6 border">{{$club->funding_sources}}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 border">{{__('names.created_at')}}</div>
@@ -60,6 +57,15 @@
 
                 </div>
             </div>
+            <managing-office-component
+                route="{{route('clubs.officer.update',$club->id)}}"
+                :officers="{{json_encode($club->managing_office, JSON_THROW_ON_ERROR)}}"
+            ></managing-office-component>
+
+            <goals-component
+                route="{{route('clubs.goals.update',$club->id)}}"
+                :goals="{{json_encode($club->goals, JSON_THROW_ON_ERROR)}}"
+            ></goals-component>
         </div>
         @if(!request()->routeIs('clubs.show'))
             @yield('form-content')
@@ -146,7 +152,7 @@
 @endsection
 
 @push('js')
-
+    <script src="{{mix('js/app.js')}}"></script>
     <script>
         // const scrollToAnchor = anchor => {
         //     setTimeout(() => {
