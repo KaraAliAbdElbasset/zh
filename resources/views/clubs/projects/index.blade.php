@@ -1,5 +1,5 @@
 <div class="col-md-12">
-    <div class="card" id="projects">
+    <div class="card" >
         <div class="card-header">
             <h4 class="card-title">{{__('names.list',['name' => __('names.projects')])}}</h4>
             <a class="btn btn-info btn-sm" href="{{route('clubs.projects.create',$club->id)}}"  rel="tooltip"  title="{{__('actions.create')}}" data-original-title="{{__('actions.create')}}">
@@ -9,11 +9,12 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="projects">
                     <thead>
                     <tr>
                         <th class="text-center">#</th>
                         <th>{{__('names.f_name')}}</th>
+                        <th>{{__('names.project_owner')}}</th>
                         <th>{{__('names.amount')}}</th>
                         <th>{{__('names.start_date')}}</th>
                         <th>{{__('names.end_date')}}</th>
@@ -26,6 +27,7 @@
                         <tr>
                             <td class="text-center">{{$key + 1}}</td>
                             <td>{{$p->name}}</td>
+                            <td>{{$p->owner}}</td>
                             <td>{{$p->amount}}</td>
                             <td>{{$p->start_date ? $p->start_date->format('d/m/Y') : ''}}</td>
                             <td>{{$p->end_date ? $p->end_date->format('d/m/Y') : ''}}</td>

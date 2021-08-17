@@ -16,7 +16,7 @@ class CreateClubsTable extends Migration
         Schema::create('clubs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('managing_office');
+            $table->text('managing_office')->nullable();
             $table->date('establishing_date');
 //            $table->string('year');
             $table->string('address');

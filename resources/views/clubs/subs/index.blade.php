@@ -1,5 +1,5 @@
 <div class="col-md-12">
-    <div class="card" id="subs">
+    <div class="card" >
         <div class="card-header">
             <h4 class="card-title">{{__('names.list',['name' => __('names.subs')])}}</h4>
             <a class="btn btn-info btn-sm" href="{{route('clubs.subs.create',$club->id)}}"  rel="tooltip"  title="{{__('actions.create')}}" data-original-title="{{__('actions.create')}}">
@@ -9,7 +9,7 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="subs">
                     <thead>
                     <tr>
                         <th class="text-center">#</th>

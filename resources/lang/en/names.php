@@ -27,6 +27,7 @@ return [
     'home'              => 'Home',
     'list'              => ':name list',
     'f_name'            => 'First Name',
+    'owner'            => 'owner',
     'email'            => 'Email',
     'phone_number'            => 'Phone Number',
     'address'            => 'Address',

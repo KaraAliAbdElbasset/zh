@@ -1,5 +1,29 @@
 @extends('layouts.app')
 
+@push('css')
+    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+    <style>
+        @media print {
+            .myDivToPrint {
+                background-color: white;
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                margin: 0;
+                padding: 15px;
+                font-size: 14px;
+                line-height: 18px;
+            }
+            .hide-in-print {
+                display: none;
+            }
+
+        }
+    </style>
+@endpush
+
 @section('content')
 
         <!-- Main content -->
@@ -12,7 +36,7 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <!-- Main content -->
-                                <div class="invoice p-3 mb-3">
+                                <div class="invoice p-3 mb-3 myDivToPrint" id="myDivToPrint">
 
                                     <!-- info row -->
                                     <div class="row invoice-info">
@@ -116,13 +140,17 @@
                                 <!-- /.invoice -->
                                 <hr>
                                 <div class="text-right">
-                                    <a href="{{route('orders.index')}}" type="button" rel="tooltip" class="btn btn-success info my-3">
+                                    <button type="button" onclick="window.print()" class="btn btn-success info my-3 hide-in-print">
+                                        Print
+                                    </button>
+
+                                    <a href="{{route('orders.index')}}" type="button" rel="tooltip" class="btn btn-success info my-3 hide-in-print">
                                         {{__('names.list',['name' => __('names.orders')])}}
                                     </a>
-                                    <a href="{{route('orders.edit',$o->id)}}" class="btn btn-warning info my-3" style="width: 135px">
+                                    <a href="{{route('orders.edit',$o->id)}}" class="btn btn-warning info my-3 hide-in-print" style="width: 135px">
                                         {{__('actions.edit')}}
                                     </a>
-                                    <a href="javascript:void(0)" onclick="deleteForm({{$o->id}})" class="btn btn-danger my-3" style="width: 135px">
+                                    <a href="javascript:void(0)" onclick="deleteForm({{$o->id}})" class="btn btn-danger my-3 hide-in-print" style="width: 135px">
                                         {{__('actions.delete')}}
                                     </a>
                                 </div>
@@ -142,7 +170,7 @@
 @endsection
 
 @push('js')
-
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
     <script>
 
         const deleteForm = id => {

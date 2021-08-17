@@ -20,6 +20,8 @@
                         @enderror
                     </div>
 
+
+
                     <div class="form-group  @error('owner') has-danger @enderror">
                         <label for="owner">{{__('names.project_owner')}}</label>
                         <input type="text" class="form-control" name="owner" value="{{old('owner')}}" id="owner"  placeholder="{{__('names.project_owner')}}">
