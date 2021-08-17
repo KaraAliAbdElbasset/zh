@@ -1,4 +1,4 @@
-name: Publish Website to hostinger
+name: Publish Website to hostinger ZH FOLDER
 on:
   push:
     branches:
