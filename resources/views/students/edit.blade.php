@@ -108,6 +108,39 @@
                             @enderror
                         </div>
 
+                        <div class="form-group @error('academic_average_1') has-danger @enderror">
+                            <label for="academic_average_1">{{__('names.academic_average_1')}}</label>
+                            <input type="text" class="form-control" id="academic_average_1" name="academic_average_1" value="{{old('academic_average_1',$s->academic_average_1)}}" placeholder="{{__('names.academic_average_1')}}">
+                            @error('academic_average_1')
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group @error('academic_average_2') has-danger @enderror">
+                            <label for="academic_average_2">{{__('names.academic_average_2')}}</label>
+                            <input type="text" class="form-control" id="academic_average_2" name="academic_average_2" value="{{old('academic_average_2',$s->academic_average_2)}}" placeholder="{{__('names.academic_average_2')}}">
+                            @error('academic_average_2')
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group @error('academic_average_3') has-danger @enderror">
+                            <label for="phone_number">{{__('names.academic_average_3')}}</label>
+                            <input type="text" class="form-control" id="academic_average_3" name="academic_average_3" value="{{old('academic_average_3',$s->academic_average_3)}}" placeholder="{{__('names.academic_average_3')}}">
+                            @error('academic_average_3')
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group @error('memorization_level') has-danger @enderror">
+                            <label for="phone_number">{{__('names.memorization_level')}}</label>
+                            <input type="text" class="form-control" id="memorization_level" name="memorization_level" value="{{old('memorization_level',$s->memorization_level)}}" placeholder="{{__('names.memorization_level')}}">
+                            @error('memorization_level')
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                        </div>
+
+
                         <div class="form-group @error('education_level') has-danger @enderror">
                             <label for="education_level">{{__('names.education_level')}}</label>
                             <input type="text" class="form-control" id="education_level" name="education_level" value="{{old('education_level',$s->education_level)}}" placeholder="{{__('names.education_level')}}">

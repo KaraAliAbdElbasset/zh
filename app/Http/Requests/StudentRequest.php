@@ -36,6 +36,10 @@ class StudentRequest extends FormRequest
             'father_job'        => 'sometimes|nullable|string|max:100',
             'mother_full_name'  => 'sometimes|nullable|string|max:100',
             'phone_number'      => 'required|numeric',
+            'academic_average_1'      => 'sometimes|nullable|numeric',
+            'academic_average_2'      => 'sometimes|nullable|numeric',
+            'academic_average_3'      => 'sometimes|nullable|numeric',
+            'memorization_level'      => 'sometimes|nullable|numeric',
             'address'           => 'required|string|max:200',
             'enter_date'        => 'required|date',
             'leave_date'        => 'sometimes|nullable|date|after:enter_date',
@@ -47,3 +51,6 @@ class StudentRequest extends FormRequest
         ];
     }
 }
+
+
+

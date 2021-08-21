@@ -39,6 +39,11 @@ class StudentRepository extends BaseRepository implements \App\Contracts\Student
     public function add(array $data)
     {
         $student = Student::create($data);
+
+        $student->update([
+            'honor_rate' => $student->getHonoRate(),
+        ]);
+
         $student->groups()->attach($data['group']);
         return $student;
     }
@@ -49,7 +54,12 @@ class StudentRepository extends BaseRepository implements \App\Contracts\Student
     public function update(int $id, array $data)
     {
         $student = $this->findOneById($id);
-        $student->update($data);
+
+        $student = $student->update($data);
+
+        $student->update([
+            'honor_rate' => $student->getHonoRate(),
+        ]);
         $student->groups()->sync($data['group']);
         return $student;
     }
