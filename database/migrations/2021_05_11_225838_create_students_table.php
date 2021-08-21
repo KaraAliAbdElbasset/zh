@@ -18,11 +18,11 @@ class CreateStudentsTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->date('birth_date');
-            $table->double('academic_average_1')->nullable();
-            $table->double('academic_average_2')->nullable();
-            $table->double('academic_average_3')->nullable();
-            $table->double('honor_rate')->nullable();
-            $table->double('memorization_level')->nullable();
+            $table->double('academic_average_1',4,2)->nullable();
+            $table->double('academic_average_2',4,2)->nullable();
+            $table->double('academic_average_3',4,2)->nullable();
+            $table->double('honor_rate',4,2)->nullable();
+            $table->double('memorization_level',4,2)->nullable();
             $table->string('birth_place')->nullable();
             $table->enum('gender',['male','female'])->default('male');
             $table->string('father_name')->nullable();

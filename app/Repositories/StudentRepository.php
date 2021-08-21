@@ -41,10 +41,11 @@ class StudentRepository extends BaseRepository implements \App\Contracts\Student
         $student = Student::create($data);
 
         $student->update([
-            'honor_rate' => $student->getHonoRate(),
+            'honor_rate' => $student->getHonorRate(),
         ]);
-
-        $student->groups()->attach($data['group']);
+        if (array_key_exists('group',$data)){
+            $student->groups()->attach($data['group']);
+        }
         return $student;
     }
 
@@ -55,12 +56,14 @@ class StudentRepository extends BaseRepository implements \App\Contracts\Student
     {
         $student = $this->findOneById($id);
 
-        $student = $student->update($data);
-
+       $student->update($data);
+        $student->refresh();
         $student->update([
-            'honor_rate' => $student->getHonoRate(),
+            'honor_rate' => $student->getHonorRate(),
         ]);
-        $student->groups()->sync($data['group']);
+        if (array_key_exists('group',$data)){
+            $student->groups()->sync($data['group']);
+        }
         return $student;
     }
 

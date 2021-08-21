@@ -150,7 +150,7 @@
                         </div>
 
                         <div class="form-group @error('enter_date') has-danger @enderror">
-                            <label for="enter_date">{{__('names.enter_date')}}</label>
+                            <label for="enter_date">{{__('names.start_date')}}</label>
                             <input type="date" class="form-control" id="enter_date" name="enter_date" value="{{old('enter_date',$s->enter_date->format('Y-m-d'))}}" placeholder="{{__('names.start_date')}}">
                             @error('enter_date')
                             <div class="text-danger">{{$message}}</div>

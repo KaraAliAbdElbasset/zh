@@ -44,6 +44,7 @@ return [
     'expenses'          => 'المصاريف',
     'n_meals'           => 'عدد الوجبات',
     'father_name'       => 'اسم الأب',
+    'father_job'       => 'وظيفة الأب',
     'mother_full_name'  => 'الاسم الأم الكامل',
     'save'  => 'حفظ',
     'contributors'  => 'المساهمون',
@@ -93,4 +94,5 @@ return [
     'academic_average_3' => ' المعدل الدراسي 3',
     'honor_rate' => ' معدل التكريم',
     'memorization_level' => ' مستوى الحفظ',
+    'enter_date'        => 'Enter Date',
 ];

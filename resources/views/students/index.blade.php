@@ -30,6 +30,13 @@
                                     @endforeach
                                 </select>
                             </div>
+
+                            <div class="form-group col-md-2 select-filter">
+                                <select name="sort"  id="select-honor_rate" class="form-control">
+                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    <option value="honor_rate" {{request('sort') === 'honor_rate' ? 'selected' : ''}}>{{__('names.honor_rate')}}</option>
+                                </select>
+                            </div>
                             @if(request()->get('type') === '1')
 
                                 <div class="form-group col-md-3 select-filter">
@@ -81,9 +88,9 @@
                                 <th>{{__('names.l_name')}}</th>
                                 <th>{{__('names.gender')}}</th>
                                 <th>{{__('names.phone_number')}}</th>
-                                <th>{{__('names.birth_date')}}</th>
+                                <th>{{__('names.honor_rate')}}</th>
                                 <th>{{__('names.type')}}</th>
-                                <th>{{__('names.created_at')}}</th>
+                                <th>{{__('names.birth_date')}}</th>
                                 <th class="text-right">#</th>
                             </tr>
                             </thead>
@@ -95,9 +102,9 @@
                                     <td>{{$s->last_name}}</td>
                                     <td>{{__('names.'.$s->gender)}}</td>
                                     <td>{{$s->phone_number}}</td>
-                                    <td>{{$s->birth_date->format('d/m/Y')}}</td>
+                                    <td>{{$s->honor_rate ?? '/'}}</td>
                                     <td>{{__('student.'.$s->type) }}</td>
-                                    <td>{{$s->created_at->format('d/m/Y')}}</td>
+                                    <td>{{$s->birth_date->format('d/m/Y')}}</td>
                                     <td class="td-actions text-right">
                                         <button type="button" onclick="window.location='{{route('students.show',$s->id)}}'" rel="tooltip" class="btn btn-info">
                                             <i class="material-icons">info</i>
@@ -196,7 +203,7 @@
                     {
                         extend: 'print',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 5 ]
+                            columns: [ 0, 1, 2, 5 ,7]
                         }
                     },
                 ]

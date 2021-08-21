@@ -96,10 +96,31 @@
                         <div class="col-md-6 border">{{$s->created_at->format('d/m/Y')}}</div>
                     </div>
 
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">{{__('names.groups')}}</h4>
+
+
+                </div>
+                <div class="card-body ">
                     <div class="row " >
-                        <div class="col-md-6 border">{{__('names.group')}}</div>
-                        <div class="col-md-6 border"><a href="{{route('groups.show', $s->group_id)}}">{{$s->group_name}}</a></div>
+                        <div class="col-md-4 border h3">{{__('names.f_name')}}</div>
+                        <div class="col-md-4 border h3">{{__('names.teacher')}}</div>
+                        <div class="col-md-4 border h3">{{__('names.created_at')}}</div>
                     </div>
+                    @foreach($s->groups as $g)
+                    <div class="row " >
+                        <div class="col-md-4 border">{{$g->name}}</div>
+                        <div class="col-md-4 border">{{$g->teacher->name}}</div>
+                        <div class="col-md-4 border">{{$s->created_at->format('d/m/Y')}}</div>
+                    </div>
+                    @endforeach
+
                 </div>
 
             </div>
