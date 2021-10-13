@@ -68,7 +68,7 @@ export default {
     },
     data(){
         return {
-            goalsData : this.goals,
+            goalsData : this.goals ? this.goals : [],
             loading:false,
             goal: '',
         }
@@ -78,7 +78,7 @@ export default {
         save(){
             this.goalsData.push(this.goal);
             axios.put(this.route,{
-                goals : this.goals
+                goals : this.goalsData
             }).then(({data}) => {
                 this.goal = ''
                 this.$refs.observer.reset()
@@ -89,7 +89,7 @@ export default {
             if (index > -1) {
                 this.goalsData.splice(index, 1);
                 axios.put(this.route,{
-                    goals : this.goals
+                    goals : this.goalsData
                 }).then(({data}) => {
                     this.goal = ''
                     this.$refs.observer.reset()

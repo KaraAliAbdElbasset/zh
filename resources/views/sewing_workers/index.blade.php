@@ -17,7 +17,7 @@
                         <div class="d-flex justify-content-start row">
 
                             <div class="form-group col-md-2"><select name="gender" id="select-filter" class="form-control">
-                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    <option value="all" selected>فلتر حسب الجنس</option>
                                     <option value="male" {{request('gender') === 'male' ? 'selected' : ''}}>{{__('names.male')}}</option>
                                     <option value="female" {{request('gender') === 'female' ? 'selected' : ''}}>{{__('names.female')}}</option>
                                 </select>

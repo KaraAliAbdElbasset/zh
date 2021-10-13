@@ -21,7 +21,7 @@
                         <div class="d-flex justify-content-start row">
 
                             <div class="form-group col-md-2 select-filter"><select name="gender" id="select-filter" class="form-control">
-                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    <option value="all" selected>فلتر حسب الجنس</option>
                                     <option value="male" {{request('gender') === 'male' ? 'selected' : ''}}>{{__('names.male')}}</option>
                                     <option value="female" {{request('gender') === 'female' ? 'selected' : ''}}>{{__('names.female')}}</option>
                                 </select>
@@ -100,7 +100,7 @@
     <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 
     <script>
-        let teachers = {!! $teachers->toJson() !!}
+        let teachers = {!! $teachers->toJson() !!};
 
         function printTable()
         {
@@ -177,26 +177,44 @@
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
 
     <script>
-        $(document).ready( function () {
-            $('#myTable').DataTable({
+
+
+
+        $(document).ready(function() {
+            $('#myTable').DataTable( {
                 paging: false,
                 searching: false,
                 info: false,
                 dom: 'Bfrtip',
                 buttons: [
                     {
+                        title:'<h1 class="text-center"> الجمهوريه الجزائريه الشعبيه الديمقراطيه</h1> ',
                         extend: 'print',
+                        text:'طباعه القائمه الاسميه',
+                        message: `<h2 class="text-center"> الزاويه تيجانيه تماسين</h2>
+                                  <h3 class="text-center"> المجمع الثقافي للزاويه التجانيه بالهمائسه</h3>
+                                 `,
                         exportOptions: {
-                            columns: [ 0, 1, 2, 5 ]
+                            columns: [  1, 2, 5 ]
+                        },
+                        customize: function ( win ) {
+                            $(win.document.body)
+                                .css( 'font-size', '10pt' )
+                                .css( 'direction', 'rtl' );
+                            //  .prepend(
+                            //     '<img src="{{asset('assets/img/logo.jpeg')}}" style="position:absolute; top:0; left:0;" />'
+                            //);
+
+                            $(win.document.body).find( 'table' )
+                                .addClass( 'compact' )
+                                .css( 'font-size', 'inherit' );
                         }
                     },
+
                 ]
             } );
             $('.buttons-print').each(function() {
                 $(this).removeClass('btn-default').addClass('btn btn-primary')
-                this.innerHTML = '{{__('actions.print')}}'
-
-
             })
         } );
     </script>

@@ -37,7 +37,6 @@
                             <tr>
                                 <th class="text-center">#</th>
                                 <th>{{__('names.f_name')}}</th>
-                                <th>{{__('names.managing_office')}}</th>
                                 <th>{{__('names.establishing_date')}}</th>
 {{--                                <th>{{__('names.year')}}</th>--}}
                                 <th class="text-right">#</th>
@@ -48,7 +47,6 @@
                                 <tr>
                                     <td class="text-center">{{$key + 1}}</td>
                                     <td>{{$c->name}}</td>
-                                    <td>{{$c->managing_office}}</td>
                                     <td>{{$c->establishing_date->format('d-m-Y')}}</td>
 {{--                                    <td>{{$c->year}}</td>--}}
                                     <td class="td-actions text-right">

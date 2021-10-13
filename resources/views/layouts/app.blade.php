@@ -31,6 +31,7 @@
 
     <!-- Style Just for persian demo purpose, don't include it in your project -->
     <style>
+
         body,
         h1,
         h2,
@@ -38,6 +39,7 @@
         h4,
         h5,
         h6{
+
             font-family: "Cairo";
         }
 
@@ -256,6 +258,7 @@
             }
         }
     });
+
 </script>
 @stack('js')
 </body>

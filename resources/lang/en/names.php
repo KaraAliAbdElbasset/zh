@@ -5,6 +5,7 @@ return [
     'users'          => 'users',
     'orders'          => 'Orders',
     'amount'          => 'Amount',
+    'reset'          => 'reset',
     'qty'          => 'qty',
     'paid'          => 'Paid',
     'due_date'          => 'Due Date',

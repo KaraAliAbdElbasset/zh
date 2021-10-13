@@ -17,7 +17,7 @@
                         <div class="d-flex justify-content-start row">
 
                             <div class="form-group col-md-2 select-filter"><select name="type" id="select-type" class="form-control">
-                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    <option value="all" selected>فيلتر حسب النوع</option>
                                     @foreach(config('student.types') as $t)
                                         <option value="{{$t}}"{{request('type') == $t ? 'selected': ''}}>{{__('student.'.$t)}}</option>
                                     @endforeach

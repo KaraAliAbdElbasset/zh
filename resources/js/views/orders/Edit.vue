@@ -142,6 +142,9 @@
                                 </ValidationProvider>
                                 <label for="total_ttc" class="mt-4">مجموع </label>
                                 <input name="total_ttc" id="total_ttc" class="form-control" :value="order.amount" disabled />
+
+                                <label for="total_ttc" class="mt-4">المتبقي </label>
+                                <input name="reset" id="reset" class="form-control" :value="order.amount - order.paid" disabled />
                             </div>
                         </div>
                         <hr class="mt-4">
@@ -226,6 +229,9 @@ export default {
         deleteBtn(){
             return this.order.products.length === 1
         },
+        reset(){
+            return this.order.amount - this.order.paid;
+        }
     },
     methods:{
         calculateTotal() {

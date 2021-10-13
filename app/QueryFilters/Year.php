@@ -25,7 +25,7 @@ class Year extends Filter
         if (request()->is('funerals*'))
         {
             $date = Carbon::createFromDate($q, 1, 1);
-            return $builder->where('death_date','>=',$date->format('Y'))->where('death_date', '<', $date->addYear()->format('Y'));
+            return $builder->whereYear('death_date',$q);
         }
 
         return $builder->whereYear('created_at',$q);

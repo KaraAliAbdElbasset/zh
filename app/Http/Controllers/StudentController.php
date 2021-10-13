@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Contracts\GroupContract;
 use App\Contracts\StudentContract;
 use App\Http\Requests\StudentRequest;
+use App\Models\Group;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -28,10 +30,18 @@ class StudentController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
         $students = $this->student->findByFilter();
-        return view('students.index',compact('students'));
+        $groups = $this->group->findByFilter(50);
+
+        if ($request->has('group') && $request->input('group') !=='all' )
+        {
+            $g = Group::with('teacher')->find($request->input('group'));
+            return view('students.index',compact('students','groups','g'));
+        }
+
+        return view('students.index',compact('students','groups'));
     }
 
     public function create()

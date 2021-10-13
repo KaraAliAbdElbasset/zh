@@ -42,10 +42,7 @@
                         <div class="col-md-6 border">{{__('names.address')}}</div>
                         <div class="col-md-6 border">{{$club->address}}</div>
                     </div>
-                    <div class="row " >
-                        <div class="col-md-6 border">{{__('names.goals')}}</div>
-                        <div class="col-md-6 border">{{$club->address}}</div>
-                    </div>
+
                     <div class="row " >
                         <div class="col-md-6 border">{{__('names.funding_sources')}}</div>
                         <div class="col-md-6 border">{{$club->funding_sources}}</div>
@@ -220,12 +217,29 @@
                 searching: false,
                 info: false,
                 dom: 'Bfrtip',
-                direction: rtl,
                 buttons: [
                     {
+                        title:'<h1 class="text-center"> الجمهوريه الجزائريه الشعبيه الديمقراطيه</h1> ',
                         extend: 'print',
+                        footer: true ,
+                        text:'طباعه القائمه الاسميه',
+                        message: `<h2 class="text-center"> الزاويه تيجانيه تماسين</h2>
+                                  <h3 class="text-center"> المجمع الثقافي للزاويه التجانيه بالهمائسه</h3>
+                                `,
                         exportOptions: {
                             columns: [  1, 2, 3,4]
+                        },
+                        customize: function ( win ) {
+                            $(win.document.body)
+                                .css( 'font-size', '10pt' )
+                                .css( 'direction', 'rtl' );
+                            //  .prepend(
+                            //     '<img src="{{asset('assets/img/logo.jpeg')}}" style="position:absolute; top:0; left:0;" />'
+                            //);
+
+                            $(win.document.body).find( 'table' )
+                                .addClass( 'compact' )
+                                .css( 'font-size', 'inherit' );
                         }
                     },
                 ]
@@ -246,9 +260,27 @@
                 dom: 'Bfrtip',
                 buttons: [
                     {
+                        title:'<h1 class="text-center"> الجمهوريه الجزائريه الشعبيه الديمقراطيه</h1> ',
                         extend: 'print',
+                        footer: true ,
+                        text:'طباعه القائمه الاسميه',
+                        message: `<h2 class="text-center"> الزاويه تيجانيه تماسين</h2>
+                                  <h3 class="text-center"> المجمع الثقافي للزاويه التجانيه بالهمائسه</h3>
+                                `,
                         exportOptions: {
                             columns: [  1, 2, 3,4,5,6]
+                        },
+                        customize: function ( win ) {
+                            $(win.document.body)
+                                .css( 'font-size', '10pt' )
+                                .css( 'direction', 'rtl' );
+                            //  .prepend(
+                            //     '<img src="{{asset('assets/img/logo.jpeg')}}" style="position:absolute; top:0; left:0;" />'
+                            //);
+
+                            $(win.document.body).find( 'table' )
+                                .addClass( 'compact' )
+                                .css( 'font-size', 'inherit' );
                         }
                     },
                 ]
@@ -269,9 +301,27 @@
                 dom: 'Bfrtip',
                 buttons: [
                     {
+                        title:'<h1 class="text-center"> الجمهوريه الجزائريه الشعبيه الديمقراطيه</h1> ',
                         extend: 'print',
+                        footer: true ,
+                        text:'طباعه القائمه الاسميه',
+                        message: `<h2 class="text-center"> الزاويه تيجانيه تماسين</h2>
+                                  <h3 class="text-center"> المجمع الثقافي للزاويه التجانيه بالهمائسه</h3>
+                                `,
                         exportOptions: {
                             columns: [ 1, 2, 3,4]
+                        },
+                        customize: function ( win ) {
+                            $(win.document.body)
+                                .css( 'font-size', '10pt' )
+                                .css( 'direction', 'rtl' );
+                            //  .prepend(
+                            //     '<img src="{{asset('assets/img/logo.jpeg')}}" style="position:absolute; top:0; left:0;" />'
+                            //);
+
+                            $(win.document.body).find( 'table' )
+                                .addClass( 'compact' )
+                                .css( 'font-size', 'inherit' );
                         }
                     },
                 ]

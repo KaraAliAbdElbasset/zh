@@ -17,14 +17,14 @@
                         <div class="d-flex justify-content-start row">
                             <div class="form-group col-md-2 select-filter">
                                 <select name="gender"  id="select-filter" class="form-control">
-                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    <option value="all" selected>فلتر حسب الجنس</option>
                                     <option value="male" {{request('gender') === 'male' ? 'selected' : ''}}>{{__('names.male')}}</option>
                                     <option value="female" {{request('gender') === 'female' ? 'selected' : ''}}>{{__('names.female')}}</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-2 select-filter">
                                 <select name="type" id="select-type" class="form-control select-filter">
-                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    <option value="all" selected>فيلتر حسب النوع</option>
                                     @foreach(config('student.types') as $t)
                                         <option value="{{$t}}"{{request('type') == $t ? 'selected': ''}}>{{__('student.'.$t)}}</option>
                                     @endforeach
@@ -32,8 +32,17 @@
                             </div>
 
                             <div class="form-group col-md-2 select-filter">
+                                <select name="group" id="select-type" class="form-control select-filter">
+                                    <option value="all" selected>فيلتر حسب الفوج</option>
+                                    @foreach($groups as $group)
+                                        <option value="{{$group->id}}"{{request('group') == $group->id ? 'selected': ''}}>{{$group->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-2 select-filter">
                                 <select name="sort"  id="select-honor_rate" class="form-control">
-                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    <option value="all" selected>فيلتر حسب المعدل</option>
                                     <option value="honor_rate" {{request('sort') === 'honor_rate' ? 'selected' : ''}}>{{__('names.honor_rate')}}</option>
                                 </select>
                             </div>
@@ -88,6 +97,7 @@
                                 <th>{{__('names.l_name')}}</th>
                                 <th>{{__('names.gender')}}</th>
                                 <th>{{__('names.phone_number')}}</th>
+                                <th>{{__('names.father_name')}}</th>
                                 <th>{{__('names.honor_rate')}}</th>
                                 <th>{{__('names.type')}}</th>
                                 <th>{{__('names.birth_date')}}</th>
@@ -102,6 +112,7 @@
                                     <td>{{$s->last_name}}</td>
                                     <td>{{__('names.'.$s->gender)}}</td>
                                     <td>{{$s->phone_number}}</td>
+                                    <td>{{$s->father_name}}</td>
                                     <td>{{$s->honor_rate ?? '/'}}</td>
                                     <td>{{__('student.'.$s->type) }}</td>
                                     <td>{{$s->birth_date->format('d/m/Y')}}</td>
@@ -119,7 +130,24 @@
                                 </tr>
                             @endforeach
                             </tbody>
+                            @if(isset($g) && $teacher = $g->teacher)
+                                <tfoot>
+                                <tr>
+                                    <th class="text-center" ></th>
+                                    <th colspan="">{{__('names.teacher')}} : </th>
+                                    <th >{{$teacher->name}}</th>
+                                    <th ></th>
+                                    <th ></th>
+                                    <th ></th>
+                                    <th class=""></th>
+                                    <th class=""></th>
+                                    <th class=""></th>
+                                    <th class=""></th>
+                                </tr>
+                                </tfoot>
+                            @endif
                         </table>
+
                         <div class="d-flex justify-content-center">
                             {{$students->links()}}
                         </div>
@@ -193,27 +221,70 @@
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
 
     <script>
-        $(document).ready( function () {
-            $('#myTable').DataTable({
+        $(document).ready(function() {
+            $('#myTable').DataTable( {
                 paging: false,
                 searching: false,
                 info: false,
                 dom: 'Bfrtip',
                 buttons: [
                     {
+                        title:'<h1 class="text-center"> الجمهوريه الجزائريه الشعبيه الديمقراطيه</h1> ',
                         extend: 'print',
+                        footer: true ,
+                        text:'طباعه القائمه الاسميه',
+                        message: `<h2 class="text-center"> الزاويه تيجانيه تماسين</h2>
+                                  <h3 class="text-center"> المجمع الثقافي للزاويه التجانيه بالهمائسه</h3>
+                                   @if(isset($g))
+                        <h3 class="text-center">القائمه الاسميه لفوج {{$g->name}}   </h3>
+                        @endif
+`,
                         exportOptions: {
-                            columns: [ 0, 1, 2, 5 ,7]
+                            columns: [  1, 2 ,3, 5,8]
+                        },
+                        customize: function ( win ) {
+                            $(win.document.body)
+                                .css( 'font-size', '10pt' )
+                                .css( 'direction', 'rtl' );
+                              //  .prepend(
+                               //     '<img src="{{asset('assets/img/logo.jpeg')}}" style="position:absolute; top:0; left:0;" />'
+                                //);
+
+                            $(win.document.body).find( 'table' )
+                                .addClass( 'compact' )
+                                .css( 'font-size', 'inherit' );
                         }
                     },
+                    {
+                        title:'<h1 class="text-center"> الجمهوريه الجزائريه الشعبيه الديمقراطيه</h1> ',
+                        extend: 'print',
+                        text:'طباعه القائمه مع المعدل',
+                        message: `<h2 class="text-center"> الزاويه تيجانيه تماسين</h2>
+                                  <h3 class="text-center"> المجمع الثقافي للزاويه التجانيه بالهمائسه</h3>
+                                 `,
+                        exportOptions: {
+                            columns: [  1, 2 ,3, 5,6,8]
+                        },
+                        footer: true ,
+                        customize: function ( win ) {
+                            $(win.document.body)
+                                .css( 'font-size', '10pt' )
+                                .css( 'direction', 'rtl' );
+                            //  .prepend(
+                            //     '<img src="{{asset('assets/img/logo.jpeg')}}" style="position:absolute; top:0; left:0;" />'
+                            //);
+
+                            $(win.document.body).find( 'table' )
+                                .addClass( 'compact' )
+                                .css( 'font-size', 'inherit' );
+                        }
+                    }
                 ]
             } );
             $('.buttons-print').each(function() {
                 $(this).removeClass('btn-default').addClass('btn btn-primary')
-                this.innerHTML = '{{__('actions.print')}}'
-
-
             })
         } );
+
     </script>
 @endpush

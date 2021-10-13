@@ -77,6 +77,10 @@ class HomeController extends Controller
             ->groupBy('month')
             ->get();
 
+        $orders = DB::table('orders')
+            ->select(DB::raw("MONTH(created_at) as month"), DB::raw('sum(amount) as total'))
+            ->groupBy('month')
+            ->get();
         $initialData = collect([0,0,0,0,0,0,0,0,0,0,0,0]);
         return [
             'sewing_clients' => $initialData->mapWithKeys(static function($initialData,$key) use($sewing_clients) {
@@ -103,6 +107,10 @@ class HomeController extends Controller
             })->values()->all(),
             'funerals' => $initialData->mapWithKeys(static function($initialData,$key) use($funerals) {
                 $monthData = $funerals->where('month','=',$key+1)->first();
+                return [ $key+1 =>$monthData->total ?? $initialData];
+            })->values()->all(),
+            'orders' => $initialData->mapWithKeys(static function($initialData,$key) use($orders) {
+                $monthData = $orders->where('month','=',$key+1)->first();
                 return [ $key+1 =>$monthData->total ?? $initialData];
             })->values()->all(),
         ];

@@ -18,7 +18,7 @@
                         <div class="d-flex justify-content-start row">
 
                             <div class="form-group col-md-2 select-filter"><select name="gender" id="select-filter" class="form-control">
-                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    <option value="all" selected>فلتر حسب الجنس</option>
                                     <option value="male" {{request('gender') === 'male' ? 'selected' : ''}}>{{__('names.male')}}</option>
                                     <option value="female" {{request('gender') === 'female' ? 'selected' : ''}}>{{__('names.female')}}</option>
                                 </select>
@@ -58,8 +58,11 @@
                                 <th class="text-center">#</th>
                                 <th>{{__('names.f_name')}}</th>
                                 <th>{{__('names.l_name')}}</th>
+                                <th>{{__('names.father_name')}}</th>
                                 <th>{{__('names.gender')}}</th>
                                 <th>{{__('names.death_date')}}</th>
+                                <th>{{__('names.birth_date')}}</th>
+                                <th>{{__('names.expenses')}}</th>
                                 <th class="text-right">#</th>
                             </tr>
                             </thead>
@@ -69,8 +72,11 @@
                                     <td class="text-center">{{$key + 1}}</td>
                                     <td>{{$f->first_name}}</td>
                                     <td>{{$f->last_name}}</td>
+                                    <td>{{$f->father_name}}</td>
                                     <td>{{__('names.'.$f->gender)}}</td>
                                     <td>{{$f->death_date->format('d-m-Y')}}</td>
+                                    <td>{{$f->birth_date->format('d-m-Y')}}</td>
+                                    <td>{{$f->expenses}}</td>
                                     <td class="td-actions text-right">
                                         <button type="button" onclick="window.location='{{route('funerals.show',$f->id)}}'" rel="tooltip" class="btn btn-info">
                                             <i class="material-icons">info</i>
@@ -158,26 +164,65 @@
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
 
     <script>
-        $(document).ready( function () {
-            $('#myTable').DataTable({
+
+
+        $(document).ready(function() {
+            $('#myTable').DataTable( {
                 paging: false,
                 searching: false,
                 info: false,
                 dom: 'Bfrtip',
                 buttons: [
                     {
+                        title:'<h1 class="text-center"> الجمهوريه الجزائريه الشعبيه الديمقراطيه</h1> ',
                         extend: 'print',
+                        text:'طباعه القائمه الاسميه',
+                        message: `<h2 class="text-center"> الزاويه تيجانيه تماسين</h2>
+                                  <h3 class="text-center"> المجمع الثقافي للزاويه التجانيه بالهمائسه</h3>
+                                 `,
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4 ]
+                            columns: [  1, 2, 3, 4 , 5 , 6]
+                        },
+                        customize: function ( win ) {
+                            $(win.document.body)
+                                .css( 'font-size', '10pt' )
+                                .css( 'direction', 'rtl' );
+                            //  .prepend(
+                            //     '<img src="{{asset('assets/img/logo.jpeg')}}" style="position:absolute; top:0; left:0;" />'
+                            //);
+
+                            $(win.document.body).find( 'table' )
+                                .addClass( 'compact' )
+                                .css( 'font-size', 'inherit' );
                         }
                     },
+                    {
+                        title:'<h1 class="text-center"> الجمهوريه الجزائريه الشعبيه الديمقراطيه</h1> ',
+                        extend: 'print',
+                        text:'الطباعه مع المصاريف',
+                        message: `<h2 class="text-center"> الزاويه تيجانيه تماسين</h2>
+                                  <h3 class="text-center"> المجمع الثقافي للزاويه التجانيه بالهمائسه</h3>
+                                 `,
+                        exportOptions: {
+                            columns: [ 1, 2, 3, 4, 5 ,6,7 ]
+                        },
+                        customize: function ( win ) {
+                            $(win.document.body)
+                                .css( 'font-size', '10pt' )
+                                .css( 'direction', 'rtl' );
+                            //  .prepend(
+                            //     '<img src="{{asset('assets/img/logo.jpeg')}}" style="position:absolute; top:0; left:0;" />'
+                            //);
+
+                            $(win.document.body).find( 'table' )
+                                .addClass( 'compact' )
+                                .css( 'font-size', 'inherit' );
+                        }
+                    }
                 ]
             } );
             $('.buttons-print').each(function() {
                 $(this).removeClass('btn-default').addClass('btn btn-primary')
-                this.innerHTML = '{{__('actions.print')}}'
-
-
             })
         } );
     </script>

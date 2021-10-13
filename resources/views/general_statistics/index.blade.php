@@ -10,9 +10,7 @@
                     <a class="btn btn-info btn-sm" href="{{route('general-statistics.create')}}"  rel="tooltip"  title="{{__('actions.create')}}" data-original-title="{{__('actions.create')}}">
                         <i class="material-icons">add</i>
                     </a>
-                    <a class="btn btn-info btn-sm" href="{{route('general-statistics.export')}}"  rel="tooltip"  title="{{__('actions.export')}}" data-original-title="{{__('actions.export')}}">
-                        <i class="material-icons">download</i>
-                    </a>
+
                     <form action="" id="filter-form">
                         @if(request()->has('search') && !empty(request()->get('search')))
                             <input type="hidden" name="search" value="{{request('search')}}">
@@ -20,14 +18,14 @@
                         <div class="d-flex justify-content-start row">
 
                             <div class="form-group col-md-2 select-filter"><select name="gender" id="select-filter" class="form-control">
-                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    <option value="all" selected>فلتر حسب الجنس</option>
                                     <option value="male" {{request('gender') === 'male' ? 'selected' : ''}}>{{__('names.male')}}</option>
                                     <option value="female" {{request('gender') === 'female' ? 'selected' : ''}}>{{__('names.female')}}</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-2 select-filter">
                                 <select name="serial_number" id="select-filter" class="form-control">
-                                    <option value="all" selected>{{__('names.all')}}</option>
+                                    <option value="all" selected>فيلتر حسب الرقم التسلسلي</option>
                                     <option value="yes" {{request('serial_number') === 'yes' ? 'selected' : ''}}>{{__('names.have_serial_number')}}</option>
                                     <option value="no" {{request('serial_number') === 'no' ? 'selected' : ''}}>{{__('names.does_not_have_serial_number')}}</option>
                                 </select>

@@ -235,9 +235,7 @@ class ClubController extends Controller
     public function officerUpdate(Request $request,$id)
     {
         $data = $request->validate([
-            'managing_office' => 'required|array',
-            'managing_office.*.name' => 'required|string|max:100',
-            'managing_office.*.level' => 'required|string|max:100',
+            'managing_office' => 'sometimes|nullable|array',
         ]);
 
         $this->club->update($id,$data);
@@ -250,10 +248,9 @@ class ClubController extends Controller
     public function goalsUpdate(Request $request,$id)
     {
         $data = $request->validate([
-            'goals' => 'required|array',
-            'goals.*' => 'required|string|max:200',
-        ]);
+            'goals' => 'sometimes|nullable|array',
 
+        ]);
         $this->club->update($id,$data);
         return response()->json([
             'success' => true,

@@ -81,7 +81,7 @@ export default {
     },
     data(){
         return {
-            officersData : this.officers,
+            officersData : this.officers ? this.officers : [],
             loading:false,
             officer: {
                 name:'',
@@ -90,7 +90,7 @@ export default {
         }
     },
     mounted() {
-        console.log(this.route)
+        console.log(this.officers)
     },
     methods:{
         save(){
@@ -109,8 +109,9 @@ export default {
             const index = this.officersData.indexOf(o);
             if (index > -1) {
                 this.officersData.splice(index, 1);
+                console.log(this.officersData.length === 0)
                 axios.put(this.route,{
-                    managing_office : this.officersData
+                    managing_office : this.officersData.length > 0 ? this.officersData : []
                 }).then(({data}) => {
                     this.officer = {
                         name:'',

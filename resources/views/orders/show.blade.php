@@ -88,7 +88,7 @@
                                                         <td>{{$p['name']}}</td>
                                                         <td>{{$p['qty']}}</td>
                                                         <td>{{$p['price']}} {{config('settings.currency_code')}}</td>
-                                                        <td>{{$p['price']}} {{config('settings.currency_code')}}</td>
+                                                        <td>{{$p['price'] * $p['qty']}} {{config('settings.currency_code')}}</td>
                                                     </tr>
                                                 @endforeach
                                                 </tbody>
@@ -121,6 +121,10 @@
                                                     <tr>
                                                         <th>{{__('names.amount')}} :</th>
                                                         <td>{{$o->amount}} {{config('settings.currency_code')}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>{{__('names.reset')}} :</th>
+                                                        <td>{{$o->amount - $o->paid}} {{config('settings.currency_code')}}</td>
                                                     </tr>
                                                 </table>
                                             </div>

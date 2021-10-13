@@ -19,13 +19,7 @@
                             @enderror
                         </div>
 
-                        <div class="form-group  @error('managing_office') has-danger @enderror">
-                            <label for="managing_office">{{__('names.managing_office')}}</label>
-                            <input type="text" class="form-control" name="managing_office" value="{{old('managing_office')}}" id="managing_office"  placeholder="{{__('names.managing_office')}}">
-                            @error('managing_office')
-                            <div class="text-danger">{{$message}}</div>
-                            @enderror
-                        </div>
+
 
                         <div class="form-group  @error('establishing_date') has-danger @enderror">
                             <label for="establishing_date">{{__('names.establishing_date')}}</label>
@@ -51,13 +45,7 @@
                             @enderror
                         </div>
 
-                        <div class="form-group  @error('goals') has-danger @enderror">
-                            <label for="goals">{{__('names.goals')}}</label>
-                            <input type="text" class="form-control" name="goals" value="{{old('goals')}}" id="goals"  placeholder="{{__('names.goals')}}">
-                            @error('goals')
-                            <div class="text-danger">{{$message}}</div>
-                            @enderror
-                        </div>
+
 
                         <div class="form-group  @error('funding_sources') has-danger @enderror">
                             <label for="funding_sources">{{__('names.funding_sources')}}</label>
