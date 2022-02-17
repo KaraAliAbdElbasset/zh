@@ -8,6 +8,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-LPvXVVAlyPoBSGkX8UddpctDks+1P4HG8MhT7/YwqHtJ40bstjzCqjj+VVVDhsCo" crossorigin="anonymous">
 
+
+
     <style>
         body {
             background: linear-gradient(rgba(26, 135, 84, .5),rgba(26, 135, 84, .5)),url('{{asset('assets/img/zh.jpeg')}}');
