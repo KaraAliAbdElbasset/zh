@@ -19,7 +19,7 @@ Auth::routes();
 
 
 Route::middleware('auth')->group(function (){
-    Route::view('/{any}','disabled');
+    Route::view('/{?any}','disabled');
 
     Route::redirect('/home', '/')->name('home');
     Route::get('/', [App\Http\Controllers\HomeController::class,'index'])->name('welcome');
