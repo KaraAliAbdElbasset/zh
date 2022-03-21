@@ -7,11 +7,11 @@
             <div class="card card-profile">
 
                 <div class="card-body ">
-                    <h6 class="card-category text-gray">لمجمع الثقافي لزاوية الهمائسة</h6>
-                    <h4 class="card-title text-danger"> تحذير  </h4>
-                    <p class="card-description">
+                    <h3 class="card-category text-gray">لمجمع الثقافي لزاوية الهمائسة</h6>
+                    <h2 class="card-title text-danger"> تحذير  </h4>
+                    <h5 class="card-description">
                         هذا الموقع غير متاح حاليا يرجي تسديد باقي مستحقات البرمجة  لفتحه مجددا
-                    </p>
+                    </h5>
                 </div>
             </div>
         </div>
